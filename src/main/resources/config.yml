@@ -1,0 +1,8 @@
+# Automatically reload the configuration file
+autoReload: true
+# When you are an admin and use an item, print the item's name to the console!
+getItemName: false
+# When you are an admin and interact with a block, print the block's name to the console!
+getBlockName: false
+# When you are an admin and interact with an entity, print the entity's name to the console!
+getEntityName: false

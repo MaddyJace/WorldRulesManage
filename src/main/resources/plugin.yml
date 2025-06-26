@@ -1,0 +1,20 @@
+name: WorldRulesManage
+version: '${project.version}'
+main: com.maddyjace.worldrulesmanage.WorldRulesManage
+authors: [MaddyJace]
+description: Prevent specific commands from being used
+folia-supported: true
+
+softdepend:
+  - PlaceholderAPI
+
+commands:
+  worldrulesmanage:
+    description: Main plugin command.
+    aliases: [wm,worldrulesmanage]
+    permission: worldrulesmanage.admin
+
+permissions:
+  worldrulesmanage.admin:
+    description: Gives the player access to the main plugin command.
+    default: op

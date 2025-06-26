@@ -1,0 +1,123 @@
+# ⚠️Important: All configuration keys are case-sensitive. Incorrect casing may cause errors or ignored settings.
+
+world_1:
+  worldName: world         # World name
+  # Radius settings
+  settingsRadius:
+    type: 2DRange          # 2DRange (2D circle), 3DRange (3D sphere), 2DCube (2D square), 3DCube (3D cube)
+    xyz: "0 0 0"           # Coordinates
+    radius: 14             # Radius range
+
+  # Global rules
+  globalRules:
+    flameSpread: true      # Prevent fire spread
+    leavesDecay: true      # Prevent leaves from decaying
+    blockIgnite: true      # Prevent block ignition
+    entityBlockBreak: true # Prevent entities from breaking blocks
+    liquidFlow: true       # Prevent liquid from flowing
+
+  # Player rules
+  playerRules:
+    permission: "wm.world" # Permission node required
+    blockIgnite: true      # Prevent players from igniting blocks
+    blockBreak: true       # Prevent players from breaking blocks
+    blockPlace: true       # Prevent players from placing blocks
+    itemPickup: true       # Prevent players from picking up items
+    itemDrop: true         # Prevent players from dropping items
+    usePail: true          # Prevent players from using buckets (e.g., collecting water/lava)
+    food: true             # Prevent players from getting hungry
+    foodSatiety: true      # Restore player hunger (level: 20)
+    playerDamage: true     # Prevent players from taking damage (e.g., no injury or knockback)
+    portalAll: true        # Prevent players from using any portal
+    portalNether: false    # Prevent players from entering Nether portal
+    portalEnder: false     # Prevent players from entering End portal
+
+    # Prevent players from using specific items (requires item list)
+    playerUseItem:
+      #  - BLACKLIST (Block listed items)
+      #  - WHITELIST (Only allow listed items)
+      type: BLACKLIST
+      list:
+        # Throwable items
+        - "SNOWBALL"       # Snowball
+        - "EGG"            # Egg
+        - "ITEM_FRAME"     # Item frame
+        - "PAINTING"       # Painting
+
+    # Prevent players from interacting with specific entities (requires entity list)
+    PlayerInteractEntity:
+      #  - BLACKLIST (Block listed entities)
+      #  - WHITELIST (Only allow listed entities)
+      type: BLACKLIST
+      list:
+        - "ITEM_FRAME"     # Item frame
+        - "PAINTING"       # Painting
+        - "ARMOR_STAND"    # Armor stand
+
+    # Prevent players from interacting with specific blocks (requires block list)
+    PlayerInteractBlock:
+      #  - BLACKLIST (Block listed blocks)
+      #  - WHITELIST (Only allow listed blocks)
+      type: BLACKLIST
+      list:
+        - "TRAP_DOOR"      # Trapdoor
+        - "LEVER"          # Lever
+        - "FURNACE"        # Furnace
+
+    # Prevent players from triggering specific blocks (requires block list)
+    PlayerTriggerBlock:
+      #  - BLACKLIST (Block listed blocks)
+      #  - WHITELIST (Only allow listed blocks)
+      type: BLACKLIST
+      # If you don't specify a list, everything is blocked by default!
+      list:
+        - "SOIL"           # Farmland
+        - "TRIPWIRE"       # Tripwire
+
+world_2:
+  worldName: world         # World name
+  # Radius settings
+  settingsRadius:
+    type: 2DCube           # 2DRange (2D circle), 3DRange (3D sphere), 2DCube (2D square), 3DCube (3D cube)
+    xyz: "100 0 -100"      # Coordinates
+    radius: 26             # Radius range
+
+  # Global rules
+  globalRules:
+    flameSpread: true      # Prevent fire spread
+    leavesDecay: true      # Prevent leaves from decaying
+    blockIgnite: true      # Prevent block ignition
+    entityBlockBreak: true # Prevent entities from breaking blocks
+    liquidFlow: true       # Prevent liquid from flowing
+
+  # Player rules
+  playerRules:
+    permission: "wm.world" # Permission node required
+    blockIgnite: true      # Prevent players from igniting blocks
+    blockBreak: true       # Prevent players from breaking blocks
+    blockPlace: true       # Prevent players from placing blocks
+    itemDrop: true         # Prevent players from dropping items
+    usePail: true          # Prevent players from using buckets (e.g., collecting water/lava)
+    food: true             # Prevent players from getting hungry
+
+    # Prevent players from using specific items (requires item list)
+    playerUseItem:
+      type: BLACKLIST
+      list:
+        - "ITEM_FRAME"     # Item frame
+        - "PAINTING"       # Painting
+
+    # Prevent players from interacting with specific entities (requires entity list)
+    PlayerInteractEntity:
+      type: BLACKLIST
+      list:
+        - "ITEM_FRAME"     # Item frame
+        - "PAINTING"       # Painting
+        - "ARMOR_STAND"    # Armor stand
+
+    # Prevent players from triggering specific blocks (requires block list)
+    PlayerTriggerBlock:
+      type: BLACKLIST
+      # If you don't specify a list, everything is blocked by default!
+      list:
+        - "SOIL"           # Farmland

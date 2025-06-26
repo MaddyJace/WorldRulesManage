@@ -1,0 +1,150 @@
+# ⚠️ Important: All configuration keys are case-sensitive. Incorrect casing may cause errors or ignored settings.
+
+world_1:
+  worldName: world         # World name
+  # Global rules
+  globalRules:
+    flameSpread: true      # Prevent flame spread
+    leavesDecay: true      # Prevent leaf decay
+    blockIgnite: true      # Prevent block ignition
+    entityBlockBreak: true # Prevent entities from breaking blocks
+    liquidFlow: true       # Prevent liquid flow
+
+  # Player-specific rules
+  playerRules:
+    permission: "wm.world" # Permission node
+    blockIgnite: true      # Prevent players from igniting blocks
+    blockBreak: true       # Prevent players from breaking blocks
+    blockPlace: true       # Prevent players from placing blocks
+    itemPickup: true       # Prevent players from picking up items
+    itemDrop: true         # Prevent players from dropping items
+    usePail: true          # Prevent players from using buckets (e.g., filling with water/lava)
+    food: true             # Prevent player hunger loss
+    foodSatiety: true      # Restore player hunger (set to level 20)
+    playerDamage: true     # Prevent player from taking damage (includes no knockback)
+    portalAll: true        # Prevent use of any portals
+    portalNether: false    # Allow use of Nether portal
+    portalEnder: false     # Allow use of End portal
+
+    # Prevent players from using specific items (requires item list)
+    playerUseItem:
+      #  - BLACKLIST (block listed items)
+      #  - WHITELIST (only allow listed items)
+      type: BLACKLIST
+      list:
+        - "SNOWBALL"       # Snowball
+        - "EGG"            # Egg
+        - "ITEM_FRAME"     # Item frame
+        - "PAINTING"       # Painting
+
+    # Prevent players from interacting with specific entities (requires entity list)
+    PlayerInteractEntity:
+      type: BLACKLIST
+      list:
+        - "ITEM_FRAME"     # Item frame
+        - "PAINTING"       # Painting
+        - "ARMOR_STAND"    # Armor stand
+
+    # Prevent players from interacting with specific blocks (requires block list)
+    PlayerInteractBlock:
+      type: BLACKLIST
+      list:
+        - "TRAP_DOOR"      # Trapdoor
+        - "LEVER"          # Lever
+        - "FURNACE"        # Furnace
+
+    # Prevent players from triggering specific blocks (requires block list)
+    PlayerTriggerBlock:
+      type: BLACKLIST
+      # You can omit the list — no list means all are blocked!
+      list:
+        - "SOIL"           # Farmland
+        - "TRIPWIRE"       # Tripwire
+
+
+
+world_nether:
+  worldName: world_nether  # World name
+  # Global rules
+  globalRules:
+    flameSpread: true
+    blockIgnite: true
+    entityBlockBreak: true
+    liquidFlow: true
+
+  # Player-specific rules
+  playerRules:
+    permission: "wm.world"
+    blockIgnite: true
+    usePail: true
+    food: true
+    foodSatiety: true
+    portalEnder: true
+
+    playerUseItem:
+      type: BLACKLIST
+      list:
+        - "SNOWBALL"
+        - "EGG"
+        - "ITEM_FRAME"
+        - "PAINTING"
+
+    PlayerInteractEntity:
+      type: BLACKLIST
+      list:
+        - "ITEM_FRAME"
+        - "PAINTING"
+        - "ARMOR_STAND"
+
+    PlayerInteractBlock:
+      type: BLACKLIST
+      list:
+        - "TRAP_DOOR"
+        - "LEVER"
+        - "FURNACE"
+
+    PlayerTriggerBlock:
+      type: WHITELIST
+      list: {}
+
+
+
+Hello_world_the_end:
+  worldName: world_the_end # World name
+  # Global rules
+  globalRules:
+    flameSpread: true
+    blockIgnite: true
+    entityBlockBreak: true
+    liquidFlow: true
+
+  # Player-specific rules
+  playerRules:
+    permission: "wm.world"
+    blockIgnite: true
+    usePail: true
+    food: true
+    foodSatiety: true
+    portalEnder: true
+
+    playerUseItem:
+      type: BLACKLIST
+      list:
+        - "SNOWBALL"
+        - "EGG"
+        - "ITEM_FRAME"
+        - "PAINTING"
+
+#    PlayerInteractEntity:
+#      type: BLACKLIST
+#      list:
+#        - "ITEM_FRAME"
+#        - "PAINTING"
+#        - "ARMOR_STAND"
+
+#    PlayerInteractBlock:
+#      type: BLACKLIST
+#      list:
+#        - "TRAP_DOOR"
+#        - "LEVER"
+#        - "FURNACE"
