@@ -94,8 +94,8 @@ public final class WorldRulesManage extends JavaPlugin {
 
         // 注册 命令 和 Tab键 监听器
         Commands commandHandler = new Commands();
-        this.getCommand("worldmanage").setExecutor(commandHandler);     // 命令
-        this.getCommand("worldmanage").setTabCompleter(commandHandler); // Tab
+        this.getCommand("worldrulesmanage").setExecutor(commandHandler);     // 命令
+        this.getCommand("worldrulesmanage").setTabCompleter(commandHandler); // Tab
 
         Bukkit.getConsoleSender().sendMessage("§b§l");
         Bukkit.getConsoleSender().sendMessage("§b§l");
