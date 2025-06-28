@@ -5,7 +5,9 @@ world_1:
   # Radius settings
   settingsRadius:
     type: 2DRange          # 2DRange (2D circle), 3DRange (3D sphere), 2DCube (2D square), 3DCube (3D cube)
-    xyz: "0 0 0"           # Coordinates
+    xyz:
+      - "0 0 0"            # Coordinates
+      - "-200 0 -200"
     radius: 14             # Radius range
 
   # Global rules
@@ -79,7 +81,8 @@ world_2:
   # Radius settings
   settingsRadius:
     type: 2DCube           # 2DRange (2D circle), 3DRange (3D sphere), 2DCube (2D square), 3DCube (3D cube)
-    xyz: "100 0 -100"      # Coordinates
+    xyz:
+      - "100 0 -100"       # Coordinates
     radius: 26             # Radius range
 
   # Global rules

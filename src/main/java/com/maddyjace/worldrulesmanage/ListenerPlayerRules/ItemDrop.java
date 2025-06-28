@@ -1,7 +1,9 @@
 package com.maddyjace.worldrulesmanage.ListenerPlayerRules;
 
 import com.maddyjace.worldrulesmanage.ConfigFile.MessageFile;
+import com.maddyjace.worldrulesmanage.ConfigFile.RadiusFile;
 import com.maddyjace.worldrulesmanage.ConfigFile.WorldFile;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +26,17 @@ public class ItemDrop implements Listener {
             }
 
         }
+
+        // 指定范围触发
+        Location location = player.getLocation();
+        if(RadiusFile.INSTANCE.playerRules(player, world, location,"itemDrop")) {
+            event.setCancelled(true);
+            // 取消事件后向玩家发送提示信息
+            if(MessageFile.getMessage("ItemDropRadiusMessage") != null) {
+                MessageFile.parsePlaceholders(player, MessageFile.getMessage("ItemDropRadiusMessage"));
+            }
+        }
+
 
     }
 

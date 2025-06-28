@@ -147,39 +147,53 @@ public enum RadiusFile {
 
 
     public boolean settingsRadius(ConfigurationSection settingsRadius, World currentWorld, Location currentLocation) {
+        List<String> list = settingsRadius.getStringList("xyz");
 
-        // 起点坐标
-        Location startingLocation = null;
-        // 获取到YML的 settingsRadius 键下 xyz 值 并拆分保存为数组
-        String[] parts = settingsRadius.getString("xyz").trim().split("\\s+");
-        int x; int y; int z;
-        if (parts.length == 3) {
-            try {
-                x = Integer.parseInt(parts[0]);
-                y = Integer.parseInt(parts[1]);
-                z = Integer.parseInt(parts[2]);
-                startingLocation = new Location(currentWorld, x, y, z);
-            } catch (NumberFormatException e) {
-                return false;
+        for(String locationRadius : list) {
+            // 起点坐标
+            Location startingLocation = null;
+            // 获取到YML的 settingsRadius 键下 xyz 值 并拆分保存为数组
+            String[] parts = locationRadius.trim().split("\\s+");
+            int x; int y; int z;
+            if (parts.length == 3) {
+                try {
+                    x = Integer.parseInt(parts[0]);
+                    y = Integer.parseInt(parts[1]);
+                    z = Integer.parseInt(parts[2]);
+                    startingLocation = new Location(currentWorld, x, y, z);
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
+            }
+
+            // 该对象不能为空
+            if(startingLocation != null) {
+                // 取YML的type值
+                String type = settingsRadius.getString("type").toLowerCase();
+                int radius = settingsRadius.getInt("radius");
+                switch (type) {
+                    case "2drange": // 二维圆
+                        if(isIn2DRange(currentLocation, startingLocation, radius)) {
+                            return true;
+                        }
+                    case "3drange": // 三维圆
+                        if(isIn3DRange(currentLocation, startingLocation, radius)) {
+                            return true;
+                        }
+                    case "2dcube":  // 二维立方
+                        if(isIn2DCube(currentLocation, startingLocation, radius)) {
+                            return true;
+                        }
+                    case "3dcube":  // 三维立方
+                        if(isIn3DCube(currentLocation, startingLocation, radius)) {
+                            return true;
+                        }
+                }
             }
         }
 
-        // 该对象不能为空
-        if(startingLocation != null) {
-            // 取YML的type值
-            String type = settingsRadius.getString("type").toLowerCase();
-            int radius = settingsRadius.getInt("radius");
-            switch (type) {
-                case "2drange": // 二维圆
-                    return isIn2DRange(currentLocation, startingLocation, radius);
-                case "3drange": // 三维圆
-                    return isIn3DRange(currentLocation, startingLocation, radius);
-                case "2dcube":  // 二维立方
-                    return isIn2DCube(currentLocation, startingLocation, radius);
-                case "3dcube":  // 三维立方
-                    return isIn3DCube(currentLocation, startingLocation, radius);
-            }
-        }
+
 
         return false;
     }

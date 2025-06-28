@@ -5,7 +5,9 @@ world_1:
   # 半径规则
   settingsRadius:
     type: 2DRange          # 2DRange(二维圆形)，3DRange(三维圆形)，2DCube(二维立方)，3DCube(三维立方)。
-    xyz: "0 0 0"           # 坐标
+    xyz:
+      - "0 0 0"            # 坐标
+      - "-200 0 -200"
     radius: 14             # 半径范围
 
   # 全局规则
@@ -80,8 +82,9 @@ world_2:
   worldName: world         # 世界名称
   # 半径规则
   settingsRadius:
-    type: 2DCube          # 2DRange(二维圆形)，3DRange(三维圆形)，2DCube(二维立方)，3DCube(三维立方)。
-    xyz: "100 0 -100"           # 坐标
+    type: 2DCube           # 2DRange(二维圆形)，3DRange(三维圆形)，2DCube(二维立方)，3DCube(三维立方)。
+    xyz:
+      - "100 0 -100"       # 坐标
     radius: 26             # 半径范围
 
   # 全局规则
