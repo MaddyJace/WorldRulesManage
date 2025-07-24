@@ -1,48 +1,12 @@
 # PlaceholderAPI is not supported
-# Note: Do NOT delete this section — removing it may cause unknown issues!
+# Note: This part of the configuration must not be deleted, or unknown issues may occur!
 PluginsName:          "&8[&aWorld&cManage&8]&f: "
 Reload:               "&aConfiguration has been reloaded!"
-CommandCorrectUsage:  "&cCorrect usage: /wm reload"
-getItemNameMessage:   "&8[&aWorld&cManage&8]&f &bUsed item name&7: "
-getBlockNameMessage:  "&8[&aWorld&cManage&8]&f &bInteracted block name&7: "
-getEntityNameMessage: "&8[&aWorld&cManage&8]&f &bInteracted entity name&7: "
+CommandCorrectUsage:  "&cCorrect Usage: /wm reload"
 
-# Message shown to player when an action is blocked! (Supports PlaceholderAPI)
-# Note: If you don't want to show a message after blocking, comment out or delete the line
-# e.g., delete: BlockIgniteMessage: "&cIgniting blocks is disabled in this world!"
-BlockIgniteMessage:                "&cIgniting blocks is disabled in this world!"
-BlockBreakMessage:                 "&cBreaking blocks is disabled in this world!"
-BlockPlaceMessage:                 "&cPlacing blocks is disabled in this world!"
-FoodLevelChangeMessage:            "&cHunger changes are disabled in this world!"
-FoodSatietyMessage:                "&cHunger changes are disabled in this world!"
-ItemDropMessage:                   "&cDropping items is disabled in this world!"
-ItemPickupMessage:                 "&cPicking up items is disabled in this world!"
-PlayerBucketEmptyMessage:          "&cUsing buckets is disabled in this world!"
-PlayerDamageMessage:               "&cTaking damage is disabled in this world!"
-PlayerInteractEntityMessage:       "&cInteracting with entities is disabled in this world!"
-PortalAllMessage:                  "&cUsing portals is disabled in this world!"
-PortalNetherMessage:               "&cUsing Nether portals is disabled in this world!"
-PortalEnderMessage:                "&cUsing End portals is disabled in this world!"
-PlayerUseItemMessage:              "&cUsing items is disabled in this world!"
-PlayerInteractBlockMessage:        "&cInteracting with blocks is disabled in this world!"
-PlayerTriggerBlockMessage:         "&cTriggering blocks is disabled in this world!"
+# --------------------------------------------------------------------
 
-# Message shown to player when an action is blocked **within a radius**! (Supports PlaceholderAPI)
-# Note: If you don't want to show a message after blocking, comment out or delete the line
-# e.g., delete: BlockIgniteRadiusMessage: "&cYou can't ignite blocks in this area!"
-BlockIgniteRadiusMessage:          "&cYou can't ignite blocks in this area!"
-BlockBreakRadiusMessage:           "&cYou can't break blocks in this area!"
-BlockPlaceRadiusMessage:           "&cYou can't place blocks in this area!"
-FoodLevelChangeRadiusMessage:      "&cYou can't get hungry in this area!"
-FoodSatietyRadiusMessage:          "&cYou can't get hungry in this area!"
-ItemDropRadiusMessage:             "&cYou can't drop items in this area!"
-ItemPickupRadiusMessage:           "&cYou can't pick up items in this area!"
-PlayerBucketEmptyRadiusMessage:    "&cYou can't use buckets in this area!"
-PlayerDamageRadiusMessage:         "&cYou can't take damage in this area!"
-PlayerInteractEntityRadiusMessage: "&cYou can't interact with entities in this area!"
-PortalAllRadiusMessage:            "&cYou can't use portals in this area!"
-PortalNetherRadiusMessage:         "&cYou can't use Nether portals in this area!"
-PortalEnderRadiusMessage:          "&cYou can't use End portals in this area!"
-PlayerUseItemRadiusMessage:        "&cYou can't use items in this area!"
-PlayerInteractBlockRadiusMessage:  "&cYou can't interact with blocks in this area!"
-PlayerTriggerBlockRadiusMessage:   "&cYou can't trigger blocks in this area!"
+getItemNameMessage:   "&8[&aWorld&cManage&8]&f &bUsedItemName&7: "
+getBlockNameMessage:  "&8[&aWorld&cManage&8]&f &bInteractedBlockName&7: "
+getEntityNameMessage: "&8[&aWorld&cManage&8]&f &bInteractedEntityName&7: "
+getCreatureSpawnNameMessage: "&8[&aWorld&cManage&8]&f &bSpawnedEntityName&7: "

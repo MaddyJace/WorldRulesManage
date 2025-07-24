@@ -1,150 +1,239 @@
-# ⚠️ Important: All configuration keys are case-sensitive. Incorrect casing may cause errors or ignored settings.
+# ⚠️Important: All configuration keys are case-sensitive. Incorrect capitalization may cause errors or make the settings ineffective.
 
 world_1:
-  worldName: world         # World name
-  # Global rules
-  globalRules:
-    flameSpread: true      # Prevent flame spread
-    leavesDecay: true      # Prevent leaf decay
-    blockIgnite: true      # Prevent block ignition
-    entityBlockBreak: true # Prevent entities from breaking blocks
-    liquidFlow: true       # Prevent liquid flow
+  worldName: world                           # World name
+  globalRules:                               # Global rules
+    flameSpread: true                        # Prevent fire spread
+    leavesDecay: true                        # Prevent leaf decay
+    blockIgnite: true                        # Prevent block ignition
+    entityBlockBreak: true                   # Prevent entities from breaking blocks
+    liquidFlow: true                         # Prevent liquid flow
+    fixedWeather: true                       # Always keep the weather sunny
+    creatureSpawn:                           # -> Prevent the spawn of specific or all creatures
+      type: BLACKLIST                        #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                               #    Item list. When WHITELIST is used and this is set to [], it will be considered as all.
 
-  # Player-specific rules
-  playerRules:
-    permission: "wm.world" # Permission node
-    blockIgnite: true      # Prevent players from igniting blocks
-    blockBreak: true       # Prevent players from breaking blocks
-    blockPlace: true       # Prevent players from placing blocks
-    itemPickup: true       # Prevent players from picking up items
-    itemDrop: true         # Prevent players from dropping items
-    usePail: true          # Prevent players from using buckets (e.g., filling with water/lava)
-    food: true             # Prevent player hunger loss
-    foodSatiety: true      # Restore player hunger (set to level 20)
-    playerDamage: true     # Prevent player from taking damage (includes no knockback)
-    portalAll: true        # Prevent use of any portals
-    portalNether: false    # Allow use of Nether portal
-    portalEnder: false     # Allow use of End portal
+  playerRules:                                # Player rules
+    permission: "wm.world"                    # Permission
 
-    # Prevent players from using specific items (requires item list)
+    blockIgnite:                              # -> Prevent players from igniting blocks
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to ignite blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    blockBreak:                               # -> Prevent players from breaking blocks
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to break blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    blockPlace:                               # -> Prevent players from placing blocks
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to place blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    usePail:                                  # -> Prevent players from using buckets (e.g., collect water/lava)
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to use buckets in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    food:                                     # -> Prevent players from getting hungry
+      enable: true                            #    Enable or disable
+      message: "&cYou won't get hungry in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    foodSatiety:                              # -> Refill players’ hunger level (level: 20)
+      enable: true                            #    Enable or disable
+      message: "&cYour hunger has been restored in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    playerDamage:                             # -> Prevent players from taking damage (e.g., no hurt or knockback)
+      enable: true                            #    Enable or disable
+      message: "&cYou cannot be harmed in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    portalAll:                                # -> Prevent players from using any portal
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to use portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    portalNether:                             # -> Prevent players from using Nether portals
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to use Nether portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    portalEnder:                              # -> Prevent players from using End portals
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to use End portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    itemPickup:                               # -> Prevent players from picking up items
+      message: "&cYou are not allowed to pick up items in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: WHITELIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                                #    Item list. When WHITELIST is used and this is set to [], it will be considered as all.
+
+    itemDrop:                                 # -> Prevent players from dropping items
+      message: "&cYou are not allowed to drop items in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: WHITELIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                                #    Item list. When WHITELIST is used and this is set to [], it will be considered as all.
+
+    playerUseItem:                            # -> Prevent players from using items (item list required)
+      message: "&cYou are not allowed to use items in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: BLACKLIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list:
+        - "SNOWBALL"       # Snowball
+        - "EGG"            # Egg
+        - "ITEM_FRAME"     # Item Frame
+        - "PAINTING"       # Painting
+
+    playerInteractEntity:                     # -> Prevent players from interacting with entities (entity list required)
+      message: "&cYou are not allowed to interact with entities in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+      type: BLACKLIST                         #    BLACKLIST (Block listed entities) - WHITELIST (Only allow listed entities)
+      list:
+        - "ITEM_FRAME"     # Item Frame
+        - "PAINTING"       # Painting
+        - "ARMOR_STAND"    # Armor Stand
+
+    playerInteractBlock:                      # -> Prevent players from interacting with blocks (block list required)
+      message: "&cYou are not allowed to interact with blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+      type: BLACKLIST                         #    BLACKLIST (Block listed blocks) - WHITELIST (Only allow listed blocks)
+      list:
+        - "TRAP_DOOR"      # Trapdoor
+        - "LEVER"          # Lever
+        - "FURNACE"        # Furnace
+
+    playerTriggerBlock:                       # -> Prevent players from triggering blocks (block list required)
+      message: "&cYou are not allowed to trigger blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+      type: BLACKLIST                         #    BLACKLIST (Block listed blocks) - WHITELIST (Only allow listed blocks)
+      list:
+        - "SOIL"           # Farmland
+        - "TRIPWIRE"       # Tripwire
+
+# ------------------------------------------------------------------------------------------------------------------------
+# Note: If you think your configuration file is too long, you may remove rules that are not enabled. Only rules that are enabled must remain.
+# ------------------------------------------------------------------------------------------------------------------------
+
+world_2_hi:
+  worldName: world_the_end                   # World name
+  globalRules:                               # Global rules
+    flameSpread: true                        # Prevent fire spread
+    leavesDecay: true                        # Prevent leaf decay
+    blockIgnite: true                        # Prevent block ignition
+    entityBlockBreak: true                   # Prevent entities from breaking blocks
+    liquidFlow: true                         # Prevent liquid flow
+    fixedWeather: true                       # Always keep the weather sunny
+
+  playerRules:                                # Player rules
+    permission: "wm.world_the_end"            # Permission
+
+    blockIgnite:                              # -> Prevent players from igniting blocks
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to ignite blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    blockBreak:                               # -> Prevent players from breaking blocks
+      enable: false                           #    Enable or disable
+      message: "&cYou are not allowed to break blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    blockPlace:                               # -> Prevent players from placing blocks
+      enable: false                           #    Enable or disable
+      message: "&cYou are not allowed to place blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    usePail:                                  # -> Prevent players from using buckets (e.g., collect water/lava)
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to use buckets in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    food:                                     # -> Prevent players from getting hungry
+      enable: false                           #    Enable or disable
+      message: "&cYou won't get hungry in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    foodSatiety:                              # -> Refill players’ hunger level (level: 20)
+      enable: false                           #    Enable or disable
+      message: "&cYour hunger has been restored in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    playerDamage:                             # -> Prevent players from taking damage
+      enable: false                           #    Enable or disable
+      message: "&cYou cannot be harmed in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    portalAll:                                # -> Prevent players from using any portal
+      enable: false                           #    Enable or disable
+      message: "&cYou are not allowed to use portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    portalNether:                             # -> Prevent players from using Nether portals
+      enable: true                            #    Enable or disable
+      message: "&cYou are not allowed to use Nether portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    portalEnder:                              # -> Prevent players from using End portals
+      enable: false                           #    Enable or disable
+      message: "&cYou are not allowed to use End portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+
+    itemPickup:                               # -> Prevent players from picking up items
+      message: "&cYou are not allowed to pick up items in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: WHITELIST                         #    BLACKLIST - block listed items; WHITELIST - only allow listed items
+      list: []
+
+    itemDrop:                                 # -> Prevent players from dropping items
+      message: "&cYou are not allowed to drop items in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: WHITELIST
+      list: []
+
     playerUseItem:
-      #  - BLACKLIST (block listed items)
-      #  - WHITELIST (only allow listed items)
+      message: "&cYou are not allowed to use items in this world!"
       type: BLACKLIST
       list:
         - "SNOWBALL"       # Snowball
         - "EGG"            # Egg
-        - "ITEM_FRAME"     # Item frame
+        - "ITEM_FRAME"     # Item Frame
         - "PAINTING"       # Painting
 
-    # Prevent players from interacting with specific entities (requires entity list)
-    PlayerInteractEntity:
+    playerInteractEntity:
+      message: "&cYou are not allowed to interact with entities in this world!"
       type: BLACKLIST
       list:
-        - "ITEM_FRAME"     # Item frame
+        - "ITEM_FRAME"     # Item Frame
         - "PAINTING"       # Painting
-        - "ARMOR_STAND"    # Armor stand
+        - "ARMOR_STAND"    # Armor Stand
 
-    # Prevent players from interacting with specific blocks (requires block list)
-    PlayerInteractBlock:
+    playerInteractBlock:
+      message: "&cYou are not allowed to interact with blocks in this world!"
       type: BLACKLIST
       list:
         - "TRAP_DOOR"      # Trapdoor
         - "LEVER"          # Lever
         - "FURNACE"        # Furnace
 
-    # Prevent players from triggering specific blocks (requires block list)
-    PlayerTriggerBlock:
+    playerTriggerBlock:
+      message: "&cYou are not allowed to trigger blocks in this world!"
       type: BLACKLIST
-      # You can omit the list — no list means all are blocked!
       list:
         - "SOIL"           # Farmland
         - "TRIPWIRE"       # Tripwire
 
-
-
-world_nether:
-  worldName: world_nether  # World name
-  # Global rules
+customName_world_3:
+  worldName: world_nether                    # World name
   globalRules:
-    flameSpread: true
-    blockIgnite: true
-    entityBlockBreak: true
-    liquidFlow: true
+    flameSpread: true                        # Prevent fire spread
+    leavesDecay: true                        # Prevent leaf decay
+    blockIgnite: true                        # Prevent block ignition
+    entityBlockBreak: true                   # Prevent entities from breaking blocks
+    liquidFlow: true                         # Prevent liquid flow
+    fixedWeather: true                       # Always keep the weather sunny
+    creatureSpawn:
+      type: WHITELIST                        # WHITELIST - only allow listed items
+      list: []                               # When WHITELIST is used and this is set to [], it will be considered as all.
 
-  # Player-specific rules
   playerRules:
-    permission: "wm.world"
-    blockIgnite: true
-    usePail: true
-    food: true
-    foodSatiety: true
-    portalEnder: true
+    permission: "wm.world_nether"            # Permission
+
+    blockIgnite:
+      enable: true
+      message: "&cYou are not allowed to ignite blocks in this world!"
+
+    # blockBreak:
+    #   enable: true
+    #   message: "&cYou are not allowed to break blocks in this world!"
+
+    usePail:
+      enable: true
+      message: "&cYou are not allowed to use buckets in this world!"
+
+    portalEnder:
+      enable: true
+      message: "&cYou are not allowed to use End portals in this world!"
 
     playerUseItem:
+      message: "&cYou are not allowed to use items in this world!"
       type: BLACKLIST
       list:
-        - "SNOWBALL"
-        - "EGG"
-        - "ITEM_FRAME"
-        - "PAINTING"
-
-    PlayerInteractEntity:
-      type: BLACKLIST
-      list:
-        - "ITEM_FRAME"
-        - "PAINTING"
-        - "ARMOR_STAND"
-
-    PlayerInteractBlock:
-      type: BLACKLIST
-      list:
-        - "TRAP_DOOR"
-        - "LEVER"
-        - "FURNACE"
-
-    PlayerTriggerBlock:
-      type: WHITELIST
-      list: {}
-
-
-
-Hello_world_the_end:
-  worldName: world_the_end # World name
-  # Global rules
-  globalRules:
-    flameSpread: true
-    blockIgnite: true
-    entityBlockBreak: true
-    liquidFlow: true
-
-  # Player-specific rules
-  playerRules:
-    permission: "wm.world"
-    blockIgnite: true
-    usePail: true
-    food: true
-    foodSatiety: true
-    portalEnder: true
-
-    playerUseItem:
-      type: BLACKLIST
-      list:
-        - "SNOWBALL"
-        - "EGG"
-        - "ITEM_FRAME"
-        - "PAINTING"
-
-#    PlayerInteractEntity:
-#      type: BLACKLIST
-#      list:
-#        - "ITEM_FRAME"
-#        - "PAINTING"
-#        - "ARMOR_STAND"
-
-#    PlayerInteractBlock:
-#      type: BLACKLIST
-#      list:
-#        - "TRAP_DOOR"
-#        - "LEVER"
-#        - "FURNACE"
+        - "SNOWBALL"       # Snowball
+        - "EGG"            # Egg
+        - "ITEM_FRAME"     # Item Frame
+        - "PAINTING"       # Painting

@@ -13,28 +13,33 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 // 该类监听玩家捡起物品
 public class ItemPickup implements Listener {
 
+    private final WorldFile worldFile = WorldFile.INSTANCE;
+    private final RadiusFile radiusFile = RadiusFile.INSTANCE;
+    private final MessageFile messageFile = MessageFile.INSTANCE;
 
     @EventHandler
     public void onItemPickup(EntityPickupItemEvent event) {
 
         Player player = (Player) event.getEntity();
         World world = player.getWorld();
-        if(WorldFile.INSTANCE.playerRules(world.getName(),"itemPickup", player)) {
+        String itemTypeName = event.getItem().getItemStack().getType().name();
+        if (WorldFile.INSTANCE.playerRulesList(world.getName(), "itemPickup", itemTypeName, player)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("ItemPickupMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("ItemPickupMessage"));
+            if (worldFile.playerRulesMessage(world.getName(), "itemPickup") != null) {
+                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "itemPickup"));
             }
         }
 
         // 指定范围触发
         Location location = player.getLocation();
-        if(RadiusFile.INSTANCE.playerRules(player, world, location,"itemPickup")) {
+        if(radiusFile.playerRulesList(world, "itemPickup", itemTypeName, player, location)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("ItemPickupRadiusMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("ItemPickupRadiusMessage"));
+            if (radiusFile.playerRulesMessage(world.getName(), "itemPickup") != null) {
+                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "itemPickup"));
             }
         }
     }
+
 }

@@ -1,22 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="WorldRulesManage:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="Fix the null pointer error occurring when the plugin starts!">
+    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="Fixed the issue where the itemDrop configuration item for radius was ineffective.&#10;Radius now allows configuring multiple coordinates in the same world, so the same rules can be applied to multiple coordinates.&#10;Warning: After the update, you must update the xyz configuration item in your radius.yml. An example configuration is shown below, or you can delete the entire radius.yml file.&#10;&#10;修复了 radius 的 itemDrop 配置项目失效问题。&#10;新增了 radius 同一个世界可以配置多个坐标了，这样相同的规则可以应用到多个坐标当中。&#10;警告：更新后您必须要更新你的 radius.yml 中的 xyz 配置项，配置示例如下，当然你也可以直接删除整个radius.yml的文件。">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/WorldRulesManage_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/DebugMode/DebugModeListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/CreatureSpawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/WeatherChange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_message.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_radius.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_world.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CN-README.md" beforeDir="false" afterPath="$PROJECT_DIR$/CN-README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/MessageFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/MessageFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/RadiusFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/RadiusFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/WorldFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/WorldFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/EntityBlockBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/EntityBlockBreak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/FlameSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/FlameSpread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/LeavesDecay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/LeavesDecay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/LiquidFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/LiquidFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockBreak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockIgnite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockIgnite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockPlace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/FoodLevelChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/FoodLevelChange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemDrop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemDrop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemPickup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemPickup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerBucketEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerBucketEmpty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerDamage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerDamage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerInteractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerInteractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerPortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerPortal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerUseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerUseItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/message.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/message.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/radius.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/radius.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn_radius.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn_radius.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/world.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn_message.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn_radius.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn_world.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,35 +85,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.WorldRulesManage package.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/MinecraftPlugins/WorldRulesManage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JAR 应用程序.Server 1.12.2.executor": "Debug",
+    "JAR 应用程序.Server1.12.2.executor": "Debug",
+    "Maven.WorldRulesManage package.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "D:/MinecraftPlugins/WorldRulesManage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "工件",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\MinecraftPlugins\WorldRulesManage" />
       <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\resources" />
       <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\java\com\maddyjace\worldrulesmanage" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\resources\zh-cn" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Maven.WorldRulesManage package">
+    <configuration name="Server1.12.2" type="JarApplication">
+      <option name="JAR_PATH" value="F:/Minecraft Server/1.12.2/spigot-1.12.2.jar" />
+      <option name="VM_PARAMETERS" value="-Xmx2G -Xms1G -XX:+UseG1GC" />
+      <option name="WORKING_DIRECTORY" value="F:\Minecraft Server\1.12.2" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <method v="2" />
+    </configuration>
     <configuration name="WorldRulesManage package" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -101,6 +158,10 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JAR 应用程序.Server1.12.2" />
+      <item itemvalue="Maven.WorldRulesManage package" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -123,7 +184,26 @@
       <workItem from="1751087536695" duration="3000" />
       <workItem from="1751087543968" duration="923000" />
       <workItem from="1751092969762" duration="6513000" />
-      <workItem from="1751125718794" duration="453000" />
+      <workItem from="1751125718794" duration="1395000" />
+      <workItem from="1751434499252" duration="789000" />
+      <workItem from="1751435744032" duration="1570000" />
+      <workItem from="1751902100397" duration="1292000" />
+      <workItem from="1752343278576" duration="1061000" />
+      <workItem from="1752481879515" duration="84000" />
+      <workItem from="1752482580455" duration="55000" />
+      <workItem from="1752569974453" duration="1696000" />
+      <workItem from="1752572129877" duration="1918000" />
+      <workItem from="1752649918875" duration="5575000" />
+      <workItem from="1752656063312" duration="3680000" />
+      <workItem from="1752818570470" duration="389000" />
+      <workItem from="1752833968761" duration="1794000" />
+      <workItem from="1752931412311" duration="9514000" />
+      <workItem from="1753031897213" duration="615000" />
+      <workItem from="1753154321494" duration="14231000" />
+      <workItem from="1753247803463" duration="30117000" />
+      <workItem from="1753293842425" duration="2597000" />
+      <workItem from="1753327590856" duration="8703000" />
+      <workItem from="1753337395779" duration="24011000" />
     </task>
     <task id="LOCAL-00001" summary="Fix the null pointer error occurring when the plugin starts!">
       <option name="closed" value="true" />
@@ -133,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751088417391</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed the issue where the itemDrop configuration item for radius was ineffective.&#10;Radius now allows configuring multiple coordinates in the same world, so the same rules can be applied to multiple coordinates.&#10;Warning: After the update, you must update the xyz configuration item in your radius.yml. An example configuration is shown below, or you can delete the entire radius.yml file.&#10;&#10;修复了 radius 的 itemDrop 配置项目失效问题。&#10;新增了 radius 同一个世界可以配置多个坐标了，这样相同的规则可以应用到多个坐标当中。&#10;警告：更新后您必须要更新你的 radius.yml 中的 xyz 配置项，配置示例如下，当然你也可以直接删除整个radius.yml的文件。">
+      <option name="closed" value="true" />
+      <created>1751126195992</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751126195992</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +252,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix the null pointer error occurring when the plugin starts!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix the null pointer error occurring when the plugin starts!" />
+    <MESSAGE value="Fixed the issue where the itemDrop configuration item for radius was ineffective.&#10;Radius now allows configuring multiple coordinates in the same world, so the same rules can be applied to multiple coordinates.&#10;Warning: After the update, you must update the xyz configuration item in your radius.yml. An example configuration is shown below, or you can delete the entire radius.yml file.&#10;&#10;修复了 radius 的 itemDrop 配置项目失效问题。&#10;新增了 radius 同一个世界可以配置多个坐标了，这样相同的规则可以应用到多个坐标当中。&#10;警告：更新后您必须要更新你的 radius.yml 中的 xyz 配置项，配置示例如下，当然你也可以直接删除整个radius.yml的文件。" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the issue where the itemDrop configuration item for radius was ineffective.&#10;Radius now allows configuring multiple coordinates in the same world, so the same rules can be applied to multiple coordinates.&#10;Warning: After the update, you must update the xyz configuration item in your radius.yml. An example configuration is shown below, or you can delete the entire radius.yml file.&#10;&#10;修复了 radius 的 itemDrop 配置项目失效问题。&#10;新增了 radius 同一个世界可以配置多个坐标了，这样相同的规则可以应用到多个坐标当中。&#10;警告：更新后您必须要更新你的 radius.yml 中的 xyz 配置项，配置示例如下，当然你也可以直接删除整个radius.yml的文件。" />
   </component>
 </project>

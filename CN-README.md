@@ -19,13 +19,13 @@
 ---
 
 # ⚙️ WorldRulesManage 配置指南
-> [config.yml](src/main/resources/zh-cn_config.yml)
+> [config.yml](src/main/resources/zh-cn/zh-cn_config.yml)
 
-> [world.yml](src/main/resources/zh-cn_world.yml)
+> [world.yml](src/main/resources/zh-cn/zh-cn_world.yml)
 
-> [radius.yml](src/main/resources/zh-cn_radius.yml)
+> [radius.yml](src/main/resources/zh-cn/zh-cn_radius.yml)
 
-> [message.yml](src/main/resources/zh-cn_message.yml)
+> [message.yml](src/main/resources/zh-cn/zh-cn_message.yml)
 ### ✅`worldName: <world>` # 世界的名称(如: world)。
 ### ✅`globalRules:` # 针对世界，即使玩家拥有权限。
 - `flameSpread: true`      # 防止火焰传播

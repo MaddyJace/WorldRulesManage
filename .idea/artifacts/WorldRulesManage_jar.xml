@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WorldRulesManage:jar">
+    <output-path>F:/Minecraft Server/1.12.2/plugins</output-path>
+    <root id="archive" name="WorldRulesManage.jar">
+      <element id="module-output" name="WorldRulesManage" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/annotations-24.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/2.14.0/commons-io-2.14.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/PlaceholderAPI-2.11.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

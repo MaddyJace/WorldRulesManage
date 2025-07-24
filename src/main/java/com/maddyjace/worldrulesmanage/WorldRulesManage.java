@@ -2,10 +2,8 @@ package com.maddyjace.worldrulesmanage;
 
 import com.maddyjace.worldrulesmanage.Commands.Commands;
 import com.maddyjace.worldrulesmanage.ConfigFile.*;
-import com.maddyjace.worldrulesmanage.ListenerGlobalRules.EntityBlockBreak;
-import com.maddyjace.worldrulesmanage.ListenerGlobalRules.FlameSpread;
-import com.maddyjace.worldrulesmanage.ListenerGlobalRules.LeavesDecay;
-import com.maddyjace.worldrulesmanage.ListenerGlobalRules.LiquidFlow;
+import com.maddyjace.worldrulesmanage.DebugMode.DebugModeListener;
+import com.maddyjace.worldrulesmanage.ListenerGlobalRules.*;
 import com.maddyjace.worldrulesmanage.ListenerPlayerRules.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,26 +16,27 @@ public final class WorldRulesManage extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         // 载入 config.yml world.yml message.yml 文件
         File configFile = new File(getDataFolder(), "config.yml");
         if (!configFile.exists()) {
             saveResource("config.yml", false);
-            saveResource("zh-cn_config.yml", false);
+            saveResource("zh-cn/zh-cn_config.yml", false);
         }
         File worldFile = new File(getDataFolder(), "world.yml");
         if (!worldFile.exists()) {
             saveResource("world.yml", false);
-            saveResource("zh-cn_world.yml", false);
+            saveResource("zh-cn/zh-cn_world.yml", false);
         }
         File radiusFile = new File(getDataFolder(), "radius.yml");
         if (!radiusFile.exists()) {
             saveResource("radius.yml", false);
-            saveResource("zh-cn_radius.yml", false);
+            saveResource("zh-cn/zh-cn_radius.yml", false);
         }
         File messageFile = new File(getDataFolder(), "message.yml");
         if (!messageFile.exists()) {
             saveResource("message.yml", false);
-            saveResource("zh-cn_message.yml", false);
+            saveResource("zh-cn/zh-cn_message.yml", false);
         }
 
         // 初始化 FileWatcher 类
@@ -91,6 +90,12 @@ public final class WorldRulesManage extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityBlockBreak(), this);
         // 注册 液体流动 监听器
         getServer().getPluginManager().registerEvents(new LiquidFlow(), this);
+        // 注册 生物生成 监听器
+        getServer().getPluginManager().registerEvents(new CreatureSpawn(), this);
+        // 注册 世界天气 监听器
+        getServer().getPluginManager().registerEvents(new WeatherChange(this), this);
+        // 注册 调试模式 监听器
+        getServer().getPluginManager().registerEvents(new DebugModeListener(), this);
 
         // 注册 命令 和 Tab键 监听器
         Commands commandHandler = new Commands();
@@ -106,7 +111,11 @@ public final class WorldRulesManage extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§b§l|__/|__/\\____/_/  /_/\\__,_/_/  /_/\\__,_/_/ /_/\\__,_/\\__, /\\___/ ");
         Bukkit.getConsoleSender().sendMessage("§b§l                                                   /____/       ");
         Bukkit.getConsoleSender().sendMessage("§b§l");
-        Bukkit.getConsoleSender().sendMessage("§7Author: §aMaddyJace §7FeedbackEmail: §edixiaomai@qq.com §7FeedbackQQ: §e2743063754 §7Version: §e1.0");
+        Bukkit.getConsoleSender().sendMessage("§6Our community address");
+        Bukkit.getConsoleSender().sendMessage("§7QQ§f: §7https://qm.qq.com/q/fKKqt7CF0W");
+        Bukkit.getConsoleSender().sendMessage("§7Discord§f: §7https://discord.gg/eHkxCTUh");
+        Bukkit.getConsoleSender().sendMessage("§b§l");
+        Bukkit.getConsoleSender().sendMessage("§7Author: §aMaddyJace §7FeedbackEmail: §edixiaomai@qq.com §7Version: §e1.0");
         Bukkit.getConsoleSender().sendMessage("§f-------------------------------------------------------------------------------------");
         Bukkit.getConsoleSender().sendMessage("§b§l");
         Bukkit.getConsoleSender().sendMessage("§b§l");

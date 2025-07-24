@@ -13,25 +13,30 @@ import org.bukkit.event.block.BlockBreakEvent;
 // 该类是监听器，监听玩家破坏方块
 public class BlockBreak implements Listener {
 
+    private final WorldFile worldFile = WorldFile.INSTANCE;
+    private final RadiusFile radiusFile = RadiusFile.INSTANCE;
+    private final MessageFile messageFile = MessageFile.INSTANCE;
+
     @EventHandler(ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         World world = event.getBlock().getWorld();
-        if(WorldFile.INSTANCE.playerRules(world.getName(),"blockBreak", player)) {
+
+        if(worldFile.playerRules(world.getName(),"blockBreak", player)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("BlockBreakMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("BlockBreakMessage"));
+            if (worldFile.playerRulesMessage(world.getName(), "blockBreak") != null) {
+                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "blockBreak"));
             }
         }
 
         // 指定范围触发
         Location location = event.getBlock().getLocation();
-        if(RadiusFile.INSTANCE.playerRules(player, world, location, "blockBreak")) {
+        if(radiusFile.playerRules(world,"blockBreak", player, location)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("BlockBreakRadiusMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("BlockBreakRadiusMessage"));
+            if (radiusFile.playerRulesMessage(world.getName(), "blockBreak") != null) {
+                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "blockBreak"));
             }
         }
 

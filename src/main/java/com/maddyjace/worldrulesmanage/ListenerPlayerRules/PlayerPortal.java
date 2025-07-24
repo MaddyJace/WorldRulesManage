@@ -17,18 +17,22 @@ import org.bukkit.util.Vector;
 // 该类用于阻止进入传送门
 public class PlayerPortal implements Listener {
 
+    private final WorldFile worldFile = WorldFile.INSTANCE;
+    private final RadiusFile radiusFile = RadiusFile.INSTANCE;
+    private final MessageFile messageFile = MessageFile.INSTANCE;
+
     @EventHandler
     public void onPlayerPortal(PlayerPortalEvent event) {
 
         Player player = event.getPlayer(); // 玩家名称
         World world = player.getWorld();   // 玩家所在世界名称
         // 当 portalAll: true 时阻止所有传送
-        if(WorldFile.INSTANCE.playerRules(world.getName(),"portalAll", player)) {
+        if(worldFile.playerRules(world.getName(),"portalAll", player)) {
             event.setCancelled(true);
             pushAwayPlayer(player);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("PortalAllMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("PortalAllMessage"));
+            if (worldFile.playerRulesMessage(world.getName(), "portalAll") != null) {
+                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "portalAll"));
             }
 
             return;
@@ -38,27 +42,25 @@ public class PlayerPortal implements Listener {
         Material type = block.getType();               // 所在位置的方块类型
 
         // 当 portalAll: false 时阻止特定传送
-        boolean portalNether = WorldFile.INSTANCE.playerRules(world.getName(),"portalNether", player);
+        boolean portalNether = worldFile.playerRules(world.getName(),"portalNether", player);
         if(type == Material.PORTAL && portalNether) {
             event.setCancelled(true);
             pushAwayPlayer(player);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("PortalNetherMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("PortalNetherMessage"));
+            if (worldFile.playerRulesMessage(world.getName(), "portalNether") != null) {
+                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "portalNether"));
             }
 
         }
 
-        boolean portalEnder = WorldFile.INSTANCE.playerRules(world.getName(), "portalEnder", player);
+        boolean portalEnder = worldFile.playerRules(world.getName(), "portalEnder", player);
         if(type == Material.ENDER_PORTAL && portalEnder) {
             event.setCancelled(true);
             pushAwayPlayer(player);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("PortalEnderMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("PortalEnderMessage"));
+            if (worldFile.playerRulesMessage(world.getName(), "portalEnder") != null) {
+                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "portalEnder"));
             }
-
-
         }
 
     }
@@ -71,12 +73,12 @@ public class PlayerPortal implements Listener {
         World world = player.getWorld();   // 玩家所在世界名称
         Location location = player.getLocation();
         // 当 portalAll: true 时阻止所有传送
-        if(RadiusFile.INSTANCE.playerRules(player, world, location,"portalAll")) {
+        if(radiusFile.playerRules(world, "portalAll", player, location)) {
             event.setCancelled(true);
             pushAwayPlayer(player);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("PortalAllRadiusMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("PortalAllRadiusMessage"));
+            if (radiusFile.playerRulesMessage(world.getName(), "portalAll") != null) {
+                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "portalAll"));
             }
 
             return;
@@ -86,26 +88,24 @@ public class PlayerPortal implements Listener {
         Material type = block.getType();               // 所在位置的方块类型
 
         // 当 portalAll: false 时阻止特定传送
-        boolean portalNether = RadiusFile.INSTANCE.playerRules(player, world, location,"portalNether");
+        boolean portalNether = radiusFile.playerRules(world, "portalNether", player, location);
         if(type == Material.PORTAL && portalNether) {
             event.setCancelled(true);
             pushAwayPlayer(player);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("PortalNetherRadiusMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("PortalNetherRadiusMessage"));
+            if (radiusFile.playerRulesMessage(world.getName(), "portalNether") != null) {
+                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "portalNether"));
             }
         }
 
-        boolean portalEnder = RadiusFile.INSTANCE.playerRules(player, world, location, "portalEnder");
+        boolean portalEnder = radiusFile.playerRules(world, "portalEnder", player, location);
         if(type == Material.ENDER_PORTAL && portalEnder) {
             event.setCancelled(true);
             pushAwayPlayer(player);
             // 取消事件后向玩家发送提示信息
-            if(MessageFile.getMessage("PortalEnderRadiusMessage") != null) {
-                MessageFile.parsePlaceholders(player, MessageFile.getMessage("PortalEnderRadiusMessage"));
+            if (radiusFile.playerRulesMessage(world.getName(), "portalEnder") != null) {
+                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "portalEnder"));
             }
-
-
         }
 
     }

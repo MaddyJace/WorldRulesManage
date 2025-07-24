@@ -13,19 +13,22 @@ import org.bukkit.event.block.BlockSpreadEvent;
 // 火焰传播
 public class FlameSpread implements Listener {
 
+    private final WorldFile worldFile = WorldFile.INSTANCE;
+    private final RadiusFile radiusFile = RadiusFile.INSTANCE;
+
     @EventHandler
     public void onBlockSpread(BlockSpreadEvent event) {
         World world = event.getBlock().getWorld();
         // 源是火焰，就取消（无论目标是什么）
         if (event.getSource().getType() == Material.FIRE) {
-            if(WorldFile.INSTANCE.globalRules(world.getName(),"flameSpread")) {
+            if(worldFile.globalRules(world.getName(),"flameSpread")) {
                 event.setCancelled(true);
             }
         }
 
         // 指定范围触发
         Location location = event.getBlock().getLocation();
-        if(RadiusFile.INSTANCE.globalRules(world, location,"flameSpread")) {
+        if(radiusFile.globalRules(world,"flameSpread", location)) {
             event.setCancelled(true);
         }
     }
@@ -33,14 +36,14 @@ public class FlameSpread implements Listener {
     @EventHandler
     public void onBlockBurn(BlockBurnEvent event) {
         World world = event.getBlock().getWorld();
-        if(WorldFile.INSTANCE.globalRules(world.getName(),"flameSpread")) {
+        if(worldFile.globalRules(world.getName(),"flameSpread")) {
             // 防止方块被烧掉
             event.setCancelled(true);
         }
 
         // 指定范围触发
         Location location = event.getBlock().getLocation();
-        if(RadiusFile.INSTANCE.globalRules(world, location,"flameSpread")) {
+        if(radiusFile.globalRules(world,"flameSpread", location)) {
             event.setCancelled(true);
         }
     }

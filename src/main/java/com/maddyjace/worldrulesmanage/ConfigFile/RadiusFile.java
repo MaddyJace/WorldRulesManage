@@ -9,7 +9,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+
+/**
+ * 配置文件的核心逻辑
+ */
 
 @SuppressWarnings("ALL")
 public enum RadiusFile {
@@ -17,14 +24,24 @@ public enum RadiusFile {
 
     private Plugin plugin;
 
-    private FileConfiguration RadiusFile;
+    private final Map<String, ConfigurationSection> radiusConfigCache = new HashMap<>();
 
 
     // 需要在 onEnable() 初始化该 initialize 方法
     public void initialize(Plugin plugin) {
         this.plugin = plugin;
         File filePath = new File(plugin.getDataFolder(), "radius.yml"); // 文件绝对路径
-        RadiusFile = YamlConfiguration.loadConfiguration(filePath);          // 加载配置文件
+
+        FileConfiguration radiusFile = YamlConfiguration.loadConfiguration(filePath);
+        radiusConfigCache.clear(); // 清空旧缓存
+        for (String key : radiusFile.getKeys(false)) {
+            ConfigurationSection section = radiusFile.getConfigurationSection(key);
+            if (section != null && section.contains("worldName")) {
+                String worldName = section.getString("worldName");
+                radiusConfigCache.put(worldName, section); // 以 worldName 为索引
+            }
+        }
+
     }
 
     // 重载配置文件
@@ -33,116 +50,155 @@ public enum RadiusFile {
     }
 
 
-    // 接收 World Type Location
-    public boolean globalRules(World goalWorld, Location goalLocation, String yamlValue) {
-        // 循环遍历YML键(全部)
-        for(String radiusFileSection : RadiusFile.getKeys(false)) {
-            // 获取到YML的 radiusFileSection 键
-            ConfigurationSection section = RadiusFile.getConfigurationSection(radiusFileSection);
-            try {
-                String yamlWorldName = section.getString("worldName");  // 配置的世界
-                String goalWorldName = goalWorld.getName();          // 目标的世界
-                // 获取到YML的 globalRules 下的键
-                ConfigurationSection globalRules = section.getConfigurationSection("globalRules");
-                // 获取到YML的 settingsRadius 下的键
-                ConfigurationSection settingsRadius = section.getConfigurationSection("settingsRadius");
+    /*
+     * ----------------------------------------------------------------------------------------------------------------
+     */
 
-                // 判定目标所在世界是否与YML配置的世界匹配
-                if(yamlWorldName.equals(goalWorldName)) {
-                    // 判定目标是否在指定半径内
-                    if(settingsRadius(settingsRadius, goalWorld, goalLocation)) {
-                        // 判断YML的 globalRules 组的 yamlValue 类型是否开启(true)
-                        if(globalRules.getBoolean(yamlValue)) {
-                            return true;
-                        }
-                    }
 
-                }
-
-            } catch (Exception e) {
-                return  false;
-            }
+    /**
+     * 该方法通过currentWorld和type形参参数查找配置文件中对应世界的配置项，是开启还是关闭。
+     *
+     * @param currentWorld 世界名称
+     * @param type         读取类型(boolean)
+     * @return             boolean
+     */
+    public boolean globalRules(World currentWorld, String type, Location goalLocation) {
+        // 直接从缓存取出对应世界的配置
+        ConfigurationSection pack = radiusConfigCache.get(currentWorld.getName());
+        if (pack == null) return false;
+        // 读取 globalRules 列
+        ConfigurationSection global = pack.getConfigurationSection("globalRules");
+        if (global == null) return false;
+        // 获取到YML的 settingsRadius 下的键
+        ConfigurationSection settingsRadius = pack.getConfigurationSection("settingsRadius");
+        if(settingsRadius == null) return false;
+        if (settingsRadius(settingsRadius, currentWorld, goalLocation)) {
+            return global.getBoolean(type, false);
         }
         return false;
     }
 
 
-    public boolean playerRules(Player player, World playerWorld, Location goalLocation, String yamlValue) {
-        // 循环遍历YML键(全部)
-        for(String radiusFileSection : RadiusFile.getKeys(false)) {
-            // 获取到YML的 radiusFileSection 键
-            ConfigurationSection section = RadiusFile.getConfigurationSection(radiusFileSection);
-            try {
-                String yamlWorldName = section.getString("worldName"); // 配置的世界
-                String playerWorldName = player.getWorld().getName();           // 玩家的世界
-                // 获取到YML的 playerRules 下的键
-                ConfigurationSection playerRules = section.getConfigurationSection("playerRules");
-                String playerPermission = playerRules.getString("permission"); // 玩家的权限
-                // 获取到YML的 settingsRadius 下的键
-                ConfigurationSection settingsRadius = section.getConfigurationSection("settingsRadius");
-
-                // 判定玩家是否拥有权限 && 判定玩家所在世界是否与YML配置的世界匹配
-                if(!hasPermission(player, playerPermission) && yamlWorldName.equals(playerWorldName)) {
-                    // 判定玩家是否在指定半径内 && 判断YML的 playerRules 组的 yamlValue 类型是否开启(true)
-                    if(settingsRadius(settingsRadius, playerWorld, goalLocation) && playerRules.getBoolean(yamlValue)) {
-                        return true;
-                    }
-                }
-
-            } catch (Exception e) {
-                return  false;
-            }
+    /**
+     * 该方法通过currentWorld(世界名)查找globalRules配置下的子配置表中list列表的值是否与形参listValue匹配。
+     *
+     * @param currentWorld 要查找的世界名
+     * @param path         要查找的配置列
+     * @param listValue    要查找的配置列中的list值
+     * @return             boolean
+     */
+    public boolean globalRulesList(World currentWorld, String path, String listValue, Location goalLocation) {
+        // 直接从缓存取出对应世界的配置
+        ConfigurationSection pack = radiusConfigCache.get(currentWorld.getName());
+        if (pack == null) return false;
+        // 读取 globalRules 列
+        ConfigurationSection globalRules = pack.getConfigurationSection("globalRules");
+        if (globalRules == null) return false;
+        // 获取到YML的 settingsRadius 下的键
+        ConfigurationSection settingsRadius = pack.getConfigurationSection("settingsRadius");
+        if(settingsRadius == null) return false;
+        // 读取 globalRules列 中的 path列
+        ConfigurationSection globalRulesList = globalRules.getConfigurationSection(path);
+        if (globalRulesList == null) return false;
+        if (settingsRadius(settingsRadius, currentWorld, goalLocation)) {
+            // 查找配置文件中的列表值是否与listValue匹配
+            return WorldFile.findListValues(globalRulesList, listValue);
         }
         return false;
     }
 
-    public boolean playerRulesList(Player player, World playerWorld, Location goalLocation, String yamlValue, String goalConstantName) {
-        // 循环遍历YML键(全部)
-        for(String radiusFileSection : RadiusFile.getKeys(false)) {
-            // 获取到YML的 radiusFileSection 键
-            ConfigurationSection section = RadiusFile.getConfigurationSection(radiusFileSection);
-            try {
-                String yamlWorldName = section.getString("worldName"); // 配置的世界
-                String playerWorldName = player.getWorld().getName();     // 玩家的世界
-                // 获取到YML的 playerRules 下的键
-                ConfigurationSection playerRules = section.getConfigurationSection("playerRules");
-                String playerPermission = playerRules.getString("permission"); // 玩家的权限
-                // 获取到YML的 settingsRadius 下的键
-                ConfigurationSection settingsRadius = section.getConfigurationSection("settingsRadius");
 
-                if(!hasPermission(player, playerPermission) && settingsRadius(settingsRadius, playerWorld, goalLocation) && yamlWorldName.equals(playerWorldName)) {
-                    // 获取YAML的 playerRules 的子配置
-                    ConfigurationSection sonYamlSection = playerRules.getConfigurationSection(yamlValue);
-                    // 获取YAML的 playerRules -> sonYamlSection -> type 的值
-                    String rulesType = sonYamlSection.getString("type").toLowerCase();
-                    // 获取YAML的 playerRules -> sonYamlSection -> list 的列表
-                    List<String> list = sonYamlSection.getStringList("list");
-                    // 判断 rulesType 是否为 BLACKLIST 不是在判断是否为 WHITELIST 在不是就继续处理
-                    if(rulesType.equalsIgnoreCase( "BLACKLIST".toLowerCase() )) {
-                        // 循环遍历list
-                        for(String constantName : list) {
-                            // 判断 constantName 与 goalConstantName 是否匹配
-                            if(goalConstantName.equalsIgnoreCase( constantName.toLowerCase() )) {
-                                return true;
-                            }
-                        }
-                    } else if(rulesType.equalsIgnoreCase( "WHITELIST".toLowerCase() )) {
-                        // 循环遍历list
-                        for(String constantName : list) {
-                            // 判断 constantName 与 goalConstantName 是否匹配，取反
-                            if(!goalConstantName.equalsIgnoreCase( constantName.toLowerCase() )) {
-                                return true;
-                            }
-                        }
-                    }
 
-                }
-            } catch (Exception e) {
-                return  false;
-            }
+    /*
+     * ---------------------------------------------------------------------------------------------------------------
+     */
+
+
+    /**
+     * 该方法通过currentWorld(世界名)查找playerRules配置下的子配置表中的enable，是开启还是关闭。
+     *
+     * @param playerWorld 要查找的世界名
+     * @param path        要查找的配置列
+     * @param player      玩家对象
+     * @return            boolean
+     */
+    public boolean playerRules(World playerWorld, String path, Player player,Location goalLocation) {
+        // 从缓存取出对应世界的配置
+        ConfigurationSection pack = radiusConfigCache.get(playerWorld.getName());
+        if (pack == null) return false;
+        // 读取 playerRules 列
+        ConfigurationSection playerRules = pack.getConfigurationSection("playerRules");
+        if (playerRules == null) return false;
+        // 读取 playerRules -> permission
+        String permission = playerRules.getString("permission");
+        if(permission != null && player.hasPermission(permission)) return false;
+        // 获取到YML的 settingsRadius 下的键
+        ConfigurationSection settingsRadius = pack.getConfigurationSection("settingsRadius");
+        if(settingsRadius == null) return false;
+        if (settingsRadius(settingsRadius, playerWorld, goalLocation)) {
+            // 读取 playerRules -> path -> enable(value: true/false)
+            return playerRules.getBoolean(path + ".enable", false);
         }
         return false;
     }
+
+
+    /**
+     * 该方法通过currentWorld(世界名)查找playerRules配置下的子配置表中list列表的值是否与形参listValue匹配。
+     *
+     * @param playerWorld 要查找的世界名
+     * @param path        要查找的配置列
+     * @param listValue   要查找的配置列中的list值
+     * @param player      玩家对象
+     * @return            boolean
+     */
+    public boolean playerRulesList(World playerWorld, String path, String listValue, Player player, Location goalLocation) {
+        // 从缓存取出对应世界的配置
+        ConfigurationSection pack = radiusConfigCache.get(playerWorld.getName());
+        if (pack == null) return false;
+        // 读取 playerRules 列
+        ConfigurationSection playerRules = pack.getConfigurationSection("playerRules");
+        if (playerRules == null) return false;
+        // 读取 playerRules -> permission
+        String permission = playerRules.getString("permission");
+        if(permission != null && player.hasPermission(permission)) return false;
+        // 读取 playerRules -> path
+        ConfigurationSection playerRulesList = playerRules.getConfigurationSection(path);
+        if (playerRulesList == null) return false;
+        // 获取到YML的 settingsRadius 下的键
+        ConfigurationSection settingsRadius = pack.getConfigurationSection("settingsRadius");
+        if(settingsRadius == null) return false;
+        if (settingsRadius(settingsRadius, playerWorld, goalLocation)) {
+            // 查找配置文件中的列表值是否与listValue匹配
+            return WorldFile.findListValues(playerRulesList, listValue);
+        }
+        return false;
+    }
+
+
+    /**
+     * 该方法通过currentWorld(世界名)获取playerRules配置下的子配置表中的message，字符串。
+     *
+     * @param playerWorld 要查找的世界名
+     * @param path        读取类型(boolean)
+     * @return            String
+     */
+    public String playerRulesMessage(String playerWorld, String path) {
+        ConfigurationSection pack = radiusConfigCache.get(playerWorld);
+        if (pack == null) return null;
+        ConfigurationSection playerRules = pack.getConfigurationSection("playerRules");
+        if (playerRules == null) return null;
+        if (playerRules.getString(path + ".message", null) != null) {
+            return playerRules.getString(path + ".message", null);
+        }
+        return null;
+    }
+
+
+
+    /*
+     * ----------------------------------------------------------------------------------------------------------------
+     */
 
 
 
@@ -162,7 +218,6 @@ public enum RadiusFile {
                     z = Integer.parseInt(parts[2]);
                     startingLocation = new Location(currentWorld, x, y, z);
                 } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
                     return false;
                 }
             }
@@ -192,8 +247,6 @@ public enum RadiusFile {
                 }
             }
         }
-
-
 
         return false;
     }
@@ -243,12 +296,6 @@ public enum RadiusFile {
         double dz = Math.abs(current.getZ() - center.getZ());
 
         return dx <= radius && dy <= radius && dz <= radius;
-    }
-
-    public static boolean hasPermission(Player player, String permission) {
-        if (player == null || permission == null) return false;
-        return player.hasPermission(permission);
-
     }
 
 }

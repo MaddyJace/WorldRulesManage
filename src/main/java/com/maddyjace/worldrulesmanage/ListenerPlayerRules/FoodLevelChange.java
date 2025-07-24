@@ -15,6 +15,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 // 取消饥饿度减少事件
 public class FoodLevelChange implements Listener {
 
+    private final WorldFile worldFile = WorldFile.INSTANCE;
+    private final RadiusFile radiusFile = RadiusFile.INSTANCE;
+    private final MessageFile messageFile = MessageFile.INSTANCE;
+
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent event) {
 
@@ -24,8 +28,8 @@ public class FoodLevelChange implements Listener {
             if(WorldFile.INSTANCE.playerRules(world.getName(),"food", player)) {
                 event.setCancelled(true);
                 // 取消事件后向玩家发送提示信息
-                if(MessageFile.getMessage("FoodLevelChangeMessage") != null) {
-                    MessageFile.parsePlaceholders(player, MessageFile.getMessage("FoodLevelChangeMessage"));
+                if (worldFile.playerRulesMessage(world.getName(), "food") != null) {
+                    messageFile.actionBarChatMessage(player,  worldFile.playerRulesMessage(world.getName(), "food"));
                 }
             }
 
@@ -35,29 +39,29 @@ public class FoodLevelChange implements Listener {
                         () -> player.setFoodLevel(20), 1L // 延迟1tick确保事件已处理完
                 );
                 // 取消事件后向玩家发送提示信息
-                if(MessageFile.getMessage("FoodSatietyMessage") != null) {
-                    MessageFile.parsePlaceholders(player, MessageFile.getMessage("FoodSatietyMessage"));
+                if (worldFile.playerRulesMessage(world.getName(), "foodSatiety") != null) {
+                    messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "foodSatiety"));
                 }
             }
 
             // 指定范围触发
             Location  location = event.getEntity().getLocation();
-            if(RadiusFile.INSTANCE.playerRules(player, world, location,"food")) {
+            if(radiusFile.playerRules(world, "food", player, location)) {
                 event.setCancelled(true);
                 // 取消事件后向玩家发送提示信息
-                if(MessageFile.getMessage("FoodLevelChangeRadiusMessage") != null) {
-                    MessageFile.parsePlaceholders(player, MessageFile.getMessage("FoodLevelChangeRadiusMessage"));
+                if (radiusFile.playerRulesMessage(world.getName(), "food") != null) {
+                    messageFile.actionBarChatMessage(player,  radiusFile.playerRulesMessage(world.getName(), "food"));
                 }
             }
 
-            if(RadiusFile.INSTANCE.playerRules(player,world, location,"foodSatiety")) {
+            if(radiusFile.playerRules(world, "foodSatiety", player, location)) {
                 Bukkit.getScheduler().runTaskLater(
                         JavaPlugin.getProvidingPlugin(this.getClass()),
                         () -> player.setFoodLevel(20), 1L // 延迟1tick确保事件已处理完
                 );
                 // 取消事件后向玩家发送提示信息
-                if(MessageFile.getMessage("FoodSatietyRadiusMessage") != null) {
-                    MessageFile.parsePlaceholders(player, MessageFile.getMessage("FoodSatietyRadiusMessage"));
+                if (radiusFile.playerRulesMessage(world.getName(), "foodSatiety") != null) {
+                    messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "foodSatiety"));
                 }
             }
 
