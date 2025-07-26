@@ -5,6 +5,7 @@ import com.maddyjace.worldrulesmanage.ConfigFile.RadiusFile;
 import com.maddyjace.worldrulesmanage.ConfigFile.WorldFile;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,8 +22,10 @@ public class BlockBreak implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         World world = event.getBlock().getWorld();
+        String blockName = event.getBlock().getType().toString();
 
-        if(worldFile.playerRules(world.getName(),"blockBreak", player)) {
+
+        if(worldFile.playerRulesList(world.getName(), "blockBreak", blockName, player)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
             if (worldFile.playerRulesMessage(world.getName(), "blockBreak") != null) {
@@ -32,13 +35,32 @@ public class BlockBreak implements Listener {
 
         // 指定范围触发
         Location location = event.getBlock().getLocation();
-        if(radiusFile.playerRules(world,"blockBreak", player, location)) {
+        if(radiusFile.playerRulesList(world, "blockBreak", blockName, player, location)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
             if (radiusFile.playerRulesMessage(world.getName(), "blockBreak") != null) {
                 messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "blockBreak"));
             }
         }
+
+
+//        if(worldFile.playerRules(world.getName(),"blockBreak", player)) {
+//            event.setCancelled(true);
+//            // 取消事件后向玩家发送提示信息
+//            if (worldFile.playerRulesMessage(world.getName(), "blockBreak") != null) {
+//                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "blockBreak"));
+//            }
+//        }
+//
+//        // 指定范围触发
+//        Location location = event.getBlock().getLocation();
+//        if(radiusFile.playerRules(world,"blockBreak", player, location)) {
+//            event.setCancelled(true);
+//            // 取消事件后向玩家发送提示信息
+//            if (radiusFile.playerRulesMessage(world.getName(), "blockBreak") != null) {
+//                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "blockBreak"));
+//            }
+//        }
 
     }
 

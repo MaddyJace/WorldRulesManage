@@ -21,22 +21,22 @@ public final class WorldRulesManage extends JavaPlugin {
         File configFile = new File(getDataFolder(), "config.yml");
         if (!configFile.exists()) {
             saveResource("config.yml", false);
-            saveResource("zh-cn/zh-cn_config.yml", false);
+            saveResource("zh-cn/config.yml", false);
         }
         File worldFile = new File(getDataFolder(), "world.yml");
         if (!worldFile.exists()) {
             saveResource("world.yml", false);
-            saveResource("zh-cn/zh-cn_world.yml", false);
+            saveResource("zh-cn/world.yml", false);
         }
         File radiusFile = new File(getDataFolder(), "radius.yml");
         if (!radiusFile.exists()) {
             saveResource("radius.yml", false);
-            saveResource("zh-cn/zh-cn_radius.yml", false);
+            saveResource("zh-cn/radius.yml", false);
         }
         File messageFile = new File(getDataFolder(), "message.yml");
         if (!messageFile.exists()) {
             saveResource("message.yml", false);
-            saveResource("zh-cn/zh-cn_message.yml", false);
+            saveResource("zh-cn/message.yml", false);
         }
 
         // 初始化 FileWatcher 类

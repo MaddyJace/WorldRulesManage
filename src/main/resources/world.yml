@@ -20,14 +20,6 @@ world_1:
       enable: true                            #    Enable or disable
       message: "&cYou are not allowed to ignite blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
 
-    blockBreak:                               # -> Prevent players from breaking blocks
-      enable: true                            #    Enable or disable
-      message: "&cYou are not allowed to break blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
-
-    blockPlace:                               # -> Prevent players from placing blocks
-      enable: true                            #    Enable or disable
-      message: "&cYou are not allowed to place blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
-
     usePail:                                  # -> Prevent players from using buckets (e.g., collect water/lava)
       enable: true                            #    Enable or disable
       message: "&cYou are not allowed to use buckets in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
@@ -55,6 +47,17 @@ world_1:
     portalEnder:                              # -> Prevent players from using End portals
       enable: true                            #    Enable or disable
       message: "&cYou are not allowed to use End portals in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+
+    blockBreak:                               # -> Prevent players from breaking blocks
+      message: "&cYou are not allowed to break blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+      type: WHITELIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                                #    Blocks list. When WHITELIST is used and this is set to [], it will be considered as all.
+
+    blockPlace:                               # -> Prevent players from placing blocks
+      message: "&cYou are not allowed to place blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
+      type: WHITELIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                                #    Blocks list. When WHITELIST is used and this is set to [], it will be considered as all.
+
 
     itemPickup:                               # -> Prevent players from picking up items
       message: "&cYou are not allowed to pick up items in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
@@ -120,12 +123,14 @@ world_2_hi:
       message: "&cYou are not allowed to ignite blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
 
     blockBreak:                               # -> Prevent players from breaking blocks
-      enable: false                           #    Enable or disable
       message: "&cYou are not allowed to break blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: BLACKLIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                                #    Blocks list. When WHITELIST is used and this is set to [], it will be considered as all.
 
     blockPlace:                               # -> Prevent players from placing blocks
-      enable: false                           #    Enable or disable
       message: "&cYou are not allowed to place blocks in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
+      type: BLACKLIST                         #    BLACKLIST (Block listed items) - WHITELIST (Only allow listed items)
+      list: []                                #    Blocks list. When WHITELIST is used and this is set to [], it will be considered as all.
 
     usePail:                                  # -> Prevent players from using buckets (e.g., collect water/lava)
       enable: true                            #    Enable or disable
@@ -218,8 +223,9 @@ customName_world_3:
       message: "&cYou are not allowed to ignite blocks in this world!"
 
     # blockBreak:
-    #   enable: true
     #   message: "&cYou are not allowed to break blocks in this world!"
+    #  type: BLACKLIST
+    #  list: []
 
     usePail:
       enable: true

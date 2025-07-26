@@ -2,19 +2,13 @@
 
 world_1:
   worldName: world                           # 世界名称
-  settingsRadius:                            # 半径规则
-    type: 2DRange                            # 2DRange(二维圆形)，3DRange(三维圆形)，2DCube(二维立方)，3DCube(三维立方)。
-    xyz:                                     # 坐标(支持: 单个坐标或多个坐标)
-      - "0 0 0"
-      - "-200 0 -200"
-    radius: 14                               # 半径范围
-
   globalRules:                               # 全局规则
     flameSpread: true                        # 防止火焰传播
     leavesDecay: true                        # 防止树叶消失
     blockIgnite: true                        # 防止点燃方块
     entityBlockBreak: true                   # 阻止实体破坏方块
     liquidFlow: true                         # 阻止液体流动
+    fixedWeather: true                       # 始终保持为晴天
     creatureSpawn:                           # -> 阻止特定生物或全部生物的生成
       type: BLACKLIST                        #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list: []                               #    物品列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
@@ -24,56 +18,58 @@ world_1:
 
     blockIgnite:                              # -> 阻止玩家点燃方块
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止点燃方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
-
-    blockBreak:                               # -> 阻止玩家破坏方块
-      enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止破坏方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
-
-    blockPlace:                               # -> 阻止玩家放置方块
-      enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止放置方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止点燃方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     usePail:                                  # -> 阻止玩家使用桶(如: 拿空桶装 水/岩浆)
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用桶！"        #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止使用桶！"        #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     food:                                     # -> 阻止玩家饥饿
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，不会让你饥饿！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，不会让你饥饿！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     foodSatiety:                              # -> 恢复玩家饥饿(等级: 20)
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，已自动恢复饥饿！"    #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，已自动恢复饥饿！"    #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     playerDamage:                             # -> 阻止玩家受伤(如: 不会受伤和被击退)
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，不会让你受到伤害！"   #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，不会让你受到伤害！"   #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     portalAll:                                # -> 阻止玩家使用任意传送门
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用传送门！"    #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止使用传送门！"    #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     portalNether:                             # -> 阻止玩家进入地狱传送门
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用地狱传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止使用地狱传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     portalEnder:                              # -> 阻止玩家进入末地传送门
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用末地传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止使用末地传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+
+    blockBreak:                               # -> 阻止玩家破坏方块
+      message: "&c当前的世界，禁止破坏方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
+      list: []                                #    方块列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
+
+    blockPlace:                               # -> 阻止玩家放置方块
+      message: "&c当前的世界，禁止放置方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
+      list: []                                #    方块列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
 
     itemPickup:                               # -> 阻止玩家捡物品
-      message: "&c当前的区域，禁止拿起物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止拿起物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list: []                                #    物品列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
 
     itemDrop:                                 # -> 阻止玩家扔物品
-      message: "&c当前的区域，禁止扔出物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止扔出物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list: []                                #    物品列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
 
     playerUseItem:                            # -> 阻止玩家使用物品(需要配置物品列表)
-      message: "&c当前的区域，禁止使用物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "SNOWBALL"       # 雪球
@@ -82,7 +78,7 @@ world_1:
         - "PAINTING"       # 画
 
     playerInteractEntity:                     # -> 阻止玩家交互实体(需要配置实体列表)
-      message: "&c当前的区域，禁止交互实体！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止交互实体！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "ITEM_FRAME"     # 物品展示框
@@ -90,7 +86,7 @@ world_1:
         - "ARMOR_STAND"    # 盔甲架
 
     playerInteractBlock:                      # -> 阻止玩家与方块交互(需要配置方块列表)
-      message: "&c当前的区域，禁止交互方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止交互方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "TRAP_DOOR"      # 活板门
@@ -98,7 +94,7 @@ world_1:
         - "FURNACE"        # 熔炉
 
     playerTriggerBlock:                       # -> 阻止玩家触发方块(需要配置方块列表)
-      message: "&c当前的区域，禁止触发方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
+      message: "&c当前的世界，禁止触发方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "SOIL"           # 耕地
@@ -110,13 +106,6 @@ world_1:
 
 world_2_hi:
   worldName: world_the_end                   # 世界名称
-
-  settingsRadius:                            # 半径规则
-    type: 2DCube                             # 2DRange(二维圆形)，3DRange(三维圆形)，2DCube(二维立方)，3DCube(三维立方)。
-    xyz:                                     # 坐标(支持: 单个坐标或多个坐标)
-      - "0 0 0"
-    radius: 14                               # 半径范围
-
   globalRules:                               # 全局规则
     flameSpread: true                        # 防止火焰传播
     leavesDecay: true                        # 防止树叶消失
@@ -130,56 +119,58 @@ world_2_hi:
 
     blockIgnite:                              # -> 阻止玩家点燃方块
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止点燃方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
-
-    blockBreak:                               # -> 阻止玩家破坏方块
-      enable: false                           #    开启或关闭
-      message: "&c当前的区域，禁止破坏方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
-
-    blockPlace:                               # -> 阻止玩家放置方块
-      enable: false                           #    开启或关闭
-      message: "&c当前的区域，禁止放置方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止点燃方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
 
     usePail:                                  # -> 阻止玩家使用桶(如: 拿空桶装 水/岩浆)
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用桶！"        #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用桶！"        #    阻止后提示的信息(支持: PlaceholderAPI)
 
     food:                                     # -> 阻止玩家饥饿
       enable: false                           #    开启或关闭
-      message: "&c当前的区域，不会让你饥饿！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，不会让你饥饿！"      #    阻止后提示的信息(支持: PlaceholderAPI)
 
     foodSatiety:                              # -> 恢复玩家饥饿(等级: 20)
       enable: false                           #    开启或关闭
-      message: "&c当前的区域，已自动恢复饥饿！"    #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，已自动恢复饥饿！"    #    阻止后提示的信息(支持: PlaceholderAPI)
 
     playerDamage:                             # -> 阻止玩家受伤(如: 不会受伤和被击退)
       enable: false                           #    开启或关闭
-      message: "&c当前的区域，不会让你受到伤害！"   #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，不会让你受到伤害！"   #    阻止后提示的信息(支持: PlaceholderAPI)
 
     portalAll:                                # -> 阻止玩家使用任意传送门
       enable: false                           #    开启或关闭
-      message: "&c当前的区域，禁止使用传送门！"    #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用传送门！"    #    阻止后提示的信息(支持: PlaceholderAPI)
 
     portalNether:                             # -> 阻止玩家进入地狱传送门
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用地狱传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用地狱传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)
 
     portalEnder:                              # -> 阻止玩家进入末地传送门
       enable: false                           #    开启或关闭
-      message: "&c当前的区域，禁止使用末地传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用末地传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)
+
+    blockBreak:                               # -> 阻止玩家破坏方块
+      message: "&c当前的世界，禁止破坏方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
+      list: []                                #    方块列表，当WHITELIST无事时，此选项设置为[]将被视为全
+
+    blockPlace:                               # -> 阻止玩家放置方块
+      message: "&c当前的世界，禁止放置方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
+      list: []                                #    方块列表，当WHITELIST无事时，此选项设置为[]将被视为全
 
     itemPickup:                               # -> 阻止玩家捡物品
-      message: "&c当前的区域，禁止拿起物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
-      type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
+      message: "&c当前的世界，禁止拿起物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list: []                                #    物品列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
 
     itemDrop:                                 # -> 阻止玩家扔物品
-      message: "&c当前的区域，禁止扔出物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止扔出物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: WHITELIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list: []                                #    物品列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
 
     playerUseItem:                            # -> 阻止玩家使用物品(需要配置物品列表)
-      message: "&c当前的区域，禁止使用物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "SNOWBALL"       # 雪球
@@ -188,7 +179,7 @@ world_2_hi:
         - "PAINTING"       # 画
 
     playerInteractEntity:                     # -> 阻止玩家交互实体(需要配置实体列表)
-      message: "&c当前的区域，禁止交互实体！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止交互实体！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "ITEM_FRAME"     # 物品展示框
@@ -196,7 +187,7 @@ world_2_hi:
         - "ARMOR_STAND"    # 盔甲架
 
     playerInteractBlock:                      # -> 阻止玩家与方块交互(需要配置方块列表)
-      message: "&c当前的区域，禁止交互方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止交互方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "TRAP_DOOR"      # 活板门
@@ -204,7 +195,7 @@ world_2_hi:
         - "FURNACE"        # 熔炉
 
     playerTriggerBlock:                       # -> 阻止玩家触发方块(需要配置方块列表)
-      message: "&c当前的区域，禁止触发方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止触发方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "SOIL"           # 耕地
@@ -212,13 +203,6 @@ world_2_hi:
 
 customName_world_3:
   worldName: world_nether                    # 世界名称
-
-  settingsRadius:                            # 半径规则
-    type: 3DRange                            # 2DRange(二维圆形)，3DRange(三维圆形)，2DCube(二维立方)，3DCube(三维立方)。
-    xyz:                                     # 坐标(支持: 单个坐标或多个坐标)
-      - "0 0 0"
-    radius: 14                               # 半径范围
-
   globalRules:                               # 全局规则
     flameSpread: true                        # 防止火焰传播
     leavesDecay: true                        # 防止树叶消失
@@ -235,22 +219,23 @@ customName_world_3:
 
     blockIgnite:                              # -> 阻止玩家点燃方块
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止点燃方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止点燃方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
 
-    # blockBreak:                              # -> 阻止玩家破坏方块
-    #  enable: true                            #    开启或关闭
-    #  message: "&c当前的区域，禁止破坏方块！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+    # blockBreak:                             # -> 阻止玩家破坏方块
+    #  message: "&c当前的世界，禁止破坏方块！"     #    阻止后提示的信息(支持: PlaceholderAPI)
+    #  type: WHITELIST                        #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
+    #  list: []                               #    方块列表，当WHITELIST无事时，此选项设置为[]将被视为全部。
 
     usePail:                                  # -> 阻止玩家使用桶(如: 拿空桶装 水/岩浆)
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用桶！"        #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用桶！"        #    阻止后提示的信息(支持: PlaceholderAPI)
 
     portalEnder:                              # -> 阻止玩家进入末地传送门
       enable: true                            #    开启或关闭
-      message: "&c当前的区域，禁止使用末地传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用末地传送门！" #    阻止后提示的信息(支持: PlaceholderAPI)
 
     playerUseItem:                            # -> 阻止玩家使用物品(需要配置物品列表)
-      message: "&c当前的区域，禁止使用物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
+      message: "&c当前的世界，禁止使用物品！"      #    阻止后提示的信息(支持: PlaceholderAPI)
       type: BLACKLIST                         #    BLACKLIST（黑名单模式：阻止列出的物品）- WHITELIST（白名单模式：只允许列出的物品）
       list:
         - "SNOWBALL"       # 雪球

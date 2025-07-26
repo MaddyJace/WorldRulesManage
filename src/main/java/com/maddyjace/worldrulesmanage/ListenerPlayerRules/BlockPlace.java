@@ -23,7 +23,10 @@ public class BlockPlace implements Listener {
 
         Player player = event.getPlayer();
         World world = event.getBlock().getWorld();
-        if(WorldFile.INSTANCE.playerRules(world.getName(),"blockPlace", player)) {
+        String blockName = event.getBlock().getType().toString();
+
+
+        if(worldFile.playerRulesList(world.getName(), "blockPlace", blockName, player)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
             if (worldFile.playerRulesMessage(world.getName(), "blockPlace") != null) {
@@ -33,13 +36,31 @@ public class BlockPlace implements Listener {
 
         // 指定范围触发
         Location location = event.getBlock().getLocation();
-        if(radiusFile.playerRules(world, "blockPlace", player, location)) {
+        if(radiusFile.playerRulesList(world, "blockPlace", blockName, player, location)) {
             event.setCancelled(true);
             // 取消事件后向玩家发送提示信息
             if (radiusFile.playerRulesMessage(world.getName(), "blockPlace") != null) {
                 messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "blockPlace"));
             }
         }
+
+//        if(WorldFile.INSTANCE.playerRules(world.getName(),"blockPlace", player)) {
+//            event.setCancelled(true);
+//            // 取消事件后向玩家发送提示信息
+//            if (worldFile.playerRulesMessage(world.getName(), "blockPlace") != null) {
+//                messageFile.actionBarChatMessage(player, worldFile.playerRulesMessage(world.getName(), "blockPlace"));
+//            }
+//        }
+//
+//        // 指定范围触发
+//        Location location = event.getBlock().getLocation();
+//        if(radiusFile.playerRules(world, "blockPlace", player, location)) {
+//            event.setCancelled(true);
+//            // 取消事件后向玩家发送提示信息
+//            if (radiusFile.playerRulesMessage(world.getName(), "blockPlace") != null) {
+//                messageFile.actionBarChatMessage(player, radiusFile.playerRulesMessage(world.getName(), "blockPlace"));
+//            }
+//        }
 
     }
 
