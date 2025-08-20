@@ -20,6 +20,10 @@ public class ItemPickup implements Listener {
     @EventHandler
     public void onItemPickup(EntityPickupItemEvent event) {
 
+        if(!(event.getEntity() instanceof Player)) {
+            return;
+        }
+
         Player player = (Player) event.getEntity();
         World world = player.getWorld();
         String itemTypeName = event.getItem().getItemStack().getType().name();

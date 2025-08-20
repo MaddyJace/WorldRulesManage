@@ -9,20 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2025/07/24/22/34/15&#10;&#10;Major Update: WorldRulesManage 5.0&#10;Updating to this version requires deleting the previous configuration files and regenerating them.&#10;Now supports customizing messages for each world's rules individually.&#10;A new option to block entity spawning has been added to the global rules.&#10;World-level global rules now support always keeping the weather clear.&#10;Finally, the core logic has been optimized.&#10;&#10;重大更新 WorldRulesManage-5.0，更新此版本需要删除之前版本的配置文件重新生成。&#10;现在支持给每个世界的规则单独配置提示信息，全局规则中加入了阻止实体生成的选项，世界全局规则中加入了始终天气为晴天，最后优化了核心逻辑。">
+    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2025/07/27/01/28/59&#10;&#10;Kind Reminder: If version 5.0 already meets the needs of your server, you may ignore this update!&#10;WorldRulesManage v5.1 adds support for using whitelist/blacklist in blockBreak and blockPlace to restrict the breaking and placing of specific blocks.&#10;Additionally, you will need to update the blockBreak and blockPlace sections in your configuration file.&#10;A configuration example has been provided in the update log.&#10;&#10;温馨提示：如果v5.0版本已经满足了您的服务器需求，可以忽略本次更新！&#10;WorldRulesManage v5.1 更新了 blockBreak 和 blockPlace 可以使用黑白名单阻止特定方块破坏以及放置，此外您还需要更新配置文件的blockBreak 和 blockPlace配置项，配置示例我已放在更新日志中。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CN-README.md" beforeDir="false" afterPath="$PROJECT_DIR$/CN-README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockBreak.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/radius.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/radius.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/world.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_message.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/message.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_radius.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/radius.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/zh-cn_world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/world.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemPickup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemPickup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,31 +51,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JAR 应用程序.Server 1.12.2.executor": "Debug",
-    "JAR 应用程序.Server1.12.2.executor": "Debug",
-    "Maven.WorldRulesManage package.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/MinecraftPlugins/WorldRulesManage",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JAR 应用程序.Server 1.12.2.executor&quot;: &quot;Debug&quot;,
+    &quot;JAR 应用程序.Server1.12.2.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WorldRulesManage package.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/MinecraftPlugins/WorldRulesManage&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\MinecraftPlugins\WorldRulesManage" />
@@ -95,7 +86,7 @@
       <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\resources\zh-cn" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR 应用程序.Server1.12.2">
+  <component name="RunManager" selected="Maven.WorldRulesManage package">
     <configuration name="Server1.12.2" type="JarApplication">
       <option name="JAR_PATH" value="F:/Minecraft Server/1.12.2/spigot-1.12.2.jar" />
       <option name="VM_PARAMETERS" value="-Xmx2G -Xms1G -XX:+UseG1GC" />
@@ -181,7 +172,9 @@
       <workItem from="1753337395779" duration="24515000" />
       <workItem from="1753368137129" duration="3149000" />
       <workItem from="1753379738238" duration="1098000" />
-      <workItem from="1753547777332" duration="3018000" />
+      <workItem from="1753547777332" duration="3764000" />
+      <workItem from="1753597511098" duration="14000" />
+      <workItem from="1755715360324" duration="1007000" />
     </task>
     <task id="LOCAL-00001" summary="Fix the null pointer error occurring when the plugin starts!">
       <option name="closed" value="true" />
@@ -207,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753367680089</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2025/07/27/01/28/59&#10;&#10;Kind Reminder: If version 5.0 already meets the needs of your server, you may ignore this update!&#10;WorldRulesManage v5.1 adds support for using whitelist/blacklist in blockBreak and blockPlace to restrict the breaking and placing of specific blocks.&#10;Additionally, you will need to update the blockBreak and blockPlace sections in your configuration file.&#10;A configuration example has been provided in the update log.&#10;&#10;温馨提示：如果v5.0版本已经满足了您的服务器需求，可以忽略本次更新！&#10;WorldRulesManage v5.1 更新了 blockBreak 和 blockPlace 可以使用黑白名单阻止特定方块破坏以及放置，此外您还需要更新配置文件的blockBreak 和 blockPlace配置项，配置示例我已放在更新日志中。">
+      <option name="closed" value="true" />
+      <created>1753550978517</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753550978517</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +241,7 @@
     <MESSAGE value="Fix the null pointer error occurring when the plugin starts!" />
     <MESSAGE value="Fixed the issue where the itemDrop configuration item for radius was ineffective.&#10;Radius now allows configuring multiple coordinates in the same world, so the same rules can be applied to multiple coordinates.&#10;Warning: After the update, you must update the xyz configuration item in your radius.yml. An example configuration is shown below, or you can delete the entire radius.yml file.&#10;&#10;修复了 radius 的 itemDrop 配置项目失效问题。&#10;新增了 radius 同一个世界可以配置多个坐标了，这样相同的规则可以应用到多个坐标当中。&#10;警告：更新后您必须要更新你的 radius.yml 中的 xyz 配置项，配置示例如下，当然你也可以直接删除整个radius.yml的文件。" />
     <MESSAGE value="2025/07/24/22/34/15&#10;&#10;Major Update: WorldRulesManage 5.0&#10;Updating to this version requires deleting the previous configuration files and regenerating them.&#10;Now supports customizing messages for each world's rules individually.&#10;A new option to block entity spawning has been added to the global rules.&#10;World-level global rules now support always keeping the weather clear.&#10;Finally, the core logic has been optimized.&#10;&#10;重大更新 WorldRulesManage-5.0，更新此版本需要删除之前版本的配置文件重新生成。&#10;现在支持给每个世界的规则单独配置提示信息，全局规则中加入了阻止实体生成的选项，世界全局规则中加入了始终天气为晴天，最后优化了核心逻辑。" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025/07/24/22/34/15&#10;&#10;Major Update: WorldRulesManage 5.0&#10;Updating to this version requires deleting the previous configuration files and regenerating them.&#10;Now supports customizing messages for each world's rules individually.&#10;A new option to block entity spawning has been added to the global rules.&#10;World-level global rules now support always keeping the weather clear.&#10;Finally, the core logic has been optimized.&#10;&#10;重大更新 WorldRulesManage-5.0，更新此版本需要删除之前版本的配置文件重新生成。&#10;现在支持给每个世界的规则单独配置提示信息，全局规则中加入了阻止实体生成的选项，世界全局规则中加入了始终天气为晴天，最后优化了核心逻辑。" />
+    <MESSAGE value="2025/07/27/01/28/59&#10;&#10;Kind Reminder: If version 5.0 already meets the needs of your server, you may ignore this update!&#10;WorldRulesManage v5.1 adds support for using whitelist/blacklist in blockBreak and blockPlace to restrict the breaking and placing of specific blocks.&#10;Additionally, you will need to update the blockBreak and blockPlace sections in your configuration file.&#10;A configuration example has been provided in the update log.&#10;&#10;温馨提示：如果v5.0版本已经满足了您的服务器需求，可以忽略本次更新！&#10;WorldRulesManage v5.1 更新了 blockBreak 和 blockPlace 可以使用黑白名单阻止特定方块破坏以及放置，此外您还需要更新配置文件的blockBreak 和 blockPlace配置项，配置示例我已放在更新日志中。" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025/07/27/01/28/59&#10;&#10;Kind Reminder: If version 5.0 already meets the needs of your server, you may ignore this update!&#10;WorldRulesManage v5.1 adds support for using whitelist/blacklist in blockBreak and blockPlace to restrict the breaking and placing of specific blocks.&#10;Additionally, you will need to update the blockBreak and blockPlace sections in your configuration file.&#10;A configuration example has been provided in the update log.&#10;&#10;温馨提示：如果v5.0版本已经满足了您的服务器需求，可以忽略本次更新！&#10;WorldRulesManage v5.1 更新了 blockBreak 和 blockPlace 可以使用黑白名单阻止特定方块破坏以及放置，此外您还需要更新配置文件的blockBreak 和 blockPlace配置项，配置示例我已放在更新日志中。" />
   </component>
 </project>
