@@ -1,10 +1,7 @@
 package com.maddyjace.worldrulesmanage.ListenerGlobalRules;
 
-import com.maddyjace.worldrulesmanage.ConfigFile.ConfigFile;
-import com.maddyjace.worldrulesmanage.ConfigFile.MessageFile;
 import com.maddyjace.worldrulesmanage.ConfigFile.RadiusFile;
 import com.maddyjace.worldrulesmanage.ConfigFile.WorldFile;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
@@ -17,7 +14,6 @@ public class CreatureSpawn implements Listener {
 
     private final WorldFile worldFile = WorldFile.INSTANCE;
     private final RadiusFile radiusFile = RadiusFile.INSTANCE;
-    private final MessageFile messageFile = MessageFile.INSTANCE;
 
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent event) {

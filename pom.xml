@@ -6,7 +6,7 @@
 
   <groupId>com.MaddyJace</groupId>
   <artifactId>WorldRulesManage</artifactId>
-  <version>5.2</version>
+  <version>5.3</version>
   <packaging>jar</packaging>
 
   <name>WorldRulesManage</name>

@@ -34,6 +34,7 @@ world_1:
 
     playerDamage:                             # -> Prevent players from taking damage (e.g., no hurt or knockback)
       enable: true                            #    Enable or disable
+      fatalInjury: false                      #    Will not prevent fatal damage (e.g., high fall, /kill, etc.)
       message: "&cYou cannot be harmed in this world!"  #    Message shown when blocked (supports PlaceholderAPI). Comment or remove to show nothing.
 
     portalAll:                                # -> Prevent players from using any portal
@@ -146,6 +147,7 @@ world_2_hi:
 
     playerDamage:                             # -> Prevent players from taking damage
       enable: false                           #    Enable or disable
+      fatalInjury: false                      #    Will not prevent fatal damage (e.g., high fall, /kill, etc.)
       message: "&cYou cannot be harmed in this world!"  #    Message shown when blocked (supports PlaceholderAPI)
 
     portalAll:                                # -> Prevent players from using any portal

@@ -34,6 +34,7 @@ world_1:
 
     playerDamage:                             # -> 阻止玩家受伤(如: 不会受伤和被击退)
       enable: true                            #    开启或关闭
+      fatalInjury: false                      #    不会阻止致命伤害(如: 高空坠落，使/kill，等)
       message: "&c当前的世界，不会让你受到伤害！"   #    阻止后提示的信息(支持: PlaceholderAPI)，注释或删除此选项将不提示信息。
 
     portalAll:                                # -> 阻止玩家使用任意传送门
@@ -135,6 +136,7 @@ world_2_hi:
 
     playerDamage:                             # -> 阻止玩家受伤(如: 不会受伤和被击退)
       enable: false                           #    开启或关闭
+      fatalInjury: false                      #    不会阻止致命伤害(如: 高空坠落，使/kill，等)
       message: "&c当前的世界，不会让你受到伤害！"   #    阻止后提示的信息(支持: PlaceholderAPI)
 
     portalAll:                                # -> 阻止玩家使用任意传送门

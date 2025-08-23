@@ -142,6 +142,35 @@ public enum RadiusFile {
         return false;
     }
 
+    /**
+     * 该方法通过currentWorld(世界名)查找playerRules配置下的子配置表中的enable，是开启还是关闭。
+     * <p> - 如：playerRules(固定) > playerDamage(对应path1) > FatalInjury(对应path2)。
+     *
+     * @param playerWorld 要查找的世界名
+     * @param path        要查找的配置列
+     * @param player      玩家对象
+     * @return            boolean
+     */
+    public boolean playerRules(World playerWorld, String path1, String path2, Player player,Location goalLocation) {
+        // 从缓存取出对应世界的配置
+        ConfigurationSection pack = radiusConfigCache.get(playerWorld.getName());
+        if (pack == null) return false;
+        // 读取 playerRules 列
+        ConfigurationSection playerRules = pack.getConfigurationSection("playerRules");
+        if (playerRules == null) return false;
+        // 读取 playerRules -> permission
+        String permission = playerRules.getString("permission");
+        if(permission != null && player.hasPermission(permission)) return false;
+        // 获取到YML的 settingsRadius 下的键
+        ConfigurationSection settingsRadius = pack.getConfigurationSection("settingsRadius");
+        if(settingsRadius == null) return false;
+        if (settingsRadius(settingsRadius, playerWorld, goalLocation)) {
+            // 读取 playerRules -> path -> enable(value: true/false)
+            return playerRules.getBoolean(path1 + "." + path2, false);
+        }
+        return false;
+    }
+
 
     /**
      * 该方法通过currentWorld(世界名)查找playerRules配置下的子配置表中list列表的值是否与形参listValue匹配。

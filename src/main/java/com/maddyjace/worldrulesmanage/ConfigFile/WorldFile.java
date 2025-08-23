@@ -122,6 +122,32 @@ public enum WorldFile {
     }
 
     /**
+     * 该方法通过currentWorld(世界名)查找playerRules配置下的子配置表中的enable，是开启还是关闭。
+     * <p> - 如：playerRules(固定) > playerDamage(对应path1) > FatalInjury(对应path2)。
+     *
+     * @param playerWorld 要查找的世界名
+     * @param path1        要查找的配置列
+     * @param path2        要查找配置列中的键
+     * @param player      玩家对象
+     * @return            boolean
+     */
+    public boolean playerRules(String playerWorld, String path1, String path2, Player player) {
+        // 从缓存取出对应世界的配置
+        ConfigurationSection pack = worldConfigCache.get(playerWorld);
+        if (pack == null) return false;
+        // 读取 playerRules 列
+        ConfigurationSection playerRules = pack.getConfigurationSection("playerRules");
+        if (playerRules == null) return false;
+        // 读取 playerRules -> permission
+        String permission = playerRules.getString("permission");
+        if(permission != null && player.hasPermission(permission)) return false;
+        // 读取 playerRules -> path -> enable(value: true/false)
+        return playerRules.getBoolean(path1 + "." + path2, false);
+    }
+
+
+
+    /**
      * 该方法通过currentWorld(世界名)查找playerRules配置下的子配置表中list列表的值是否与形参listValue匹配。
      *
      * @param playerWorld 要查找的世界名
