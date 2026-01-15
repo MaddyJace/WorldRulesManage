@@ -1,6 +1,6 @@
 name: WorldRulesManage
 version: '${project.version}'
-main: com.maddyjace.worldrulesmanage.WorldRulesManage
+main: com.maddyjace.worldrulesmanage.Plugin
 authors: [MaddyJace]
 description: Prevent specific commands from being used
 folia-supported: true
@@ -11,7 +11,7 @@ softdepend:
 commands:
   worldrulesmanage:
     description: Main plugin command.
-    aliases: [wm,worldrulesmanage]
+    aliases: [wm,wrl,worldrulesmanage]
     permission: worldrulesmanage.admin
 
 permissions:

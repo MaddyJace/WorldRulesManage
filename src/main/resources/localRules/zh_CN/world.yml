@@ -1,0 +1,250 @@
+#
+# 注意：zh_CN文件夹中的配置文件不会生效，请拖拽或复制到globalRules文件夹中。
+# 注意：zh_CN文件夹中的配置文件不会生效，请拖拽或复制到globalRules文件夹中。
+# 注意：zh_CN文件夹中的配置文件不会生效，请拖拽或复制到globalRules文件夹中。
+#
+# 请注意文件名就是你的世界名称，世界名称和配置项严格区分大小写。
+# 配置项严格区分大小写(不包括可输入的值)，不懂得如何配置可以加入 https://discord.gg/xCKeUReG 询问。
+#
+
+# 半径坐标
+radius:
+  # 1(二维圆形)，2(三维圆形)，3(二维立方)，4(三维立方)。
+  model: 3
+  # 半径范围
+  radius: 14
+  # 坐标(支持: 单个坐标或多个坐标)
+  xyz:
+    - "0 0 0"
+    - "1 0 1"
+
+# 全局规则
+#   该规则针对世界，不属于玩家行为！
+localRules:
+  # 禁止液体流动
+  liquidFlow: false
+  # 禁止树叶消失
+  leavesDecay: false
+  # 禁止冰融化
+  iceMelts: false
+  # 禁止水结冰
+  waterFreezes: false
+  # 禁止冰霜蔓延（特殊：冰霜行者）
+  iceSpread: false
+  # 禁止草地蔓延
+  grassSpread: false
+  # 禁止菌丝蔓延
+  myceliumSpread: false
+  # 禁止火焰蔓延
+  fireSpread: false
+
+  # 禁止生成生物
+  creatureSpawn:
+    enable: false
+    #
+    # BLACKLIST（黑名单）：
+    #   - entityList 中写的生物「不允许生成」
+    #   - 没写在 entityList 中的生物「可以正常生成」
+    # WHITELIST（白名单）：
+    #   - entityList 中写的生物「允许生成」
+    #   - 没写在 entityList 中的生物「全部禁止生成」
+    # ⚠ 特别说明：
+    #   如果你想【禁止世界生成任何生物】：
+    #   - 将 checkMode 设为 WHITELIST
+    #   - 并保持 entityList 为空（entityList: []）
+    #
+    checkMode: "BLACKLIST"
+    #
+    # 生物列表（使用 Bukkit 实体名，如 ZOMBIE、CREEPER、COW）
+    # 示例：
+    #   - 在 BLACKLIST 模式下：这些生物不会生成
+    #   - 在 WHITELIST 模式下：只有这些生物可以生成
+    #
+    entityList: []
+
+  # 禁止实体改变方块
+  # 如果不使用如下功能可以直接删除整个配置项，不写则为关闭状态，下面我以注册的方式，
+  # 不使用entityChangeBlock功能，如果需要您可以把删除注释，其他功能也是一样不再重复描述。
+  # entityChangeBlock:
+  #  enable: false
+  #  checkMode: "WHITELIST"
+  #  entityList: []
+
+  # 禁止爆炸
+  entityExplode:
+    enable: false
+    # 这里可以不写 checkMode 和 list 不写默认为WHITELIST模式其他配置项也一样。
+    # checkMode: "WHITELIST"
+    # list: []
+
+  # 禁止烧掉方块
+  blockBurn:
+    enable: false
+    # checkMode: "WHITELIST"
+    # blockList: []
+
+# 玩家规则
+localPlayerRules:
+  # 权限(拥有权限者将跳过检查，测试时请取消op)
+  permission: "worldrulesmanage.admin"
+  # 禁止破坏方块
+  blockBreak:
+    enable: false
+    #
+    # 不想提示任何内容可以直接删除 message 配置项
+    # 不喜欢物品栏提示可以自定义选择提示栏，使用示例如下：
+    #   "title: `&c操作无效` `&6当前的世界，禁止破坏方块！`"
+    #   "actionbar: &c当前的世界，禁止破坏方块！"
+    #   "tell: &c当前的世界，禁止破坏方块！"
+    #
+    message: "title: &c当前的世界，禁止破坏方块！"
+    checkMode: "WHITELIST"
+    blockList: []
+  # 禁止放置方块
+  blockPlace:
+    enable: false
+    message: "&c当前的世界，禁止放置方块！"
+    checkMode: "WHITELIST"
+    blockList: []
+  # 禁止捡物品
+  itemPickup:
+    enable: false
+    message: "&c当前的世界，禁止拿起物品！"
+    checkMode: "WHITELIST"
+    itemList: []
+  # 禁止扔物品
+  itemDrop:
+    enable: false
+    message: "&c当前的世界，禁止扔出物品！"
+    checkMode: "WHITELIST"
+    itemList: []
+  # 禁止方块互动
+  interactBlock:
+    enable: false
+    message: "&c当前的世界，禁止交互方块！"
+    checkMode: "WHITELIST"
+    blockList:
+      - "FURNACE" # 熔炉
+  # 禁止触发方块
+  triggerBlock:
+    enable: false
+    message: "&c当前的世界，禁止触发方块！"
+    checkMode: "WHITELIST"
+    blockList:
+      - "SOIL" # 耕地
+  # 禁止点燃方块
+  lightTheBlock:
+    enable: false
+    message: "&c当前的世界，禁止点燃方块！"
+    checkMode: "WHITELIST"
+    blockList: []
+  # 禁止使用物品
+  useItem:
+    enable: false
+    message: "&c当前的世界，禁止使用物品！"
+    checkMode: "WHITELIST"
+    itemList:
+      - "SNOWBALL"       # 雪球
+      - "EGG"            # 鸡蛋
+      - "ITEM_FRAME"     # 物品展示框
+      - "PAINTING"       # 画
+  # 禁止互动实体
+  # 详细：实体互动比较广泛(例如: 攻击实体，乘坐矿车，等)都算实体互动。
+  interactEntity:
+    enable: false
+    message: "&c当前的世界，禁止交互实体！"
+    checkMode: "WHITELIST"
+    entityList:
+      - "ITEM_FRAME"     # 物品展示框
+      - "PAINTING"       # 画
+      - "ARMOR_STAND"    # 盔甲架
+  # 禁止使用桶(如: 拿空桶装 水/岩浆)
+  usePail:
+    enable: false
+    message: "&c当前的世界，禁止使用桶！"
+  # 禁止玩家饥饿
+  hungerFrozen:
+    enable: false
+    message: "&c当前的世界，不会让你饥饿！"
+  # 恢复玩家饥饿
+  alwaysSatiated:
+    enable: false
+    foodLevel: 20 # 等级: 20
+    message: "&c当前的世界，已自动恢复饥饿！"
+  # 自定义伤害
+  customInjured:
+    # 功能总开关
+    enable: false
+    message: "&c当前的世界，不会让你受到功能伤害！"
+    # 只有开启 damageCause 功能才会生效，否则按照标准智能来判断伤害(此开关受enable影响)。
+    damageCauseEnable: false
+    damageCause:
+      # 全部生效不论是什么伤害
+      allCause: false
+      # 由方块接触造成的伤害（如仙人掌）
+      contact: true
+      # 实体攻击造成的伤害（如怪物或玩家攻击）
+      entityAttack: true
+      # 实体横扫攻击造成的伤害（如剑的横扫攻击）
+      entitySweepAttack: true
+      # 投射物造成的伤害（如箭、雪球等）
+      projectile: true
+      # 窒息伤害（如玩家卡在方块里）
+      suffocation: true
+      # 跌落伤害
+      fall: true
+      # 直接火焰伤害
+      fire: true
+      # 火焰持续伤害
+      fireTick: true
+      # 熔岩造成的伤害
+      lava: true
+      # 溺水伤害
+      drowning: true
+      # 方块爆炸造成的伤害（如TNT爆炸）
+      blockExplosion: true
+      # 实体爆炸造成的伤害（如Creeper爆炸）
+      entityExplosion: true
+      # 虚空伤害（掉出世界边界）
+      voidDamage: true
+      # 闪电造成的伤害
+      lightning: true
+      # 玩家自杀造成的伤害
+      suicide: true
+      # 饥饿造成的伤害
+      starvation: true
+      # 中毒造成的伤害
+      poison: true
+      # 魔法伤害（如附魔或药水效果）
+      magic: true
+      # 凋零效果造成的伤害
+      wither: true
+      # 下落方块造成的伤害（如沙子或砂砾掉落）
+      fallingBlock: true
+      # 荆棘伤害（被附有荆棘的怪物或盔甲反弹）
+      thorns: true
+      # 龙息伤害（末影龙吐息）
+      dragonBreath: true
+      # 自定义伤害来源
+      custom: true
+      # 飞入墙体造成的伤害
+      flyIntoWall: true
+      # 熔岩地板造成的灼伤
+      hotFloor: true
+      # 挤压伤害（玩家或生物被压在一起）
+      cramming: true
+  # 禁止受到击退
+  knockbackImmunity:
+    enable: false
+    message: "&c当前的世界，不会让你受到击退！"
+  # 禁止使用传送门
+  portal:
+    enable: false
+    message: "&c当前的世界，禁止使用传送门！"
+    # 注意: 开启 all 会导致 nether 和 ender 失效因为已包含。
+    # 禁止进入任意传送门
+    all: false
+    # 禁止进入地狱传送门
+    nether: false
+    # 禁止进入末地传送门
+    ender: false

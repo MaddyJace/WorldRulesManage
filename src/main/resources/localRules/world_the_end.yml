@@ -1,0 +1,175 @@
+# Radius coordinates
+radius:
+  # 1 = 2D circle, 2 = 3D sphere, 3 = 2D cube, 4 = 3D cube
+  model: 3
+  # Radius range
+  radius: 14
+  # Coordinates (supports single or multiple coordinates)
+  xyz:
+    - "0 0 0"
+    - "1 0 1"
+
+localRules:
+  liquidFlow: false
+  leavesDecay: false
+  iceMelts: false
+  waterFreezes: false
+  iceSpread: false
+  grassSpread: false
+  myceliumSpread: false
+  fireSpread: false
+  creatureSpawn:
+    enable: false
+    checkMode: "BLACKLIST"
+    entityList: []
+  entityChangeBlock:
+    enable: false
+    checkMode: "WHITELIST"
+    entityList: []
+  entityExplode:
+    enable: false
+    checkMode: "WHITELIST"
+    list: []
+  blockBurn:
+    enable: false
+    checkMode: "WHITELIST"
+    blockList: []
+
+localPlayerRules:
+  permission: "worldrulesmanage.admin"
+
+  # Prevent block breaking
+  blockBreak:
+    enable: false
+    # You can remove the message field if you don't want any notification
+    # You can also customize where the message appears (title, actionbar, chat)
+    message: "title: &cBlock breaking is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList: []
+
+  # Prevent block placing
+  blockPlace:
+    enable: false
+    message: "&cBlock placing is disabled in this world!"
+    checkMode: "WHITELIST"
+
+  # Prevent item pickup
+  itemPickup:
+    enable: false
+    message: "&cPicking up items is disabled in this world!"
+    checkMode: "WHITELIST"
+    itemList: []
+
+  # Prevent item dropping
+  itemDrop:
+    enable: false
+    message: "&cDropping items is disabled in this world!"
+    checkMode: "WHITELIST"
+    itemList: []
+
+  # Prevent block interaction
+  interactBlock:
+    enable: false
+    message: "&cInteracting with blocks is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList:
+      - "FURNACE" # Furnace
+
+  # Prevent block triggers
+  triggerBlock:
+    enable: false
+    message: "&cTriggering blocks is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList:
+      - "SOIL" # Farmland
+
+  # Prevent igniting blocks
+  lightTheBlock:
+    enable: false
+    message: "&cIgniting blocks is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList: []
+
+  # Prevent using items
+  useItem:
+    enable: false
+    message: "&cUsing items is disabled in this world!"
+    checkMode: "WHITELIST"
+    itemList:
+      - "SNOWBALL"
+      - "EGG"
+      - "ITEM_FRAME"
+      - "PAINTING"
+
+  # Prevent entity interaction
+  interactEntity:
+    enable: false
+    message: "&cInteracting with entities is disabled in this world!"
+    checkMode: "WHITELIST"
+    entityList:
+      - "ITEM_FRAME"
+      - "PAINTING"
+      - "ARMOR_STAND"
+
+  # Prevent bucket use (e.g., collecting water/lava)
+  usePail:
+    enable: false
+    message: "&cUsing buckets is disabled in this world!"
+
+  # Freeze hunger
+  hungerFrozen:
+    enable: false
+    message: "&cYou will not get hungry in this world!"
+
+  # Always restore hunger
+  alwaysSatiated:
+    enable: false
+    foodLevel: 20 # Level: 20
+    message: "&cHunger has been automatically restored in this world!"
+
+  # Custom damage settings
+  customInjured:
+    enable: false
+    message: "&cYou will not take functional damage in this world!"
+    damageCauseEnable: false
+    damageCause:
+      allCause: false
+      contact: true
+      entityAttack: true
+      entitySweepAttack: true
+      projectile: true
+      suffocation: true
+      fall: true
+      fire: true
+      fireTick: true
+      lava: true
+      drowning: true
+      blockExplosion: true
+      entityExplosion: true
+      voidDamage: true
+      lightning: true
+      suicide: true
+      starvation: true
+      poison: true
+      magic: true
+      wither: true
+      fallingBlock: true
+      thorns: true
+      dragonBreath: true
+      custom: true
+      flyIntoWall: true
+      hotFloor: true
+      cramming: true
+
+  # Knockback immunity
+  knockbackImmunity:
+    enable: false
+    message: "&cYou will not receive knockback in this world!"
+
+  # Portal restrictions
+  portal:
+    enable: false
+    message: "&cUsing portals is disabled in this world!"
+    all: false
+    nether: false
+    ender: false

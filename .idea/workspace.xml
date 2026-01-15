@@ -9,18 +9,99 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2025/08/21/03:00:15&#10;&#10;WorldRulesManage v5.2 — Fixed the error with the itemPickup rule!&#10;&#10;WorldRulesManage V5.2 版本修复，itemPickup规则的报错！">
+    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2025/08/24/05:02:35&#10;&#10;A new fatalInjury option has been added under playerDamage (default: disabled).&#10;It does not prevent fatal damage (e.g., falling from a great height, /kill, etc.).&#10;&#10;Note:&#10;If you do not need the fatalInjury feature, you can ignore this update or update without making any changes.&#10;If you are upgrading from v5.2 to v5.3, simply add fatalInjury: true under playerDamage. A configuration example has been provided below.&#10;&#10;翻译： 在 playerDamage 项中新增了 fatalInjury 开关(默认为关闭)，它不会阻止致命伤害(如: 高空坠落，使/kill，等)。 注意： 1. 如果您不需要使用 fatalInjury 功能您可以忽略本次更新或者更新什么也不做！ 2. 如果是从 v5.2 升级到 v5.3 版本的请在 playerDamage 中添加 fatalInjur: true 即可，相应设立以放在底下。">
+      <change afterPath="$PROJECT_DIR$/.idea/WorldRulesManage.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/HybridServerSpawn_1_1_9_4_BETA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/Plugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/debug/Debug.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/BlockBurn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/CreatureSpawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/EntityChangeBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/EntityExplode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/FireSpread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/GrassSpread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/IceMelts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/IceSpread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/LeavesDecay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/LiquidFlow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/MyceliumSpread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/TimeChange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/WaterFreezes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/WeatherChange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/AlwaysSatiated.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/BlockBreak.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/BlockPlace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/CustomInjured.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/HungerFrozen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/KnockbackImmunity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/LightTheBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/TriggerBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UseItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/AutoReload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Get.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Language.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Ref.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/WorldUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldDataLoad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldRuleField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config_zh_CN.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/world.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/world_nether.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/world_the_end.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world_nether.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world_the_end.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/language/en_US.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/language/zh_CN.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localRules/world.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localRules/world_nether.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localRules/world_the_end.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_nether.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_the_end.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/RadiusFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/RadiusFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/WorldFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/WorldFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/CreatureSpawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/CreatureSpawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerDamage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerDamage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/radius.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/radius.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/world.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/radius.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/radius.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zh-cn/world.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/Commands/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/commands/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/ConfigFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/FileWatcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/MessageFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/RadiusFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ConfigFile/WorldFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/DebugMode/DebugModeListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/CreatureSpawn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/EntityBlockBreak.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/FlameSpread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/LeavesDecay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/LiquidFlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerGlobalRules/WeatherChange.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockBreak.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockIgnite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/BlockPlace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/FoodLevelChange.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemDrop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemDrop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/ItemPickup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemPickup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerBucketEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UsePail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerDamage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerInteractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerPortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/Portal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/ListenerPlayerRules/PlayerUseItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/message.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/radius.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/world.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/message.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/radius.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zh-cn/world.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +127,18 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MaddyJace/WorldRulesManage.git&quot;,
-    &quot;accountId&quot;: &quot;b86cb299-73b2-4bc2-b868-3a03b6831c84&quot;
+    &quot;accountId&quot;: &quot;d3795471-edb2-43a3-85ab-5988655985aa&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/corretto-1.8.0_462/src.zip!/java/lang/StringBuilder.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api/1.12.2-R0.1-SNAPSHOT/spigot-api-1.12.2-R0.1-20180712.012057-156.jar!/org/bukkit/configuration/ConfigurationSection.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api/1.12.2-R0.1-SNAPSHOT/spigot-api-1.12.2-R0.1-20180712.012057-156.jar!/org/bukkit/event/entity/EntityExplodeEvent.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-platform.jar!/standardSchemas/ejb-jar_2_0.dtd" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -58,89 +148,73 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JAR 应用程序.Server 1.12.2.executor&quot;: &quot;Debug&quot;,
-    &quot;JAR 应用程序.Server1.12.2.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.WorldRulesManage package.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/MinecraftPlugins/WorldRulesManage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JAR 应用程序.Server 1.12.2.executor": "Debug",
+    "JAR 应用程序.Server1.12.2.executor": "Run",
+    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
+    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "JavaVariableFindUsagesOptions.isSearchForAccessors": "true",
+    "JavaVariableFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "Maven.WorldRulesManage [package].executor": "Run",
+    "Maven.WorldRulesManage [verify].executor": "Run",
+    "Maven.WorldRulesManage package.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/IDEA/MinecraftPlugins/WorldRulesManage/src/main/resources/localRules/zh_CN",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "工件",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\MinecraftPlugins\WorldRulesManage" />
-      <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\resources" />
-      <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\java\com\maddyjace\worldrulesmanage" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\localRules\zh_CN" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\localRules\en_US" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\globalRules\en_US" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\java\com\maddyjace\worldrulesmanage\playerrules" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\radius" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\localRules" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\globalRules" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\localRules\zh_CN" />
+      <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\globalRules\zh_CN" />
       <recent name="D:\MinecraftPlugins\WorldRulesManage\src\main\resources\zh-cn" />
     </key>
-  </component>
-  <component name="RunManager" selected="Maven.WorldRulesManage package">
-    <configuration name="Server1.12.2" type="JarApplication">
-      <option name="JAR_PATH" value="F:/Minecraft Server/1.12.2/spigot-1.12.2.jar" />
-      <option name="VM_PARAMETERS" value="-Xmx2G -Xms1G -XX:+UseG1GC" />
-      <option name="WORKING_DIRECTORY" value="F:\Minecraft Server\1.12.2" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WorldRulesManage package" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="cmdOptions" />
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="package" />
-              </list>
-            </option>
-            <option name="multimoduleDir" />
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="projectsCmdOptionValues">
-              <list />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="D:\MinecraftPlugins\WorldRulesManage" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="JAR 应用程序.Server1.12.2" />
-      <item itemvalue="Maven.WorldRulesManage package" />
-    </list>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.maddyjace.worldrulesmanage.util" />
+      <recent name="com.maddyjace.worldrulesmanage.playerrules" />
+      <recent name="com.maddyjace.worldrulesmanage.worldradiusrule" />
+      <recent name="com.maddyjace.worldrulesmanage" />
+      <recent name="com.maddyjace.worldrulesmanage.ConfigFile" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.13" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.13" />
       </set>
     </attachedChunks>
   </component>
@@ -183,7 +257,41 @@
       <workItem from="1753597511098" duration="14000" />
       <workItem from="1755715360324" duration="1255000" />
       <workItem from="1755716657889" duration="366000" />
-      <workItem from="1755974090696" duration="8267000" />
+      <workItem from="1755974090696" duration="9315000" />
+      <workItem from="1755984396682" duration="320000" />
+      <workItem from="1756326645565" duration="2000" />
+      <workItem from="1758875270661" duration="668000" />
+      <workItem from="1758956136408" duration="6000" />
+      <workItem from="1760284501076" duration="546000" />
+      <workItem from="1760352005982" duration="160000" />
+      <workItem from="1761585232705" duration="745000" />
+      <workItem from="1761594035000" duration="2000" />
+      <workItem from="1761811738015" duration="2503000" />
+      <workItem from="1761816968725" duration="24000" />
+      <workItem from="1761817069039" duration="781000" />
+      <workItem from="1763597853871" duration="838000" />
+      <workItem from="1764821332727" duration="938000" />
+      <workItem from="1765035240388" duration="1309000" />
+      <workItem from="1765057585095" duration="4717000" />
+      <workItem from="1765090264391" duration="5553000" />
+      <workItem from="1765144478761" duration="4906000" />
+      <workItem from="1765149447304" duration="30000" />
+      <workItem from="1765149581896" duration="2876000" />
+      <workItem from="1765155374888" duration="2000" />
+      <workItem from="1765182369963" duration="11000" />
+      <workItem from="1766518269531" duration="14926000" />
+      <workItem from="1766641922495" duration="14505000" />
+      <workItem from="1766656739060" duration="11254000" />
+      <workItem from="1766714998140" duration="25431000" />
+      <workItem from="1766952916250" duration="14603000" />
+      <workItem from="1767378220706" duration="1352000" />
+      <workItem from="1767538444762" duration="1216000" />
+      <workItem from="1767561773443" duration="2260000" />
+      <workItem from="1767635560018" duration="613000" />
+      <workItem from="1767918580124" duration="570000" />
+      <workItem from="1767920750353" duration="41000" />
+      <workItem from="1768343745590" duration="28860000" />
+      <workItem from="1768428300954" duration="41868000" />
     </task>
     <task id="LOCAL-00001" summary="Fix the null pointer error occurring when the plugin starts!">
       <option name="closed" value="true" />
@@ -225,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755716420074</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="2025/08/24/05:02:35&#10;&#10;A new fatalInjury option has been added under playerDamage (default: disabled).&#10;It does not prevent fatal damage (e.g., falling from a great height, /kill, etc.).&#10;&#10;Note:&#10;If you do not need the fatalInjury feature, you can ignore this update or update without making any changes.&#10;If you are upgrading from v5.2 to v5.3, simply add fatalInjury: true under playerDamage. A configuration example has been provided below.&#10;&#10;翻译： 在 playerDamage 项中新增了 fatalInjury 开关(默认为关闭)，它不会阻止致命伤害(如: 高空坠落，使/kill，等)。 注意： 1. 如果您不需要使用 fatalInjury 功能您可以忽略本次更新或者更新什么也不做！ 2. 如果是从 v5.2 升级到 v5.3 版本的请在 playerDamage 中添加 fatalInjur: true 即可，相应设立以放在底下。">
+      <option name="closed" value="true" />
+      <created>1755982956214</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755982956214</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +376,7 @@
     <MESSAGE value="2025/07/24/22/34/15&#10;&#10;Major Update: WorldRulesManage 5.0&#10;Updating to this version requires deleting the previous configuration files and regenerating them.&#10;Now supports customizing messages for each world's rules individually.&#10;A new option to block entity spawning has been added to the global rules.&#10;World-level global rules now support always keeping the weather clear.&#10;Finally, the core logic has been optimized.&#10;&#10;重大更新 WorldRulesManage-5.0，更新此版本需要删除之前版本的配置文件重新生成。&#10;现在支持给每个世界的规则单独配置提示信息，全局规则中加入了阻止实体生成的选项，世界全局规则中加入了始终天气为晴天，最后优化了核心逻辑。" />
     <MESSAGE value="2025/07/27/01/28/59&#10;&#10;Kind Reminder: If version 5.0 already meets the needs of your server, you may ignore this update!&#10;WorldRulesManage v5.1 adds support for using whitelist/blacklist in blockBreak and blockPlace to restrict the breaking and placing of specific blocks.&#10;Additionally, you will need to update the blockBreak and blockPlace sections in your configuration file.&#10;A configuration example has been provided in the update log.&#10;&#10;温馨提示：如果v5.0版本已经满足了您的服务器需求，可以忽略本次更新！&#10;WorldRulesManage v5.1 更新了 blockBreak 和 blockPlace 可以使用黑白名单阻止特定方块破坏以及放置，此外您还需要更新配置文件的blockBreak 和 blockPlace配置项，配置示例我已放在更新日志中。" />
     <MESSAGE value="2025/08/21/03:00:15&#10;&#10;WorldRulesManage v5.2 — Fixed the error with the itemPickup rule!&#10;&#10;WorldRulesManage V5.2 版本修复，itemPickup规则的报错！" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025/08/21/03:00:15&#10;&#10;WorldRulesManage v5.2 — Fixed the error with the itemPickup rule!&#10;&#10;WorldRulesManage V5.2 版本修复，itemPickup规则的报错！" />
+    <MESSAGE value="2025/08/24/05:02:35&#10;&#10;A new fatalInjury option has been added under playerDamage (default: disabled).&#10;It does not prevent fatal damage (e.g., falling from a great height, /kill, etc.).&#10;&#10;Note:&#10;If you do not need the fatalInjury feature, you can ignore this update or update without making any changes.&#10;If you are upgrading from v5.2 to v5.3, simply add fatalInjury: true under playerDamage. A configuration example has been provided below.&#10;&#10;翻译： 在 playerDamage 项中新增了 fatalInjury 开关(默认为关闭)，它不会阻止致命伤害(如: 高空坠落，使/kill，等)。 注意： 1. 如果您不需要使用 fatalInjury 功能您可以忽略本次更新或者更新什么也不做！ 2. 如果是从 v5.2 升级到 v5.3 版本的请在 playerDamage 中添加 fatalInjur: true 即可，相应设立以放在底下。" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025/08/24/05:02:35&#10;&#10;A new fatalInjury option has been added under playerDamage (default: disabled).&#10;It does not prevent fatal damage (e.g., falling from a great height, /kill, etc.).&#10;&#10;Note:&#10;If you do not need the fatalInjury feature, you can ignore this update or update without making any changes.&#10;If you are upgrading from v5.2 to v5.3, simply add fatalInjury: true under playerDamage. A configuration example has been provided below.&#10;&#10;翻译： 在 playerDamage 项中新增了 fatalInjury 开关(默认为关闭)，它不会阻止致命伤害(如: 高空坠落，使/kill，等)。 注意： 1. 如果您不需要使用 fatalInjury 功能您可以忽略本次更新或者更新什么也不做！ 2. 如果是从 v5.2 升级到 v5.3 版本的请在 playerDamage 中添加 fatalInjur: true 即可，相应设立以放在底下。" />
   </component>
 </project>

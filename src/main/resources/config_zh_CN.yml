@@ -1,0 +1,84 @@
+#
+# 自动化语言
+# 根据服务器和玩家本地语言，来查找language文件夹中支持的语言文件，
+# 并为服务器和玩家本地化翻译，没有受支持的语言文件将强制默认使用en_US.yml中的语言。
+#
+language: "en_US"
+
+#
+# 提示冷却
+# 防止高频事件成功触发时给玩家提示的信息，每次提示进入冷却结束后才会再次提示。
+#
+infoPeriod: 5 # 单位为秒
+
+#
+# 自动重载
+# 当配置文件发生修改时插件会自动重新载入无需输入命令
+#
+autoReload:
+  enable: true
+  # 单位为秒
+  period: 5
+
+#
+# Debug
+# 这里可以快速帮助我们获取 物品/方块/实体 的名称。
+# 只有管理员才会触发日记在控制台，非配置模式下请关闭该功能。
+#
+debug:
+  entityExplodeName: false            # 实体爆炸
+  blockExplodeName: false             # 方块爆炸
+  entityChangeName: false             # 方块改变
+  blockBurnName: false                # 方块燃烧
+  creatureSpawnName: false            # 实体生成
+  blockBreakName: false               # 方块破坏
+  blockPlaceName: false               # 方块放置
+  entityPickupItemName: false         # 物品拿起
+  playerDropItemName: false           # 物品丢弃
+  playerInteractRightClickName: false # 方块交互
+  playerPhysicalInteractName: false   # 方块触发
+  blockIgniteName: false              # 方块点燃
+  playerUseItemName: false            # 物品使用
+  playerInteractEntityName: false     # 实体交互
+  entityDamageName: false             # 受伤类型
+
+#
+# 事件监听器总开关
+# 首先我们必须要知道Minecraft事件无时无刻都在发生，每次事件发生都会执行插件代码，
+# 如果只是想使用部分功能(例如: blockBreak和blockPlace)，而其它功能不使用但开启会消耗性能。
+#
+# 可以根据使用需求来轻量化定制事件监听器的开关
+# 某些事件一旦关闭将会全局失效，不论你在globalRules/radiusRules配置中是开启还是关闭功能都无效。
+#
+# 如果你没有理解该功能的真实意图，保持默认即可。
+#
+listener:
+  blockBurn: true         # 方块燃烧
+  creatureSpawn: true     # 生成生物
+  entityChangeBlock: true # 实体改变方块
+  entityExplode: true     # 实体/方块爆炸
+  fireSpread: true        # 火焰蔓延
+  grassSpread: true       # 草地蔓延
+  iceMelts: true          # 冰融化
+  iceSpread: true         # 冰霜蔓延（特殊：冰霜行者）
+  leavesDecay: true       # 树叶消失
+  liquidFlow: true        # 液体流动
+  myceliumSpread: true    # 菌丝蔓延
+  waterFreezes: true      # 水结冰
+  weatherChange: true     # 天气变化
+  timeChange: true        # 时间变化
+  alwaysSatiated: true    # 恢复玩家饥饿值
+  blockBreak: true        # 玩家方块破坏
+  blockPlace: true        # 玩家放置方块
+  customInjured: true     # 玩家受伤
+  hungerFrozen: true      # 防止饥饿
+  interactBlock: true     # 方块交互
+  interactEntity: true    # 实体交互
+  itemDrop: true          # 扔出物品
+  itemPickup: true        # 捡起物品
+  knockbackImmunity: true # 防止击退玩家
+  lightTheBlock: true     # 点燃方块
+  portal: true            # 进传送门
+  triggerBlock: true      # 方块触发
+  useItem: true           # 使用物品
+  usePail: true           # 禁止用桶

@@ -1,0 +1,263 @@
+#
+# Please note: the file name is the world name.
+# The world name and configuration keys are strictly case-sensitive.
+# Configuration keys are strictly case-sensitive (except for input values).
+# If you don’t know how to configure this, you can join https://discord.gg/xCKeUReG for help.
+#
+
+# Global rules
+#   These rules apply to the world itself, not to player behavior!
+globalRules:
+  # Disable liquid flow
+  liquidFlow: false
+  # Disable leaf decay
+  leavesDecay: false
+  # Disable ice melting
+  iceMelts: false
+  # Disable water freezing
+  waterFreezes: false
+  # Disable ice spreading (special case: Frost Walker)
+  iceSpread: false
+  # Disable grass spreading
+  grassSpread: false
+  # Disable mycelium spreading
+  myceliumSpread: false
+  # Disable fire spreading
+  fireSpread: false
+  # Change world weather (-1 = natural, 1 = clear, 2 = rain/snow, 3 = thunderstorm)
+  # Details: Weather has absolute priority. Any other plugin or command that tries
+  # to change the weather will fail. Set to -1 to disable this feature.
+  weatherChange: -1
+  # Change world time (-1 = natural, 0 = sunrise, 6000 = noon, 12000 = sunset, 18000 = midnight)
+  # Details: Time has absolute priority. Any other plugin or command that tries
+  # to change the time will fail. Set to -1 to disable this feature.
+  timeChange: -1
+
+  # Disable creature spawning
+  creatureSpawn:
+    enable: false
+    #
+    # BLACKLIST:
+    #   - Entities listed in entityList are NOT allowed to spawn
+    #   - Entities not listed can spawn normally
+    # WHITELIST:
+    #   - Only entities listed in entityList are allowed to spawn
+    #   - All others are completely blocked
+    # ⚠ Special note:
+    #   If you want to prevent ANY entity from spawning in the world:
+    #   - Set checkMode to WHITELIST
+    #   - Leave entityList empty (entityList: [])
+    #
+    checkMode: "BLACKLIST"
+    #
+    # Entity list (use Bukkit entity names, such as ZOMBIE, CREEPER, COW)
+    # Example:
+    #   - In BLACKLIST mode: these entities will not spawn
+    #   - In WHITELIST mode: only these entities can spawn
+    #
+    entityList: []
+
+  # Prevent entities from changing blocks
+  # If you don’t use the following feature, you can delete the entire section.
+  # If not defined, it is considered disabled. Below is an example using registration.
+  # The same applies to other features; descriptions will not be repeated.
+  #
+  # entityChangeBlock:
+  #  enable: false
+  #  checkMode: "WHITELIST"
+  #  entityList: []
+
+  # Disable explosions
+  entityExplode:
+    enable: false
+    # You may omit checkMode and list.
+    # If omitted, the default mode is WHITELIST.
+    # checkMode: "WHITELIST"
+    # list: []
+
+  # Prevent blocks from burning
+  blockBurn:
+    enable: false
+    # checkMode: "WHITELIST"
+    # blockList: []
+
+# Player rules
+playerRules:
+  # Permission (players with this permission bypass all checks; disable OP when testing)
+  permission: "worldrulesmanage.admin"
+
+  # Prevent block breaking
+  blockBreak:
+    enable: false
+    #
+    # To disable messages entirely, remove the message option.
+    # If you don’t like inventory messages, you can choose a custom display:
+    #   "title: `&cInvalid action` `&6Block breaking is disabled in this world!`"
+    #   "actionbar: &cBlock breaking is disabled in this world!"
+    #   "tell: &cBlock breaking is disabled in this world!"
+    #
+    message: "title: &cBlock breaking is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList: []
+
+  # Prevent block placing
+  blockPlace:
+    enable: false
+    message: "&cBlock placing is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList: []
+
+  # Prevent item pickup
+  itemPickup:
+    enable: false
+    message: "&cPicking up items is disabled in this world!"
+    checkMode: "WHITELIST"
+    itemList: []
+
+  # Prevent item dropping
+  itemDrop:
+    enable: false
+    message: "&cDropping items is disabled in this world!"
+    checkMode: "WHITELIST"
+    itemList: []
+
+  # Prevent block interaction
+  interactBlock:
+    enable: false
+    message: "&cInteracting with blocks is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList:
+      - "FURNACE" # Furnace
+
+  # Prevent block triggering
+  triggerBlock:
+    enable: false
+    message: "&cTriggering blocks is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList:
+      - "SOIL" # Farmland
+
+  # Prevent igniting blocks
+  lightTheBlock:
+    enable: false
+    message: "&cIgniting blocks is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList: []
+
+  # Prevent item usage
+  useItem:
+    enable: false
+    message: "&cUsing items is disabled in this world!"
+    checkMode: "WHITELIST"
+    itemList:
+      - "SNOWBALL"       # Snowball
+      - "EGG"            # Egg
+      - "ITEM_FRAME"     # Item frame
+      - "PAINTING"       # Painting
+
+  # Prevent entity interaction
+  # Details: Entity interaction is broad (e.g. attacking entities, riding minecarts, etc.)
+  interactEntity:
+    enable: false
+    message: "&cInteracting with entities is disabled in this world!"
+    checkMode: "WHITELIST"
+    entityList:
+      - "ITEM_FRAME"     # Item frame
+      - "PAINTING"       # Painting
+      - "ARMOR_STAND"    # Armor stand
+
+  # Prevent bucket usage (e.g. filling buckets with water or lava)
+  usePail:
+    enable: false
+    message: "&cUsing buckets is disabled in this world!"
+
+  # Prevent player hunger
+  hungerFrozen:
+    enable: false
+    message: "&cYou will not get hungry in this world!"
+
+  # Always restore player hunger
+  alwaysSatiated:
+    enable: false
+    foodLevel: 20 # Level: 20
+    message: "&cYour hunger has been automatically restored in this world!"
+
+  # Custom damage control
+  customInjured:
+    # Master switch
+    enable: false
+    message: "&cYou will not take functional damage in this world!"
+    # Only effective when damageCause is enabled; otherwise standard logic applies
+    # (this switch is affected by enable).
+    damageCauseEnable: false
+    damageCause:
+      # Apply to all damage types
+      allCause: false
+      # Contact damage (e.g. cactus)
+      contact: true
+      # Entity attack damage (e.g. mobs or players)
+      entityAttack: true
+      # Entity sweep attack damage
+      entitySweepAttack: true
+      # Projectile damage (e.g. arrows, snowballs)
+      projectile: true
+      # Suffocation damage
+      suffocation: true
+      # Fall damage
+      fall: true
+      # Direct fire damage
+      fire: true
+      # Fire tick damage
+      fireTick: true
+      # Lava damage
+      lava: true
+      # Drowning damage
+      drowning: true
+      # Block explosion damage (e.g. TNT)
+      blockExplosion: true
+      # Entity explosion damage (e.g. Creeper)
+      entityExplosion: true
+      # Void damage
+      voidDamage: true
+      # Lightning damage
+      lightning: true
+      # Suicide damage
+      suicide: true
+      # Starvation damage
+      starvation: true
+      # Poison damage
+      poison: true
+      # Magic damage (e.g. enchantments or potions)
+      magic: true
+      # Wither effect damage
+      wither: true
+      # Falling block damage (e.g. sand or gravel)
+      fallingBlock: true
+      # Thorns damage
+      thorns: true
+      # Dragon breath damage
+      dragonBreath: true
+      # Custom damage sources
+      custom: true
+      # Flying into walls
+      flyIntoWall: true
+      # Hot floor damage
+      hotFloor: true
+      # Cramming damage
+      cramming: true
+
+  # Disable knockback
+  knockbackImmunity:
+    enable: false
+    message: "&cYou will not receive knockback in this world!"
+
+  # Disable portal usage
+  portal:
+    enable: false
+    message: "&cUsing portals is disabled in this world!"
+    # Note: Enabling all will also block nether and end portals.
+    all: false
+    # Disable Nether portals
+    nether: false
+    # Disable End portals
+    ender: false

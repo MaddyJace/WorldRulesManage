@@ -1,0 +1,30 @@
+# Plugin Information
+pluginName: "&7[&bWorld&aRules&6Manage&7]"
+
+# Command
+reload: "{0}: &aReload completed!"
+commandCorrectUsage: "{0}: Correct command usage &c/wrl reload"
+
+# Auto Reload
+autoReloadError:   "{0}: &cAuto-reload could not be enabled!"
+autoReloadCreate:  "{0}: &aAuto-reloaded configuration {1}"
+autoReloadChange:  "{0}: &aAuto-reloaded configuration {1}"
+autoReloadDelete:  "{0}: &cConfiguration file {1} was automatically deleted"
+autoReloadRestart: "{0}: &e{1} changed and partial reload failed, but the plugin restarted successfully!"
+
+# Debug
+entityExplodeNameDebug:            "Entity explosion, entity {0}"
+blockExplodeNameDebug:             "Block explosion, block {0}"
+entityChangeNameDebug:             "Block changed by entity {0}"
+blockBurnNameDebug:                "Block burning, block {0}"
+creatureSpawnNameDebug:            "Creature spawned, entity {0}"
+blockBreakNameDebug:               "Block broken, block {0}"
+blockPlaceNameDebug:               "Block placed, block {0}"
+entityPickupItemNameDebug:         "Item picked up, item {0}"
+playerDropItemNameDebug:           "Item dropped, item {0}"
+playerInteractRightClickNameDebug: "Block interacted, block {0}"
+playerPhysicalInteractNameDebug:   "Block triggered, block {0}"
+blockIgniteNameDebug:              "Block ignited, block {0}"
+playerUseItemNameDebug:            "Item used, item {0}"
+playerInteractEntityNameDebug:     "Entity interacted, entity {0}"
+entityDamageNameDebug:             "Damage type, type {0}"

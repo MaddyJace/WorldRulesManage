@@ -4,7 +4,7 @@
   <groupId>com.MaddyJace</groupId>
   <artifactId>WorldRulesManage</artifactId>
   <name>WorldRulesManage</name>
-  <version>5.3</version>
+  <version>6.0</version>
   <build>
     <resources>
       <resource>

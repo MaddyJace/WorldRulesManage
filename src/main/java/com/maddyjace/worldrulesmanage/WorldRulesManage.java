@@ -1,134 +1,279 @@
 package com.maddyjace.worldrulesmanage;
 
-import com.maddyjace.worldrulesmanage.Commands.Commands;
-import com.maddyjace.worldrulesmanage.ConfigFile.*;
-import com.maddyjace.worldrulesmanage.DebugMode.DebugModeListener;
-import com.maddyjace.worldrulesmanage.ListenerGlobalRules.*;
-import com.maddyjace.worldrulesmanage.ListenerPlayerRules.*;
+import com.maddyjace.worldrulesmanage.debug.Debug;
+import com.maddyjace.worldrulesmanage.globalrules.*;
+import com.maddyjace.worldrulesmanage.playerrules.*;
+import com.maddyjace.worldrulesmanage.util.*;
+import com.maddyjace.worldrulesmanage.worldrule.WorldDataLoad;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.event.HandlerList;
+import org.bukkit.scheduler.BukkitTask;
 
-import java.io.File;
 
-public final class WorldRulesManage extends JavaPlugin {
+public enum WorldRulesManage {
+    INSTANCE; // 单例实例
 
-    private FileWatcher watcher;
+    private AutoReload globalRulesAutoReload;
+    private AutoReload localRulesAutoReload;
+    private AutoReload languageAutoReload;
+    private AutoReload configAutoReload;
+    private BukkitTask autoReloadTask;
 
-    @Override
     public void onEnable() {
+        // 初始化 Config
+        Config.INSTANCE.onEnable();
+        Config c = Config.INSTANCE;
 
-        // 载入 config.yml world.yml message.yml 文件
-        File configFile = new File(getDataFolder(), "config.yml");
-        if (!configFile.exists()) {
-            saveResource("config.yml", false);
-            saveResource("zh-cn/config.yml", false);
-        }
-        File worldFile = new File(getDataFolder(), "world.yml");
-        if (!worldFile.exists()) {
-            saveResource("world.yml", false);
-            saveResource("zh-cn/world.yml", false);
-        }
-        File radiusFile = new File(getDataFolder(), "radius.yml");
-        if (!radiusFile.exists()) {
-            saveResource("radius.yml", false);
-            saveResource("zh-cn/radius.yml", false);
-        }
-        File messageFile = new File(getDataFolder(), "message.yml");
-        if (!messageFile.exists()) {
-            saveResource("message.yml", false);
-            saveResource("zh-cn/message.yml", false);
-        }
+        // 初始化 WorldDataLoad
+        WorldDataLoad.INSTANCE.onEnable();
+        // 初始化 Message
+        Message.INSTANCE = new Message(c.infoPeriod);
+        // 初始化 监听器
+        registerListeners();
+        // 初始化 语言
+        Language.Get.onEnable();
 
-        // 初始化 FileWatcher 类
-        watcher = new FileWatcher(getDataFolder().getAbsolutePath(), ".yml", 100);
-        // 初始化 config.yml 类
-        ConfigFile.INSTANCE.initialize(this);
-        // 初始化 radius.yml 类
-        RadiusFile.INSTANCE.initialize(this);
-        // 初始化 world.yml 类
-        WorldFile.INSTANCE.initialize(this);
-        // 初始化 message.yml 类
-        MessageFile.INSTANCE.initialize(this, Bukkit.getPluginManager().getPlugin("PlaceholderAPI"));
 
-        // 当 config.yml 和 autoReload 为 true 时
-        if(ConfigFile.getConfig("autoReload")) {
-            // 开启文件监听
-            try {
-                watcher.start();
-            } catch (Exception e) {
-                getLogger().warning("The automatic reload function failed to enable!");
+        if (c.autoReloadEnable) {
+            if (autoReloadTask != null) {
+                autoReloadTask.cancel();
+                autoReloadTask = null;
             }
+            autoReloadTask = Bukkit.getScheduler().runTaskAsynchronously(Get.plugin(), () -> {
+                long second = c.autoReloadPeriod * 1000L;
+                globalRulesAutoReload = new AutoReload(WorldDataLoad.globalRulesFolder.getPath(),
+                        second, false, ".yml");
+                globalRulesAutoReload.start();
+                localRulesAutoReload  = new AutoReload(WorldDataLoad.localRulesFolder.getPath(),
+                        second, false, ".yml");
+                localRulesAutoReload.start();
+                languageAutoReload = new AutoReload(Language.getLanguageFolder().getPath(),
+                        second, false, ".yml", ".yaml");
+                languageAutoReload.start();
+                configAutoReload  = new AutoReload(Get.plugin().getDataFolder().getPath(),
+                        second, false, ".yml");
+                configAutoReload.start();
+            });
         }
-
-        // 注册 点燃方块 监听器
-        getServer().getPluginManager().registerEvents(new BlockIgnite(), this);
-        // 注册 火焰传播 监听器
-        getServer().getPluginManager().registerEvents(new FlameSpread(), this);
-        // 注册 树叶自然衰减 监听器
-        getServer().getPluginManager().registerEvents(new LeavesDecay(), this);
-        // 注册 方块被破坏 监听器
-        getServer().getPluginManager().registerEvents(new BlockBreak(), this);
-        // 注册 方块被放置 监听器
-        getServer().getPluginManager().registerEvents(new BlockPlace(), this);
-        // 注册 捡起物品 监听器
-        getServer().getPluginManager().registerEvents(new ItemPickup(), this);
-        // 注册 丢物品 监听器
-        getServer().getPluginManager().registerEvents(new ItemDrop(), this);
-        // 注册 使用桶 监听器
-        getServer().getPluginManager().registerEvents(new PlayerBucketEmpty(), this);
-        // 注册 饥饿度 监听器
-        getServer().getPluginManager().registerEvents(new FoodLevelChange(), this);
-        // 注册 玩家受伤 监听器
-        getServer().getPluginManager().registerEvents(new PlayerDamage(), this);
-        // 注册 玩家传送 监听器
-        getServer().getPluginManager().registerEvents(new PlayerPortal(), this);
-        // 注册 使用物品 监听器
-        getServer().getPluginManager().registerEvents(new PlayerUseItem(), this);
-        // 注册 右键实体交互 监听器
-        getServer().getPluginManager().registerEvents(new PlayerInteractEntity(), this);
-        // 注册 实体破坏方块 监听器
-        getServer().getPluginManager().registerEvents(new EntityBlockBreak(), this);
-        // 注册 液体流动 监听器
-        getServer().getPluginManager().registerEvents(new LiquidFlow(), this);
-        // 注册 生物生成 监听器
-        getServer().getPluginManager().registerEvents(new CreatureSpawn(), this);
-        // 注册 世界天气 监听器
-        getServer().getPluginManager().registerEvents(new WeatherChange(this), this);
-        // 注册 调试模式 监听器
-        getServer().getPluginManager().registerEvents(new DebugModeListener(), this);
-
-        // 注册 命令 和 Tab键 监听器
-        Commands commandHandler = new Commands();
-        this.getCommand("worldrulesmanage").setExecutor(commandHandler);     // 命令
-        this.getCommand("worldrulesmanage").setTabCompleter(commandHandler); // Tab
-
-        Bukkit.getConsoleSender().sendMessage("§b§l");
-        Bukkit.getConsoleSender().sendMessage("§b§l");
-        Bukkit.getConsoleSender().sendMessage("§b§l _       __           __    ____  ___                           ");
-        Bukkit.getConsoleSender().sendMessage("§b§l| |     / /___  _____/ /___/ /  |/  /___ _____  ____ _____ ____ ");
-        Bukkit.getConsoleSender().sendMessage("§b§l| | /| / / __ \\/ ___/ / __  / /|_/ / __ `/ __ \\/ __ `/ __ `/ _ \\");
-        Bukkit.getConsoleSender().sendMessage("§b§l| |/ |/ / /_/ / /  / / /_/ / /  / / /_/ / / / / /_/ / /_/ /  __/");
-        Bukkit.getConsoleSender().sendMessage("§b§l|__/|__/\\____/_/  /_/\\__,_/_/  /_/\\__,_/_/ /_/\\__,_/\\__, /\\___/ ");
-        Bukkit.getConsoleSender().sendMessage("§b§l                                                   /____/       ");
-        Bukkit.getConsoleSender().sendMessage("§b§l");
-        Bukkit.getConsoleSender().sendMessage("§6Our community address");
-        Bukkit.getConsoleSender().sendMessage("§7QQ§f: §7https://qm.qq.com/q/fKKqt7CF0W");
-        Bukkit.getConsoleSender().sendMessage("§7Discord§f: §7https://discord.gg/eHkxCTUh");
-        Bukkit.getConsoleSender().sendMessage("§b§l");
-        Bukkit.getConsoleSender().sendMessage("§7Author: §aMaddyJace §7FeedbackEmail: §edixiaomai@qq.com §7Version: §e1.0");
-        Bukkit.getConsoleSender().sendMessage("§f-------------------------------------------------------------------------------------");
-        Bukkit.getConsoleSender().sendMessage("§b§l");
-        Bukkit.getConsoleSender().sendMessage("§b§l");
-
     }
 
-    @Override
+
     public void onDisable() {
-        // 关闭文件监听
-        try {
-            watcher.stop();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        // 释放资源
+        Config.INSTANCE.onDisable();
+        WorldDataLoad.INSTANCE.onDisable();
+        Message.INSTANCE = null;
+        unregisterListeners();
+        Language.Get.onEnable();
+
+        globalRulesAutoReload.stop();
+        localRulesAutoReload.stop();
+        languageAutoReload.stop();
+        configAutoReload.stop();
+    }
+
+
+
+    // 注册的监听器字段
+    private Debug debug;
+    private BlockBurn blockBurn;
+    private CreatureSpawn creatureSpawn;
+    private EntityChangeBlock entityChangeBlock;
+    private EntityExplode entityExplode;
+    private FireSpread fireSpread;
+    private GrassSpread grassSpread;
+    private IceMelts iceMelts;
+    private IceSpread iceSpread;
+    private LeavesDecay leavesDecay;
+    private LiquidFlow liquidFlow;
+    private MyceliumSpread myceliumSpread;
+    private WaterFreezes waterFreezes;
+    private WeatherChange weatherChange;
+
+    private AlwaysSatiated alwaysSatiated;
+    private BlockBreak blockBreak;
+    private BlockPlace blockPlace;
+    private CustomInjured customInjured;
+    private HungerFrozen hungerFrozen;
+    private InteractBlock interactBlock;
+    private InteractEntity interactEntity;
+    private ItemDrop itemDrop;
+    private ItemPickup itemPickup;
+    private KnockbackImmunity knockbackImmunity;
+    private LightTheBlock lightTheBlock;
+    private Portal portal;
+    private TriggerBlock triggerBlock;
+    private UseItem useItem;
+    private UsePail usePail;
+
+    /** 注册监听器 */
+    public void registerListeners() {
+        Config c = Config.INSTANCE;
+
+        if (c.entityExplodeName || c.blockExplodeName || c.entityChangeName || c.blockBurnName ||
+            c.creatureSpawnName || c.blockBreakName || c.blockPlaceName || c.entityPickupItemName ||
+            c.playerDropItemName || c.playerInteractRightClickName || c.playerPhysicalInteractName ||
+            c.blockIgniteName || c.playerUseItemName || c.playerInteractEntityName || c.entityDamageName
+        ) {
+            debug = new Debug();
+            Get.plugin().getServer().getPluginManager().registerEvents(debug, Get.plugin());
+        }
+
+        if (c.blockBurn) {
+            blockBurn = new BlockBurn();
+            Get.plugin().getServer().getPluginManager().registerEvents(blockBurn, Get.plugin());
+        }
+        if (c.creatureSpawn) {
+            creatureSpawn = new CreatureSpawn();
+            Get.plugin().getServer().getPluginManager().registerEvents(creatureSpawn, Get.plugin());
+        }
+        if (c.entityChangeBlock) {
+            entityChangeBlock = new EntityChangeBlock();
+            Get.plugin().getServer().getPluginManager().registerEvents(entityChangeBlock, Get.plugin());
+        }
+        if (c.entityExplode) {
+            entityExplode = new EntityExplode();
+            Get.plugin().getServer().getPluginManager().registerEvents(entityExplode, Get.plugin());
+        }
+        if (c.fireSpread) {
+            fireSpread = new FireSpread();
+            Get.plugin().getServer().getPluginManager().registerEvents(fireSpread, Get.plugin());
+        }
+        if (c.grassSpread) {
+            grassSpread = new GrassSpread();
+            Get.plugin().getServer().getPluginManager().registerEvents(grassSpread, Get.plugin());
+        }
+        if (c.iceMelts) {
+            iceMelts = new IceMelts();
+            Get.plugin().getServer().getPluginManager().registerEvents(iceMelts, Get.plugin());
+        }
+        if (c.iceSpread) {
+            iceSpread = new IceSpread();
+            Get.plugin().getServer().getPluginManager().registerEvents(iceSpread, Get.plugin());
+        }
+        if (c.leavesDecay) {
+            leavesDecay = new LeavesDecay();
+            Get.plugin().getServer().getPluginManager().registerEvents(leavesDecay, Get.plugin());
+        }
+        if (c.liquidFlow) {
+            liquidFlow = new LiquidFlow();
+            Get.plugin().getServer().getPluginManager().registerEvents(liquidFlow, Get.plugin());
+        }
+        if (c.myceliumSpread) {
+            myceliumSpread = new MyceliumSpread();
+            Get.plugin().getServer().getPluginManager().registerEvents(myceliumSpread, Get.plugin());
+        }
+        if (c.waterFreezes) {
+            waterFreezes = new WaterFreezes();
+            Get.plugin().getServer().getPluginManager().registerEvents(waterFreezes, Get.plugin());
+        }
+        if (c.weatherChange) {
+            weatherChange = new WeatherChange();
+            Get.plugin().getServer().getPluginManager().registerEvents(weatherChange, Get.plugin());
+        }
+        if (c.timeChange) {
+            TimeChange.onEnable();
+        }
+
+        if (c.alwaysSatiated) {
+            alwaysSatiated = new AlwaysSatiated();
+            Get.plugin().getServer().getPluginManager().registerEvents(alwaysSatiated, Get.plugin());
+        }
+        if (c.blockBreak) {
+            blockBreak = new BlockBreak();
+            Get.plugin().getServer().getPluginManager().registerEvents(blockBreak, Get.plugin());
+        }
+        if (c.blockPlace) {
+            blockPlace = new BlockPlace();
+            Get.plugin().getServer().getPluginManager().registerEvents(blockPlace, Get.plugin());
+        }
+        if (c.customInjured) {
+            customInjured = new CustomInjured();
+            Get.plugin().getServer().getPluginManager().registerEvents(customInjured, Get.plugin());
+        }
+        if (c.hungerFrozen) {
+            hungerFrozen = new HungerFrozen();
+            Get.plugin().getServer().getPluginManager().registerEvents(hungerFrozen, Get.plugin());
+        }
+        if (c.interactBlock) {
+            interactBlock = new InteractBlock();
+            Get.plugin().getServer().getPluginManager().registerEvents(interactBlock, Get.plugin());
+        }
+        if (c.interactEntity) {
+            interactEntity = new InteractEntity();
+            Get.plugin().getServer().getPluginManager().registerEvents(interactEntity, Get.plugin());
+        }
+        if (c.itemDrop) {
+            itemDrop = new ItemDrop();
+            Get.plugin().getServer().getPluginManager().registerEvents(itemDrop, Get.plugin());
+        }
+        if (c.itemPickup) {
+            itemPickup = new ItemPickup();
+            Get.plugin().getServer().getPluginManager().registerEvents(itemPickup, Get.plugin());
+        }
+        if (c.knockbackImmunity) {
+            knockbackImmunity = new KnockbackImmunity();
+            Get.plugin().getServer().getPluginManager().registerEvents(knockbackImmunity, Get.plugin());
+        }
+        if (c.lightTheBlock) {
+            lightTheBlock = new LightTheBlock();
+            Get.plugin().getServer().getPluginManager().registerEvents(lightTheBlock, Get.plugin());
+        }
+        if (c.portal) {
+            portal = new Portal();
+            Get.plugin().getServer().getPluginManager().registerEvents(portal, Get.plugin());
+        }
+        if (c.triggerBlock) {
+            triggerBlock = new TriggerBlock();
+            Get.plugin().getServer().getPluginManager().registerEvents(triggerBlock, Get.plugin());
+        }
+        if (c.useItem) {
+            useItem = new UseItem();
+            Get.plugin().getServer().getPluginManager().registerEvents(useItem, Get.plugin());
+        }
+        if (c.usePail) {
+            usePail = new UsePail();
+            Get.plugin().getServer().getPluginManager().registerEvents(usePail, Get.plugin());
         }
     }
+
+    /** 注销监听器 */
+    @SuppressWarnings({"ALL"})
+    public void unregisterListeners() {
+        if (blockBurn         != null) { HandlerList.unregisterAll(blockBurn);         blockBurn = null; }
+        if (creatureSpawn     != null) { HandlerList.unregisterAll(creatureSpawn);     creatureSpawn = null; }
+        if (entityChangeBlock != null) { HandlerList.unregisterAll(entityChangeBlock); entityChangeBlock = null; }
+        if (entityExplode     != null) { HandlerList.unregisterAll(entityExplode);     entityExplode = null; }
+        if (fireSpread        != null) { HandlerList.unregisterAll(fireSpread);        fireSpread = null; }
+        if (grassSpread       != null) { HandlerList.unregisterAll(grassSpread);       grassSpread = null; }
+        if (iceMelts          != null) { HandlerList.unregisterAll(iceMelts);          iceMelts = null; }
+        if (iceSpread         != null) { HandlerList.unregisterAll(iceSpread);         iceSpread = null; }
+        if (leavesDecay       != null) { HandlerList.unregisterAll(leavesDecay);       leavesDecay = null; }
+        if (liquidFlow        != null) { HandlerList.unregisterAll(liquidFlow);        liquidFlow = null; }
+        if (myceliumSpread    != null) { HandlerList.unregisterAll(myceliumSpread);    myceliumSpread = null; }
+        if (waterFreezes != null) { HandlerList.unregisterAll(waterFreezes);           waterFreezes = null; }
+        if (weatherChange     != null) { HandlerList.unregisterAll(weatherChange);     weatherChange = null; }
+
+        if (alwaysSatiated    != null) { HandlerList.unregisterAll(alwaysSatiated);    alwaysSatiated = null; }
+        if (blockBreak        != null) { HandlerList.unregisterAll(blockBreak);        blockBreak = null; }
+        if (blockPlace        != null) { HandlerList.unregisterAll(blockPlace);        blockPlace = null; }
+        if (customInjured     != null) { HandlerList.unregisterAll(customInjured);     customInjured = null; }
+        if (hungerFrozen      != null) { HandlerList.unregisterAll(hungerFrozen);      hungerFrozen = null; }
+        if (interactBlock     != null) { HandlerList.unregisterAll(interactBlock);     interactBlock = null; }
+        if (interactEntity    != null) { HandlerList.unregisterAll(interactEntity);    interactEntity = null; }
+        if (itemDrop          != null) { HandlerList.unregisterAll(itemDrop);          itemDrop = null; }
+        if (itemPickup        != null) { HandlerList.unregisterAll(itemPickup);        itemPickup = null; }
+        if (knockbackImmunity != null) { HandlerList.unregisterAll(knockbackImmunity); knockbackImmunity = null; }
+        if (lightTheBlock     != null) { HandlerList.unregisterAll(lightTheBlock);     lightTheBlock = null; }
+        if (portal            != null) { HandlerList.unregisterAll(portal);            portal = null; }
+        if (triggerBlock      != null) { HandlerList.unregisterAll(triggerBlock);      triggerBlock = null; }
+        if (useItem           != null) { HandlerList.unregisterAll(useItem);           useItem = null; }
+        if (usePail           != null) { HandlerList.unregisterAll(usePail);           usePail = null; }
+        // 注销 世界时间 调度器
+        TimeChange.onDisable();
+
+        if (debug             != null) { HandlerList.unregisterAll(debug);              debug = null;}
+
+    }
+
 }

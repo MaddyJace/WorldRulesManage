@@ -1,11 +1,84 @@
-# Auto-reload configuration files
-autoReload: true
+#
+# Automated Language
+# Based on the server and player's local language, the plugin will look for supported language files in the "language" folder
+# and provide localized translations. Unsupported languages will default to en_US.yml.
+#
+language: "en_US"
 
-# When you are an admin and use an item, print the item's name to the console!
-getItemName: false
-# When you are an admin and interact with a block, print the block's name to the console!
-getBlockName: false
-# When you are an admin and interact with an entity, print the entity's name to the console!
-getEntityName: false
-# When an entity spawns, print the entity's name to the console!
-getCreatureSpawnName: false
+#
+# Info Cooldown
+# Prevents spamming players with messages when high-frequency events trigger.
+# Each message will only appear again after the cooldown ends.
+#
+infoPeriod: 5 # in seconds
+
+#
+# Auto Reload
+# Automatically reloads the plugin when configuration files are modified without entering commands.
+#
+autoReload:
+  enable: true
+  period: 5 # in seconds
+
+#
+# Debug
+# Quickly helps obtain names of items/blocks/entities.
+# Only administrators trigger logs in the console; disable this in non-config mode.
+#
+debug:
+  entityExplodeName: false            # Entity explosion
+  blockExplodeName: false             # Block explosion
+  entityChangeName: false             # Block changed
+  blockBurnName: false                # Block burning
+  creatureSpawnName: false            # Creature spawn
+  blockBreakName: false               # Block broken
+  blockPlaceName: false               # Block placed
+  entityPickupItemName: false         # Item picked up
+  playerDropItemName: false           # Item dropped
+  playerInteractRightClickName: false # Block interaction
+  playerPhysicalInteractName: false   # Block triggered
+  blockIgniteName: false              # Block ignited
+  playerUseItemName: false            # Item used
+  playerInteractEntityName: false     # Entity interaction
+  entityDamageName: false             # Damage type
+
+#
+# Event Listeners Master Switch
+# Minecraft events occur constantly; each event executes plugin code.
+# If you only want to use some features (e.g., blockBreak and blockPlace), enabling unused features consumes extra performance.
+#
+# You can selectively enable/disable listeners based on your needs.
+# Some events, if disabled, will globally disable their features regardless of settings in globalRules/radiusRules.
+#
+# If unsure, keep defaults.
+#
+listener:
+  blockBurn: true         # Block burning
+  creatureSpawn: true     # Creature spawn
+  entityChangeBlock: true # Entity changing blocks
+  entityExplode: true     # Entity/block explosion
+  fireSpread: true        # Fire spread
+  grassSpread: true       # Grass spread
+  iceMelts: true          # Ice melting
+  iceSpread: true         # Frost spread (special: Frost Walker)
+  leavesDecay: true       # Leaves decay
+  liquidFlow: true        # Liquid flow
+  myceliumSpread: true    # Mycelium spread
+  waterFreezes: true      # Water freezing
+  weatherChange: true     # Weather change
+  timeChange: true        # Time change
+  alwaysSatiated: true    # Restore player hunger
+  blockBreak: true        # Player block breaking
+  blockPlace: true        # Player block placing
+  customInjured: true     # Player damage
+  hungerFrozen: true      # Prevent hunger
+  interactBlock: true     # Block interaction
+  interactEntity: true    # Entity interaction
+  itemDrop: true          # Drop items
+  itemPickup: true        # Pickup items
+  knockbackImmunity: true # Prevent player knockback
+  lightTheBlock: true     # Ignite blocks
+  portal: true            # Enter portals
+  triggerBlock: true      # Block trigger
+  useItem: true           # Use items
+  usePail: true           # Prevent bucket use

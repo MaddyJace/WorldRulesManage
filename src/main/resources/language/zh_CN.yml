@@ -1,0 +1,30 @@
+# 插件信息
+pluginName: "&7[&bWorld&aRules&6Manage&7]"
+
+# command
+reload: "{0}: &a完成重载！"
+commandCorrectUsage: "{0}: 命令正确用法&c/wrl reload"
+
+# autoReload
+autoReloadError:   "{0}: &c自动重载功能未能启用！"
+autoReloadCreate:  "{0}: &a自动重新载入配置 {1}"
+autoReloadChange:  "{0}: &a自动重新载入配置 {1}"
+autoReloadDelete:  "{0}: &c自动删除配置文件 {1}"
+autoReloadRestart: "{0}: &e{1}发生变化无法重载局部功能，但插件已正常重启！"
+
+# debug
+entityExplodeNameDebug:            "实体爆炸，实体 {0}"
+blockExplodeNameDebug:             "方块爆炸，方块 {0}"
+entityChangeNameDebug:             "方块改变，实体 {0}"
+blockBurnNameDebug:                "方块燃烧，方块 {0}"
+creatureSpawnNameDebug:            "实体生成，实体 {0}"
+blockBreakNameDebug:               "方块破坏，方块 {0}"
+blockPlaceNameDebug:               "方块放置，方块 {0}"
+entityPickupItemNameDebug:         "物品拿起，物品 {0}"
+playerDropItemNameDebug:           "物品丢弃，物品 {0}"
+playerInteractRightClickNameDebug: "方块交互，方块 {0}"
+playerPhysicalInteractNameDebug:   "方块触发，方块 {0}"
+blockIgniteNameDebug:              "方块点燃，方块 {0}"
+playerUseItemNameDebug:            "物品使用，物品 {0}"
+playerInteractEntityNameDebug:     "实体交互，实体 {0}"
+entityDamageNameDebug:             "受伤类型，类型 {0}"
