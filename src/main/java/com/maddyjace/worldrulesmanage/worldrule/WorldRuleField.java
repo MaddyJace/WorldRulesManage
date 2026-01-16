@@ -12,6 +12,7 @@ public class WorldRuleField {
     public List<String> xyz; // 坐标
 
     // globalRules / localRules
+    public boolean keepInventory  = false; // 死亡掉落
     public boolean liquidFlow     = false; // 液体流动
     public boolean leavesDecay    = false; // 树叶消失
     public boolean iceMelts       = false; // 冰融化

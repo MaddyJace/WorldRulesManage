@@ -1,61 +1,34 @@
-#
-# Please note: the file name is the world name.
-# The world name and configuration keys are strictly case-sensitive.
-# Configuration keys are strictly case-sensitive (except for input values).
-# If you don’t know how to configure this, you can join https://discord.gg/xCKeUReG for help.
-#
-
-# Radius coordinates
-radius:
-  # 1 = 2D circle, 2 = 3D sphere, 3 = 2D cube, 4 = 3D cube
-  model: 3
-  # Radius size
-  radius: 14
-  # Coordinates (supports single or multiple coordinates)
-  xyz:
-    - "0 0 0"
-    - "1 0 1"
-
-# Global rules
-#   These rules apply to the world itself, not to player behavior!
 globalRules:
-  # Disable liquid flow
   liquidFlow: false
-  # Disable leaf decay
   leavesDecay: false
-  # Disable water freezing
-  waterFreezes: false
-  # Disable ice melting
   iceMelts: false
-  # Disable ice spreading (special case: Frost Walker)
+  waterFreezes: false
   iceSpread: false
-  # Disable grass spreading
   grassSpread: false
-  # Disable mycelium spreading
   myceliumSpread: false
-  # Disable fire spreading
   fireSpread: false
+  # Change world weather (-1 = natural, 1 = clear, 2 = rain/snow, 3 = thunderstorm)
+  # Details: Weather has absolute priority. Any other plugin or command
+  # that tries to change the weather will be overridden. Set to -1 to disable.
+  weatherChange: -1
+  # Change world time (-1 = natural, 0 = sunrise, 6000 = noon, 12000 = sunset, 18000 = midnight)
+  # Details: Time has absolute priority. Any other plugin or command
+  # that tries to change the time will be overridden. Set to -1 to disable.
+  timeChange: -1
 
-  # Disable creature spawning
   creatureSpawn:
     enable: false
-    # First, check according to the checkMode and entityList rules; if no match is found,
-    #   then check the enabled entity types (animals, monster, ironGolem) based on their category.
-    #   If still unclear, keep the default behavior.
-    animals: false
-    monster: false
-    ironGolem: false
     #
     # BLACKLIST:
     #   - Entities listed in entityList are NOT allowed to spawn
-    #   - Entities not listed can spawn normally
+    #   - Entities not listed are allowed to spawn normally
     # WHITELIST:
-    #   - Only entities listed in entityList are allowed to spawn
-    #   - All others are completely blocked
+    #   - Entities listed in entityList are allowed to spawn
+    #   - Entities not listed are completely blocked
     # ⚠ Special note:
-    #   If you want to prevent ANY entity from spawning in the world:
+    #   If you want to prevent ANY entity from spawning in this world:
     #   - Set checkMode to WHITELIST
-    #   - Leave entityList empty (entityList: [])
+    #   - Keep entityList empty (entityList: [])
     #
     checkMode: "BLACKLIST"
     #
@@ -66,139 +39,105 @@ globalRules:
     #
     entityList: []
 
-  # Prevent entities from changing blocks
-  # If you don’t use the following feature, you can delete the entire section.
-  # If not defined, it is considered disabled. Below is an example using registration.
-  # The same applies to other features; descriptions will not be repeated.
-  #
-  # entityChangeBlock:
-  #  enable: false
-  #  checkMode: "WHITELIST"
-  #  entityList: []
-  #
+  entityChangeBlock:
+    enable: false
+    checkMode: "WHITELIST"
+    entityList: []
 
-  # Disable explosions
   entityExplode:
     enable: false
-    # You may omit checkMode and list.
-    # If omitted, the default mode is WHITELIST.
-    # checkMode: "WHITELIST"
-    # list: []
+    checkMode: "WHITELIST"
+    list: []
 
-  # Disable blocks from burning
   blockBurn:
     enable: false
-    # checkMode: "WHITELIST"
-    # blockList: []
-
-# Player rules
-playerRules:
-  # Permission (players with this permission bypass all checks; disable OP when testing)
-  permission: "worldrulesmanage.admin"
-
-  # Disable block breaking
-  blockBreak:
-    enable: false
-    #
-    # To disable messages entirely, remove the message option.
-    # If you don’t like inventory messages, you can choose a custom display:
-    #   message: "title: `&cInvalid action` `&6Block breaking is disabled in this world!` 10 100 10"
-    #   message: "actionbar: &cBlock breaking is disabled in this world!"
-    #   message: "tell: &cBlock breaking is disabled in this world!"
-    #
-    message: "title: `&cInvalid action` `&6Block breaking is disabled in this world!` 10 100 10"
     checkMode: "WHITELIST"
     blockList: []
 
-  # Disable block placing
+playerRules:
+  permission: "worldrulesmanage.admin"
+
+  blockBreak:
+    enable: false
+    message: "title: &cBlock breaking is disabled in this world!"
+    checkMode: "WHITELIST"
+    blockList: []
+
   blockPlace:
     enable: false
     message: "&cBlock placing is disabled in this world!"
     checkMode: "WHITELIST"
     blockList: []
 
-  # Disable item pickup
   itemPickup:
     enable: false
     message: "&cPicking up items is disabled in this world!"
     checkMode: "WHITELIST"
     itemList: []
 
-  # Disable item dropping
   itemDrop:
     enable: false
     message: "&cDropping items is disabled in this world!"
     checkMode: "WHITELIST"
     itemList: []
 
-  # Disable block interaction
   interactBlock:
     enable: false
     message: "&cInteracting with blocks is disabled in this world!"
-    checkMode: "BLACKLIST"
+    checkMode: "WHITELIST"
     blockList:
-      - "FURNACE"
+      - "FURNACE" # Furnace
 
-  # Disable block triggering
   triggerBlock:
     enable: false
     message: "&cTriggering blocks is disabled in this world!"
-    checkMode: "BLACKLIST"
+    checkMode: "WHITELIST"
     blockList:
       - "SOIL" # Farmland
 
-  # Disable igniting blocks
-  lightTheBlock: # Label: Misspelled word
+  lightTheBlock:
     enable: false
     message: "&cIgniting blocks is disabled in this world!"
     checkMode: "WHITELIST"
     blockList: []
 
-  # Disable item usage
   useItem:
     enable: false
     message: "&cUsing items is disabled in this world!"
-    checkMode: "BLACKLIST"
+    checkMode: "WHITELIST"
     itemList:
       - "SNOWBALL"
       - "EGG"
       - "ITEM_FRAME"
       - "PAINTING"
 
-  # Disable entity interaction
-  # Details: Entity interaction is broad (e.g. attacking entities, riding minecarts, etc.)
   interactEntity:
     enable: false
     message: "&cInteracting with entities is disabled in this world!"
-    checkMode: "BLACKLIST"
+    checkMode: "WHITELIST"
     entityList:
       - "ITEM_FRAME"
       - "PAINTING"
       - "ARMOR_STAND"
 
-  # Disable bucket usage (e.g. filling buckets with water or lava)
   usePail:
     enable: false
     message: "&cUsing buckets is disabled in this world!"
 
-  # Disable player hunger
-  hungerFrozen: # Label: Misspelled word
+  hungerFrozen:
     enable: false
     message: "&cYou will not get hungry in this world!"
 
-  # Always restore player hunger
   alwaysSatiated:
     enable: false
-    foodLevel: 20 # Level: 20
+    foodLevel: 20
     message: "&cYour hunger has been automatically restored in this world!"
 
-  # Custom damage control
   customInjured:
-    # Master switch
     enable: false
     message: "&cYou will not take functional damage in this world!"
-    # Only effective when damageCause is enabled; otherwise standard logic applies
-    # (this switch is affected by enable).
+    # Damage causes only take effect when damageCauseEnable is true.
+    # Otherwise, standard logic is used (this switch is affected by enable).
     damageCauseEnable: false
     damageCause:
       # Apply to all damage types
@@ -237,7 +176,7 @@ playerRules:
       starvation: true
       # Poison damage
       poison: true
-      # Magic damage (e.g. enchantments or potions)
+      # Magic damage (e.g. enchantments or potion effects)
       magic: true
       # Wither effect damage
       wither: true
@@ -253,21 +192,20 @@ playerRules:
       flyIntoWall: true
       # Hot floor damage
       hotFloor: true
-      # Cramming damage
+      # Cramming damage (entities packed together)
       cramming: true
 
-  # Disable knockback
   knockbackImmunity:
     enable: false
     message: "&cYou will not receive knockback in this world!"
 
-  # Disable portal usage
   portal:
     enable: false
     message: "&cUsing portals is disabled in this world!"
     # Note: Enabling all will also block nether and end portals.
+    # Block all portals
     all: false
-    # Nether portals
+    # Block Nether portals
     nether: false
-    # End portals
+    # Block End portals
     ender: false

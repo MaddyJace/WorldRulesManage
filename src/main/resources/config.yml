@@ -53,6 +53,7 @@ debug:
 # If unsure, keep defaults.
 #
 listener:
+  keepInventory: true     # Keep Inventory
   blockBurn: true         # Block burning
   creatureSpawn: true     # Creature spawn
   entityChangeBlock: true # Entity changing blocks

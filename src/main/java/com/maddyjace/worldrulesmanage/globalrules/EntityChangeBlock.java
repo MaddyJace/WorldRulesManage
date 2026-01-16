@@ -28,6 +28,7 @@ public class EntityChangeBlock implements Listener {
             Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).entityChangeBlock;
             if (WorldUtil.conJud(map, enable, checkMode, entityList, entityName)) {
                 e.setCancelled(true);
+                return;
             }
         }
 

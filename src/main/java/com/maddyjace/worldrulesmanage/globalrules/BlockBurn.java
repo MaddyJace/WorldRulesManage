@@ -26,6 +26,7 @@ public class BlockBurn implements Listener {
             Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).blockBurn;
             if (WorldUtil.conJud(map, enable, checkMode, blockList, blockName)) {
                 e.setCancelled(true);
+                return;
             }
         }
 

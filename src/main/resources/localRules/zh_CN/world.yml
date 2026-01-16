@@ -20,7 +20,7 @@ radius:
 
 # 全局规则
 #   该规则针对世界，不属于玩家行为！
-localRules:
+globalRules:
   # 禁止液体流动
   liquidFlow: false
   # 禁止树叶消失
@@ -41,6 +41,11 @@ localRules:
   # 禁止生成生物
   creatureSpawn:
     enable: false
+    # 优先根据checkMode和entityList模式查找，没有找到结果，
+    #   再去判断开启状态的实体(animals, monster, ironGolem)阵营，不懂就保持默认。
+    animals: false
+    monster: false
+    ironGolem: false
     #
     # BLACKLIST（黑名单）：
     #   - entityList 中写的生物「不允许生成」
@@ -84,7 +89,7 @@ localRules:
     # blockList: []
 
 # 玩家规则
-localPlayerRules:
+playerRules:
   # 权限(拥有权限者将跳过检查，测试时请取消op)
   permission: "worldrulesmanage.admin"
   # 禁止破坏方块
@@ -93,11 +98,11 @@ localPlayerRules:
     #
     # 不想提示任何内容可以直接删除 message 配置项
     # 不喜欢物品栏提示可以自定义选择提示栏，使用示例如下：
-    #   "title: `&c操作无效` `&6当前的世界，禁止破坏方块！`"
+    #   "title: `&c操作无效` `&6当前的世界，禁止破坏方块！` 10 100 10"
     #   "actionbar: &c当前的世界，禁止破坏方块！"
     #   "tell: &c当前的世界，禁止破坏方块！"
     #
-    message: "title: &c当前的世界，禁止破坏方块！"
+    message: "title: `&c操作无效` `&6当前的世界，禁止破坏方块！` 10 100 10"
     checkMode: "WHITELIST"
     blockList: []
   # 禁止放置方块

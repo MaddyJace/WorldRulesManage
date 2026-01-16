@@ -74,6 +74,7 @@ public enum WorldDataLoad {
         wrf.worldName = noFileExtension;
 
         // globalRules
+        wrf.keepInventory  = YAML.getBoolean(gr + "keepInventory", false);  // 死亡掉落
         wrf.liquidFlow     = YAML.getBoolean(gr + "liquidFlow", false);     // 液体流动
         wrf.leavesDecay    = YAML.getBoolean(gr + "leavesDecay", false);    // 树叶消失
         wrf.iceMelts       = YAML.getBoolean(gr + "iceMelts", false);       // 冰融化
@@ -88,8 +89,11 @@ public enum WorldDataLoad {
         }
         wrf.creatureSpawn  = new ConcurrentHashMap<String, Object>() {{
             put("enable"    , YAML.getBoolean(gr + "creatureSpawn.enable", false));
-            put("checkMode" , YAML.getString (gr + "creatureSpawn.checkMode", "WHITELIST"));
-            put("entityList", YAML.getStringList   (gr + "creatureSpawn.entityList"));
+            put("checkMode" , YAML.getString (gr + "creatureSpawn.checkMode", "BLACKLIST"));
+            put("entityList", YAML.getStringList(gr + "creatureSpawn.entityList"));
+            put("animals"   , YAML.getBoolean(gr + "creatureSpawn.animals", false));
+            put("monster"   , YAML.getBoolean(gr + "creatureSpawn.monster", false));
+            put("ironGolem" , YAML.getBoolean(gr + "creatureSpawn.ironGolem", false));
         }};  // 实体生物
         wrf.entityExplode  = new ConcurrentHashMap<String, Object>() {{
             put("enable"    , YAML.getBoolean(gr + "entityExplode.enable", false));

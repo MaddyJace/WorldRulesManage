@@ -1,0 +1,215 @@
+# Global rules
+globalRules:
+  # keepInventory
+  keepInventory: true
+  # Disable liquid flow
+  liquidFlow: true
+  # Disable leaf decay
+  leavesDecay: true
+  # Disable water freezing
+  waterFreezes: true
+  # Disable ice melting
+  iceMelts: true
+  # Disable ice spreading (special case: Frost Walker)
+  iceSpread: true
+  # Disable grass spreading
+  grassSpread: true
+  # Disable mycelium spreading
+  myceliumSpread: true
+  # Disable fire spreading
+  fireSpread: true
+  # Change world weather (-1 = natural, 1 = clear, 2 = rain/snow, 3 = thunderstorm)
+  weatherChange: 1
+  # Change world time (-1 = natural, 0 = sunrise, 6000 = noon, 12000 = sunset, 18000 = midnight)
+  timeChange: 6000
+  # Disable creature spawning
+  creatureSpawn:
+    enable: true
+    monster: true
+    checkMode: "BLACKLIST"
+    entityList: []
+  # Prevent entities from changing blocks
+  entityChangeBlock:
+    enable: true
+  # Disable explosions
+  entityExplode:
+    enable: true
+  # Disable blocks from burning
+  blockBurn:
+    enable: true
+
+# Player rules
+playerRules:
+  # Permission (players with this permission bypass all checks; disable OP when testing)
+  permission: "worldrulesmanage.admin"
+
+  # Disable block breaking
+  blockBreak:
+    enable: true
+    message: "tell: &cBlock breaking is disabled in this world!"
+  # Disable block placing
+  blockPlace:
+    enable: true
+    message: "&cBlock placing is disabled in this world!"
+  # Disable item dropping
+  itemDrop:
+    enable: true
+    message: "&cDropping items is disabled in this world!"
+
+  # Disable block interaction
+  interactBlock:
+    enable: false
+    message: "&cInteracting with blocks is disabled in this world!"
+    checkMode: "BLACKLIST"
+    blockList:
+      - "CHEST"
+      - "WORKBENCH"
+      - "FURNACE"
+      - "JUKEBOX"
+      - "ENDER_PORTAL_FRAME"
+      - "ENDER_CHEST"
+      - "ANVIL"
+      - "DISPENSER"
+      - "NOTE_BLOCK"
+      - "LEVER"
+      - "STONE_BUTTON"
+      - "TRAP_DOOR"
+      - "WOOD_BUTTON"
+      - "TRAPPED_CHEST"
+      - "DAYLIGHT_DETECTOR"
+      - "HOPPER"
+      - "WOODEN_DOOR"
+      - "SPRUCE_DOOR"
+      - "BIRCH_DOOR"
+      - "JUNGLE_DOOR"
+      - "ACACIA_DOOR"
+      - "DARK_OAK_DOOR"
+      - "FENCE_GATE"
+      - "SPRUCE_FENCE_GATE"
+      - "BIRCH_FENCE_GATE"
+      - "JUNGLE_FENCE_GATE"
+      - "DARK_OAK_FENCE_GATE"
+      - "ACACIA_FENCE_GATE"
+      - "FLOWER_POT"
+      - "CAULDRON"
+      - "ARMOURERS_WORKSHOP_TILESKINNABLE"
+
+  # Disable block triggering
+  triggerBlock:
+    enable: true
+    message: "&cTriggering blocks is disabled in this world!"
+    checkMode: "BLACKLIST"
+    blockList:
+      - "SOIL" # Farmland
+
+  # Disable igniting blocks
+  lightTheBlock: # Label: Misspelled word
+    enable: true
+    message: "&cIgniting blocks is disabled in this world!"
+
+  # Disable item usage
+  useItem:
+    enable: true
+    message: "&cUsing items is disabled in this world!"
+    checkMode: "BLACKLIST"
+    itemList:
+      - "PAINTING"
+      - "EXP_BOTTLE"
+      - "ENDER_PEARL"
+      - "EYE_OF_ENDER"
+      - "FIREBALL"
+      - "BOAT"
+      - "BOAT_SPRUCE"
+      - "BOAT_BIRCH"
+      - "BOAT_JUNGLE"
+      - "BOAT_ACACIA"
+      - "BOAT_DARK_OAK"
+      - "MINECART"
+      - "STORAGE_MINECART"
+      - "POWERED_MINECART"
+      - "EXPLOSIVE_MINECART"
+      - "HOPPER_MINECART"
+      - "SADDLE"
+      - "CARROT_STICK"
+      - "ITEM_FRAME"
+      - "ARMOR_STAND"
+      - "END_CRYSTAL"
+      - "SNOW_BALL"
+      - "INK_SACK"
+      - "MONSTER_EGG"
+      - "SPLASH_POTION"
+      - "FISHING_ROD"
+      - "LEASH"
+      - "SHEARS"
+      - "FLINT_AND_STEEL"
+      - "LINGERING_POTION"
+      - "PIXELMON_OLD_ROD"
+      - "PIXELMON_GOOD_ROD"
+      - "PIXELMON_SUPER_ROD"
+      - "PIXELMON_OAS_ROD"
+      - "PIXELMON_MACH_BIKE"
+      - "PIXELMON_ACRO_BIKE"
+      - "PIXELMON_INCENSE_BURNER"
+      - "PIXELMON_PAINTING"
+      - "PIXELMON_FULL_INCENSE"
+      - "PIXELMON_LAX_INCENSE"
+      - "PIXELMON_LUCK_INCENSE"
+      - "PIXELMON_ODD_INCENSE"
+      - "PIXELMON_PURE_INCENSE"
+      - "PIXELMON_ROCK_INCENSE"
+      - "PIXELMON_ROSE_INCENSE"
+      - "PIXELMON_SEA_INCENSE"
+      - "PIXELMON_WAVE_INCENSE"
+      - "ARMOURERS_WORKSHOP_ITEMSKIN"
+      - "ARMOURERS_WORKSHOP_ITEMMANNEQUIN"
+      - "CUSTOMNPCS_NPCMOVINGPATH"
+      - "CUSTOMNPCS_NPCMOUNTER"
+      - "CUSTOMNPCS_NPCSCRIPTER"
+      - "CUSTOMNPCS_NPCWAND"
+      - "CUSTOMNPCS_NPCTELEPORTER"
+      - "CUSTOMNPCS_NPCMOBCLONER"
+      - "CUSTOMNPCS_NBT_BOOK"
+
+  # Disable entity interaction
+  # Details: Entity interaction is broad (e.g. attacking entities, riding minecarts, etc.)
+  interactEntity:
+    enable: true
+    message: "&cInteracting with entities is disabled in this world!"
+    checkMode: "BLACKLIST"
+    entityList:
+      - "ITEM_FRAME"
+      - "PAINTING"
+      - "ARMOR_STAND"
+
+  # Disable bucket usage (e.g. filling buckets with water or lava)
+  usePail:
+    enable: true
+    message: "&cUsing buckets is disabled in this world!"
+
+  # Disable player hunger
+  hungerFrozen: # Label: Misspelled word
+    enable: true
+    message: "&cYou will not get hungry in this world!"
+
+  # Always restore player hunger
+  alwaysSatiated:
+    enable: true
+    foodLevel: 20 # Level: 20
+    message: "&cYour hunger has been automatically restored in this world!"
+
+  # Custom damage control
+  customInjured:
+    # Master switch
+    enable: true
+    message: "&cYou will not take functional damage in this world!"
+
+  # Disable knockback
+  knockbackImmunity:
+    enable: true
+    message: "&cYou will not receive knockback in this world!"
+
+  # Disable portal usage
+  portal:
+    enable: true
+    message: "&cUsing portals is disabled in this world!"
+    all: true

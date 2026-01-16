@@ -20,6 +20,7 @@ public class WaterFreezes implements Listener {
             // 控制全局
             if (Ref.wdl.getGlobalData().containsKey(world.getName()) && Ref.wdl.getGlobalData().get(world.getName()).waterFreezes) {
                 e.setCancelled(true);
+                return;
             }
 
             // 控制半径

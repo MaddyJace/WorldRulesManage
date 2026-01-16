@@ -39,6 +39,7 @@ public class UsePail implements Listener {
                         e.setCancelled(true);
                         String message = (String) map.get(Ref.message);
                         Message.INSTANCE.sendMessage(player.getUniqueId(), message);
+                        return;
                     }
                 }
             }
@@ -79,6 +80,7 @@ public class UsePail implements Listener {
                     e.setCancelled(true);
                     String message = (String) map.get(Ref.message);
                     Message.INSTANCE.sendMessage(player.getUniqueId(), message);
+                    return;
                 }
             }
         }

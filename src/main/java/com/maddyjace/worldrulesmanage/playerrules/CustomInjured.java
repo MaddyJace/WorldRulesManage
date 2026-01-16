@@ -38,6 +38,7 @@ public class CustomInjured implements Listener {
                 Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).customInjured;
                 if (WorldUtil.conJud(map, enable)) {
                     damageCause(e, player, map);
+                    return;
                 }
             }
         }

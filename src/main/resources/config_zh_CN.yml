@@ -1,4 +1,10 @@
 #
+# 注意：config_zh_CN.yml配置文件不会生效，请重命名为 config.yml 文件并 wrl reload 重启插件。
+# 注意：config_zh_CN.yml配置文件不会生效，请重命名为 config.yml 文件并 wrl reload 重启插件。
+# 注意：config_zh_CN.yml配置文件不会生效，请重命名为 config.yml 文件并 wrl reload 重启插件。
+#
+
+#
 # 自动化语言
 # 根据服务器和玩家本地语言，来查找language文件夹中支持的语言文件，
 # 并为服务器和玩家本地化翻译，没有受支持的语言文件将强制默认使用en_US.yml中的语言。
@@ -53,6 +59,7 @@ debug:
 # 如果你没有理解该功能的真实意图，保持默认即可。
 #
 listener:
+  keepInventory: true     # 死亡掉落
   blockBurn: true         # 方块燃烧
   creatureSpawn: true     # 生成生物
   entityChangeBlock: true # 实体改变方块

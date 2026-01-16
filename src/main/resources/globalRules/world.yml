@@ -8,14 +8,16 @@
 # Global rules
 #   These rules apply to the world itself, not to player behavior!
 globalRules:
+  # keepInventory
+  keepInventory: false
   # Disable liquid flow
   liquidFlow: false
   # Disable leaf decay
   leavesDecay: false
-  # Disable ice melting
-  iceMelts: false
   # Disable water freezing
   waterFreezes: false
+  # Disable ice melting
+  iceMelts: false
   # Disable ice spreading (special case: Frost Walker)
   iceSpread: false
   # Disable grass spreading
@@ -36,6 +38,12 @@ globalRules:
   # Disable creature spawning
   creatureSpawn:
     enable: false
+    # First, check according to the checkMode and entityList rules; if no match is found,
+    #   then check the enabled entity types (animals, monster, ironGolem) based on their category.
+    #   If still unclear, keep the default behavior.
+    animals: false
+    monster: false
+    ironGolem: false
     #
     # BLACKLIST:
     #   - Entities listed in entityList are NOT allowed to spawn
@@ -66,6 +74,7 @@ globalRules:
   #  enable: false
   #  checkMode: "WHITELIST"
   #  entityList: []
+  #
 
   # Disable explosions
   entityExplode:
@@ -75,7 +84,7 @@ globalRules:
     # checkMode: "WHITELIST"
     # list: []
 
-  # Prevent blocks from burning
+  # Disable blocks from burning
   blockBurn:
     enable: false
     # checkMode: "WHITELIST"
@@ -86,93 +95,93 @@ playerRules:
   # Permission (players with this permission bypass all checks; disable OP when testing)
   permission: "worldrulesmanage.admin"
 
-  # Prevent block breaking
+  # Disable block breaking
   blockBreak:
     enable: false
     #
     # To disable messages entirely, remove the message option.
     # If you don’t like inventory messages, you can choose a custom display:
-    #   "title: `&cInvalid action` `&6Block breaking is disabled in this world!`"
-    #   "actionbar: &cBlock breaking is disabled in this world!"
-    #   "tell: &cBlock breaking is disabled in this world!"
+    #   message: "title: `&cInvalid action` `&6Block breaking is disabled in this world!` 10 100 10"
+    #   message: "actionbar: &cBlock breaking is disabled in this world!"
+    #   message: "tell: &cBlock breaking is disabled in this world!"
     #
-    message: "title: &cBlock breaking is disabled in this world!"
+    message: "title: `&cInvalid action` `&6Block breaking is disabled in this world!` 10 100 10"
     checkMode: "WHITELIST"
     blockList: []
 
-  # Prevent block placing
+  # Disable block placing
   blockPlace:
     enable: false
     message: "&cBlock placing is disabled in this world!"
     checkMode: "WHITELIST"
     blockList: []
 
-  # Prevent item pickup
+  # Disable item pickup
   itemPickup:
     enable: false
     message: "&cPicking up items is disabled in this world!"
     checkMode: "WHITELIST"
     itemList: []
 
-  # Prevent item dropping
+  # Disable item dropping
   itemDrop:
     enable: false
     message: "&cDropping items is disabled in this world!"
     checkMode: "WHITELIST"
     itemList: []
 
-  # Prevent block interaction
+  # Disable block interaction
   interactBlock:
     enable: false
     message: "&cInteracting with blocks is disabled in this world!"
-    checkMode: "WHITELIST"
+    checkMode: "BLACKLIST"
     blockList:
-      - "FURNACE" # Furnace
+      - "FURNACE"
 
-  # Prevent block triggering
+  # Disable block triggering
   triggerBlock:
     enable: false
     message: "&cTriggering blocks is disabled in this world!"
-    checkMode: "WHITELIST"
+    checkMode: "BLACKLIST"
     blockList:
       - "SOIL" # Farmland
 
-  # Prevent igniting blocks
-  lightTheBlock:
+  # Disable igniting blocks
+  lightTheBlock: # Label: Misspelled word
     enable: false
     message: "&cIgniting blocks is disabled in this world!"
     checkMode: "WHITELIST"
     blockList: []
 
-  # Prevent item usage
+  # Disable item usage
   useItem:
     enable: false
     message: "&cUsing items is disabled in this world!"
-    checkMode: "WHITELIST"
+    checkMode: "BLACKLIST"
     itemList:
-      - "SNOWBALL"       # Snowball
-      - "EGG"            # Egg
-      - "ITEM_FRAME"     # Item frame
-      - "PAINTING"       # Painting
+      - "SNOWBALL"
+      - "EGG"
+      - "ITEM_FRAME"
+      - "PAINTING"
 
-  # Prevent entity interaction
+  # Disable entity interaction
   # Details: Entity interaction is broad (e.g. attacking entities, riding minecarts, etc.)
   interactEntity:
     enable: false
     message: "&cInteracting with entities is disabled in this world!"
-    checkMode: "WHITELIST"
+    checkMode: "BLACKLIST"
     entityList:
-      - "ITEM_FRAME"     # Item frame
-      - "PAINTING"       # Painting
-      - "ARMOR_STAND"    # Armor stand
+      - "ITEM_FRAME"
+      - "PAINTING"
+      - "ARMOR_STAND"
 
-  # Prevent bucket usage (e.g. filling buckets with water or lava)
+  # Disable bucket usage (e.g. filling buckets with water or lava)
   usePail:
     enable: false
     message: "&cUsing buckets is disabled in this world!"
 
-  # Prevent player hunger
-  hungerFrozen:
+  # Disable player hunger
+  hungerFrozen: # Label: Misspelled word
     enable: false
     message: "&cYou will not get hungry in this world!"
 
@@ -257,7 +266,7 @@ playerRules:
     message: "&cUsing portals is disabled in this world!"
     # Note: Enabling all will also block nether and end portals.
     all: false
-    # Disable Nether portals
+    # Nether portals
     nether: false
-    # Disable End portals
+    # End portals
     ender: false

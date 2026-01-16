@@ -4,9 +4,9 @@ main: com.maddyjace.worldrulesmanage.Plugin
 authors: [MaddyJace]
 description: Prevent specific commands from being used
 folia-supported: true
+load: STARTUP
 
-softdepend:
-  - PlaceholderAPI
+softdepend: [PlaceholderAPI, Multiverse-Core, LuckPerms, PlayerPoints, CMI, CMILib, Essentials]
 
 commands:
   worldrulesmanage:

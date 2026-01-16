@@ -64,6 +64,7 @@ public enum Config {
     public boolean triggerBlock = true;      // 方块触发
     public boolean useItem = true;           // 使用物品
     public boolean usePail = true;           // 禁止用桶
+    public boolean keepInventory = true;     // 死亡掉落
     
     public void onEnable() {
         File file = new File(Get.plugin().getDataFolder(), "config.yml");
@@ -132,6 +133,7 @@ public enum Config {
         triggerBlock = config.getBoolean("listener.triggerBlock", true);
         useItem = config.getBoolean("listener.useItem", true);
         usePail = config.getBoolean("listener.usePail", true);
+        keepInventory = config.getBoolean("listener.keepInventory", true);
     }
 
     public void onDisable() {

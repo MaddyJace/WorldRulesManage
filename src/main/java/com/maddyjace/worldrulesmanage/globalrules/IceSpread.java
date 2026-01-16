@@ -21,6 +21,7 @@ public class IceSpread implements Listener {
             // 控制全局
             if (Ref.wdl.getGlobalData().containsKey(world.getName()) && Ref.wdl.getGlobalData().get(world.getName()).iceSpread) {
                 e.setCancelled(true);
+                return;
             }
 
             // 控制半径

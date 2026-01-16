@@ -5,7 +5,6 @@ import com.maddyjace.worldrulesmanage.globalrules.*;
 import com.maddyjace.worldrulesmanage.playerrules.*;
 import com.maddyjace.worldrulesmanage.util.*;
 import com.maddyjace.worldrulesmanage.worldrule.WorldDataLoad;
-import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -33,27 +32,20 @@ public enum WorldRulesManage {
         // 初始化 语言
         Language.Get.onEnable();
 
-
         if (c.autoReloadEnable) {
-            if (autoReloadTask != null) {
-                autoReloadTask.cancel();
-                autoReloadTask = null;
-            }
-            autoReloadTask = Bukkit.getScheduler().runTaskAsynchronously(Get.plugin(), () -> {
-                long second = c.autoReloadPeriod * 1000L;
-                globalRulesAutoReload = new AutoReload(WorldDataLoad.globalRulesFolder.getPath(),
-                        second, false, ".yml");
-                globalRulesAutoReload.start();
-                localRulesAutoReload  = new AutoReload(WorldDataLoad.localRulesFolder.getPath(),
-                        second, false, ".yml");
-                localRulesAutoReload.start();
-                languageAutoReload = new AutoReload(Language.getLanguageFolder().getPath(),
-                        second, false, ".yml", ".yaml");
-                languageAutoReload.start();
-                configAutoReload  = new AutoReload(Get.plugin().getDataFolder().getPath(),
-                        second, false, ".yml");
-                configAutoReload.start();
-            });
+            long second = c.autoReloadPeriod * 1000L;
+            globalRulesAutoReload = new AutoReload(WorldDataLoad.globalRulesFolder.getPath(),
+                    second, false, ".yml");
+            localRulesAutoReload  = new AutoReload(WorldDataLoad.localRulesFolder.getPath(),
+                    second, false, ".yml");
+            languageAutoReload = new AutoReload(Language.getLanguageFolder().getPath(),
+                    second, false, ".yml", ".yaml");
+            configAutoReload  = new AutoReload(Get.plugin().getDataFolder().getPath(),
+                    second, false, ".yml");
+            globalRulesAutoReload.start();
+            localRulesAutoReload.start();
+            languageAutoReload.start();
+            configAutoReload.start();
         }
     }
 
@@ -66,10 +58,27 @@ public enum WorldRulesManage {
         unregisterListeners();
         Language.Get.onEnable();
 
-        globalRulesAutoReload.stop();
-        localRulesAutoReload.stop();
-        languageAutoReload.stop();
-        configAutoReload.stop();
+        if (autoReloadTask != null) {
+            autoReloadTask.cancel();
+            autoReloadTask = null;
+        }
+
+        if (globalRulesAutoReload != null) {
+            globalRulesAutoReload.stop();
+            globalRulesAutoReload = null;
+        }
+        if (localRulesAutoReload != null) {
+            localRulesAutoReload.stop();
+            localRulesAutoReload = null;
+        }
+        if (languageAutoReload != null) {
+            languageAutoReload.stop();
+            languageAutoReload = null;
+        }
+        if (configAutoReload != null) {
+            configAutoReload.stop();
+            configAutoReload = null;
+        }
     }
 
 
@@ -89,6 +98,7 @@ public enum WorldRulesManage {
     private MyceliumSpread myceliumSpread;
     private WaterFreezes waterFreezes;
     private WeatherChange weatherChange;
+    private KeepInventory keepInventory;
 
     private AlwaysSatiated alwaysSatiated;
     private BlockBreak blockBreak;
@@ -105,6 +115,7 @@ public enum WorldRulesManage {
     private TriggerBlock triggerBlock;
     private UseItem useItem;
     private UsePail usePail;
+
 
     /** 注册监听器 */
     public void registerListeners() {
@@ -173,6 +184,10 @@ public enum WorldRulesManage {
         }
         if (c.timeChange) {
             TimeChange.onEnable();
+        }
+        if (c.keepInventory) {
+            keepInventory = new KeepInventory();
+            Get.plugin().getServer().getPluginManager().registerEvents(keepInventory, Get.plugin());
         }
 
         if (c.alwaysSatiated) {
@@ -251,8 +266,9 @@ public enum WorldRulesManage {
         if (leavesDecay       != null) { HandlerList.unregisterAll(leavesDecay);       leavesDecay = null; }
         if (liquidFlow        != null) { HandlerList.unregisterAll(liquidFlow);        liquidFlow = null; }
         if (myceliumSpread    != null) { HandlerList.unregisterAll(myceliumSpread);    myceliumSpread = null; }
-        if (waterFreezes != null) { HandlerList.unregisterAll(waterFreezes);           waterFreezes = null; }
+        if (waterFreezes      != null) { HandlerList.unregisterAll(waterFreezes);      waterFreezes = null; }
         if (weatherChange     != null) { HandlerList.unregisterAll(weatherChange);     weatherChange = null; }
+        if (keepInventory     != null) { HandlerList.unregisterAll(keepInventory);     keepInventory = null; }
 
         if (alwaysSatiated    != null) { HandlerList.unregisterAll(alwaysSatiated);    alwaysSatiated = null; }
         if (blockBreak        != null) { HandlerList.unregisterAll(blockBreak);        blockBreak = null; }

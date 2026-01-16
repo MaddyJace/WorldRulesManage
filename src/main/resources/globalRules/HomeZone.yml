@@ -1,0 +1,26 @@
+# Global rules
+#   These rules apply to the world itself, not to player behavior!
+globalRules:
+  # keepInventory
+  keepInventory: true
+  # Disable fire spreading
+  fireSpread: true
+  # entity Change Block
+  entityChangeBlock:
+    enable: true
+    checkMode: "WHITELIST"
+    entityList: []
+  # Disable explosions
+  entityExplode:
+    enable: true
+    checkMode: "WHITELIST"
+    list: []
+
+# Player rules
+playerRules:
+  # Permission (players with this permission bypass all checks; disable OP when testing)
+  permission: "worldrulesmanage.admin"
+  # Disable player hunger
+  hungerFrozen: # Label: Misspelled word
+    enable: true
+    message: "&cYou will not get hungry in this world!"

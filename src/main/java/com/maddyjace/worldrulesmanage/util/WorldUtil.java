@@ -24,6 +24,9 @@ public class WorldUtil {
                 Get.plugin().saveResource("globalRules/world.yml", false);
                 Get.plugin().saveResource("globalRules/world_nether.yml", false);
                 Get.plugin().saveResource("globalRules/world_the_end.yml", false);
+                Get.plugin().saveResource("globalRules/HomeZone.yml", false);
+                Get.plugin().saveResource("globalRules/Lobby.yml", false);
+                Get.plugin().saveResource("globalRules/OtherWorlds.yml", false);
                 if (Language.getServerLanguage().equalsIgnoreCase("zh_cn")) {
                     Get.plugin().saveResource("globalRules/zh_CN/world.yml", false);
                     Get.plugin().saveResource("globalRules/zh_CN/world_nether.yml", false);

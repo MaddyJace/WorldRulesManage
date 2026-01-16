@@ -20,6 +20,7 @@ public class FireSpread implements Listener {
             // 控制全局
             if (Ref.wdl.getGlobalData().containsKey(world.getName()) && Ref.wdl.getGlobalData().get(world.getName()).fireSpread) {
                 e.setCancelled(true);
+                return;
             }
 
             // 控制半径

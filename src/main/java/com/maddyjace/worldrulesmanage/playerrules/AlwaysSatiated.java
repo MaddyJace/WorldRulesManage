@@ -42,7 +42,7 @@ public class AlwaysSatiated implements Listener {
                         String message = (String) map.get(Ref.message);
                         Message.INSTANCE.sendMessage(player.getUniqueId(), message);
                     }, 10L);
-
+                    return;
                 }
             }
         }

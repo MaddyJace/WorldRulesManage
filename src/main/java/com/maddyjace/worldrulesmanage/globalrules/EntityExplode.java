@@ -25,6 +25,7 @@ public class EntityExplode implements Listener {
             Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).entityExplode;
             if (WorldUtil.conJud(map, enable, checkMode, list, entityName)) {
                 e.blockList().clear();
+                return;
             }
         }
 
@@ -49,6 +50,7 @@ public class EntityExplode implements Listener {
             Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).entityExplode;
             if (WorldUtil.conJud(map, enable, checkMode, list, blockName)) {
                 e.blockList().clear();
+                return;
             }
         }
 

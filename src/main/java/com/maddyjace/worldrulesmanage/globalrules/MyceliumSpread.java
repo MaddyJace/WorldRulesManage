@@ -21,6 +21,7 @@ public class MyceliumSpread implements Listener {
             // 控制全局
             if (Ref.wdl.getGlobalData().containsKey(world.getName()) && Ref.wdl.getGlobalData().get(world.getName()).myceliumSpread) {
                 e.setCancelled(true);
+                return;
             }
 
             // 控制半径

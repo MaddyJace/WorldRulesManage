@@ -38,6 +38,7 @@ public class UseItem implements Listener {
                     e.setCancelled(true);
                     String message = (String) map.get(Ref.message);
                     Message.INSTANCE.sendMessage(player.getUniqueId(), message);
+                    return;
                 }
             }
         }

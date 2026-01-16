@@ -3,19 +3,16 @@ package com.maddyjace.worldrulesmanage.playerrules;
 import com.maddyjace.worldrulesmanage.util.Message;
 import com.maddyjace.worldrulesmanage.util.Ref;
 import com.maddyjace.worldrulesmanage.util.WorldUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Map;
 
 import static com.maddyjace.worldrulesmanage.util.Ref.enable;
-import static com.maddyjace.worldrulesmanage.util.Ref.message;
 
 /** 防止饥饿 事件监听器 */
 public class HungerFrozen implements Listener {
@@ -42,6 +39,7 @@ public class HungerFrozen implements Listener {
                     e.setCancelled(true);
                     String message = (String) map.get(Ref.message);
                     Message.INSTANCE.sendMessage(player.getUniqueId(), message);
+                    return;
                 }
             }
         }

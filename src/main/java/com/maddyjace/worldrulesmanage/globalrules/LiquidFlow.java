@@ -20,6 +20,7 @@ public class LiquidFlow implements Listener {
         // 控制全局
         if (Ref.wdl.getGlobalData().containsKey(world.getName()) && Ref.wdl.getGlobalData().get(world.getName()).liquidFlow) {
             e.setCancelled(true);
+            return;
         }
         // 控制半径
         if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
