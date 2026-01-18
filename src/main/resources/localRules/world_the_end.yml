@@ -18,7 +18,7 @@ radius:
 
 # Global rules
 #   These rules apply to the world itself, not to player behavior!
-globalRules:
+localRules:
   # Disable liquid flow
   liquidFlow: false
   # Disable leaf decay
@@ -92,7 +92,7 @@ globalRules:
     # blockList: []
 
 # Player rules
-playerRules:
+localPlayerRules:
   # Permission (players with this permission bypass all checks; disable OP when testing)
   permission: "worldrulesmanage.admin"
 

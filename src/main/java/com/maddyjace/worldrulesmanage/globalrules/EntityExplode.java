@@ -30,10 +30,12 @@ public class EntityExplode implements Listener {
         }
 
         // 控制半径
-        if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+        if (Ref.wdl.getLocalData().containsKey(world.getName())) {
             Map<String, Object> creatureSpawn = Ref.wdl.getLocalData().get(world.getName()).entityExplode;
             if (WorldUtil.conJud(creatureSpawn, enable, checkMode, list, entityName)) {
-                e.blockList().clear();
+                if (WorldUtil.inRadius(world, current)) {
+                    e.blockList().clear();
+                }
             }
         }
 
@@ -55,10 +57,12 @@ public class EntityExplode implements Listener {
         }
 
         // 控制半径
-        if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+        if (Ref.wdl.getLocalData().containsKey(world.getName())) {
             Map<String, Object> creatureSpawn = Ref.wdl.getLocalData().get(world.getName()).entityExplode;
             if (WorldUtil.conJud(creatureSpawn, enable, checkMode, list, blockName)) {
-                e.blockList().clear();
+                if (WorldUtil.inRadius(world, current)) {
+                    e.blockList().clear();
+                }
             }
         }
     }

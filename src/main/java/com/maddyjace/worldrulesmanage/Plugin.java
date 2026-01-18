@@ -1,10 +1,14 @@
 package com.maddyjace.worldrulesmanage;
 
 import com.maddyjace.worldrulesmanage.commands.Commands;
+import com.maddyjace.worldrulesmanage.util.AutoReload;
+import com.maddyjace.worldrulesmanage.util.Config;
 import com.maddyjace.worldrulesmanage.util.Get;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Plugin extends JavaPlugin {
+
+    private static AutoReload autoReload;
 
     @Override
     public void onEnable() {
@@ -15,6 +19,13 @@ public final class Plugin extends JavaPlugin {
         this.getCommand("worldrulesmanage").setExecutor(commandHandler);     // 命令
         this.getCommand("worldrulesmanage").setTabCompleter(commandHandler); // Tab
         WorldRulesManage.INSTANCE.onEnable();
+
+        Config c = Config.INSTANCE;
+        if (c.autoReloadEnable) {
+            long second = c.autoReloadPeriod * 1000L;
+            autoReload = new AutoReload(getDataFolder().getPath(), second, true,".yml", ".yaml");
+            autoReload.start();
+        }
 
         // 颜色
         final String RESET = "\u001B[0m";
@@ -39,6 +50,12 @@ public final class Plugin extends JavaPlugin {
     @Override
     public void onDisable() {
         WorldRulesManage.INSTANCE.onDisable();
+
+        if (autoReload != null) {
+            autoReload.stop();
+            autoReload = null;
+        }
+
     }
 
 }

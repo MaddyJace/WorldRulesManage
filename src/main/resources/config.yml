@@ -15,6 +15,7 @@ infoPeriod: 5 # in seconds
 #
 # Auto Reload
 # Automatically reloads the plugin when configuration files are modified without entering commands.
+# A restart or a complete reload of the plugin is required for it to take effect!
 #
 autoReload:
   enable: true

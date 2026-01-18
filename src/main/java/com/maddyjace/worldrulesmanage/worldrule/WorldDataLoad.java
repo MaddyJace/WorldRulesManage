@@ -11,10 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public enum WorldDataLoad {
     INSTANCE;
 
-    public static final File globalRulesFolder = WorldUtil.getWorldFolder("globalRules");
+    public File globalRulesFolder = WorldUtil.getWorldFolder("globalRules");
     private final Map<String, WorldRuleField> globalData = new ConcurrentHashMap<>();
 
-    public static final File localRulesFolder = WorldUtil.getWorldFolder("localRules");
+    public File localRulesFolder = WorldUtil.getWorldFolder("localRules");
     private final Map<String, WorldRuleField> localData = new ConcurrentHashMap<>();
 
     /** 启动时逻辑 */
@@ -40,6 +40,8 @@ public enum WorldDataLoad {
     public void onDisable() {
         globalData.clear();
         localData.clear();
+        globalRulesFolder = null;
+        localRulesFolder = null;
     }
 
     /** 获取 {@code globalData} 对象 */
@@ -59,15 +61,15 @@ public enum WorldDataLoad {
         String gr;
         String pr;
         // radius
-        if (!(isLocal)) {
-            gr = "globalRules.";
-            pr = "playerRules.";
-        } else {
+        if (isLocal) {
             gr = "localRules.";
             pr = "localPlayerRules.";
             wrf.model  = YAML.getInt("radius.model", 1);  // 半径模型
             wrf.radius = YAML.getInt("radius.radius", 0); // 半径范围
             wrf.xyz    = YAML.getStringList("radius.xyz");  // 坐标位置
+        } else {
+            gr = "globalRules.";
+            pr = "playerRules.";
         }
 
         // worldName

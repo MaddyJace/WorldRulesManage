@@ -10,13 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2026/01/16/08:21:55&#10;Optimization and addition of new features!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/KeepInventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/HomeZone.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/Lobby.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/globalRules/OtherWorlds.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/Plugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/Plugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/BlockBurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/BlockBurn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/CreatureSpawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/CreatureSpawn.java" afterDir="false" />
@@ -36,32 +33,29 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/CustomInjured.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/CustomInjured.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/HungerFrozen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/HungerFrozen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemDrop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemDrop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemPickup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemPickup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/KnockbackImmunity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/KnockbackImmunity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/LightTheBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/LightTheBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/Portal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/Portal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/TriggerBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/TriggerBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UseItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UsePail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UsePail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/AutoReload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/AutoReload.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/WorldUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/WorldUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldDataLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldDataLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldRuleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldRuleField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config_zh_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config_zh_CN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/globalRules/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/globalRules/world.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/globalRules/world_nether.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/globalRules/world_nether.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/globalRules/world_the_end.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/globalRules/world_the_end.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world_nether.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world_nether.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world_the_end.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/globalRules/zh_CN/world_the_end.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language/en_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language/en_US.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language/zh_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language/zh_CN.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/world.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/world_nether.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/world_nether.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/world_the_end.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/world_the_end.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_nether.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_nether.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_the_end.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_the_end.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,45 +102,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JAR 应用程序.Server 1.12.2.executor": "Debug",
-    "JAR 应用程序.Server1.12.2.executor": "Run",
-    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
-    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
-    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
-    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
-    "JavaVariableFindUsagesOptions.isSearchForAccessors": "true",
-    "JavaVariableFindUsagesOptions.isSearchForTextOccurrences": "true",
-    "Maven.WorldRulesManage [package].executor": "Run",
-    "Maven.WorldRulesManage [verify].executor": "Run",
-    "Maven.WorldRulesManage package.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/IDEA/MinecraftPlugins/WorldRulesManage/src/main/resources/localRules/zh_CN",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JAR 应用程序.Server 1.12.2.executor&quot;: &quot;Debug&quot;,
+    &quot;JAR 应用程序.Server1.12.2.executor&quot;: &quot;Run&quot;,
+    &quot;JavaClassFindUsagesOptions.isDerivedClasses&quot;: &quot;true&quot;,
+    &quot;JavaClassFindUsagesOptions.isFieldsUsages&quot;: &quot;true&quot;,
+    &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
+    &quot;JavaMethodFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
+    &quot;JavaVariableFindUsagesOptions.isSearchForAccessors&quot;: &quot;true&quot;,
+    &quot;JavaVariableFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
+    &quot;Maven.WorldRulesManage [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WorldRulesManage [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.WorldRulesManage package.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/IDEA/MinecraftPlugins/WorldRulesManage/src/main/resources/localRules/zh_CN&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\IDEA\MinecraftPlugins\WorldRulesManage\src\main\resources\localRules\zh_CN" />
@@ -253,7 +247,13 @@
       <workItem from="1768343745590" duration="28860000" />
       <workItem from="1768428300954" duration="42071000" />
       <workItem from="1768471528301" duration="1676000" />
-      <workItem from="1768506867846" duration="15905000" />
+      <workItem from="1768506867846" duration="16712000" />
+      <workItem from="1768523854298" duration="18000" />
+      <workItem from="1768523881815" duration="55000" />
+      <workItem from="1768524514650" duration="3321000" />
+      <workItem from="1768530791515" duration="6706000" />
+      <workItem from="1768539057117" duration="4248000" />
+      <workItem from="1768700159671" duration="2265000" />
     </task>
     <task id="LOCAL-00001" summary="Fix the null pointer error occurring when the plugin starts!">
       <option name="closed" value="true" />
@@ -311,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768471392768</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="2026/01/16/08:21:55&#10;Optimization and addition of new features!">
+      <option name="closed" value="true" />
+      <created>1768523108451</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1768523108451</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

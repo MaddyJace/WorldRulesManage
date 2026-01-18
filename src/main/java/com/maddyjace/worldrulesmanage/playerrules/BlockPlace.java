@@ -45,8 +45,8 @@ public class BlockPlace implements Listener {
             String permission = Ref.wdl.getLocalData().get(world.getName()).permission;
             if (!(player.hasPermission(permission))) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).blockPlace;
-                if (WorldUtil.inRadius(world, current)) {
-                    if (WorldUtil.conJud(map,enable, checkMode, blockList, blockName)) {
+                if (WorldUtil.conJud(map,enable, checkMode, blockList, blockName)) {
+                    if (WorldUtil.inRadius(world, current)) {
                         e.setCancelled(true);
                         String message = (String) map.get(Ref.message);
                         Message.INSTANCE.sendMessage(player.getUniqueId(), message);

@@ -74,8 +74,8 @@ public class Portal implements Listener {
             String permission = Ref.wdl.getLocalData().get(world.getName()).permission;
             if (!(player.hasPermission(permission))) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).portal;
-                if (WorldUtil.inRadius(world, current)) {
-                    if (WorldUtil.conJud(map, enable)) {
+                if (WorldUtil.conJud(map, enable)) {
+                    if (WorldUtil.inRadius(world, current)) {
                         if ((boolean) map.get(("all"))) {
                             e.setCancelled(true);
                             pushAwayPlayer(player);

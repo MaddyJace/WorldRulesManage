@@ -24,9 +24,11 @@ public class WaterFreezes implements Listener {
             }
 
             // 控制半径
-            if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+            if (Ref.wdl.getLocalData().containsKey(world.getName())) {
                 if (Ref.wdl.getLocalData().get(world.getName()).waterFreezes) {
-                    e.setCancelled(true);
+                    if (WorldUtil.inRadius(world, current)) {
+                        e.setCancelled(true);
+                    }
                 }
             }
         }

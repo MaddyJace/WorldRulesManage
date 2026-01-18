@@ -44,11 +44,12 @@ public class ItemDrop implements Listener {
             String permission = Ref.wdl.getLocalData().get(world.getName()).permission;
             if (!(player.hasPermission(permission))) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).itemPickup;
-                if (WorldUtil.inRadius(world, current)) {
-                    if (WorldUtil.conJud(map, enable, checkMode, itemList, itemName)) {
+                if (WorldUtil.conJud(map, enable, checkMode, itemList, itemName)) {
+                    if (WorldUtil.inRadius(world, current)) {
                         e.setCancelled(true);
                         String message = (String) map.get(Ref.message);
                         Message.INSTANCE.sendMessage(player.getUniqueId(), message);
+
                     }
                 }
             }

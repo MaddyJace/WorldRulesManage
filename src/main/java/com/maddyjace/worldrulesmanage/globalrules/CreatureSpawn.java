@@ -31,11 +31,13 @@ public class CreatureSpawn implements Listener {
         }
 
         // 控制半径
-        if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+        if (Ref.wdl.getLocalData().containsKey(world.getName())) {
             Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).creatureSpawn;
             if (WorldUtil.conJud(map, enable, checkMode, entityList, entityType)) {
-                e.setCancelled(true);
-                return;
+                if (WorldUtil.inRadius(world, current)) {
+                    e.setCancelled(true);
+                    return;
+                }
             }
         }
 
@@ -53,11 +55,13 @@ public class CreatureSpawn implements Listener {
             }
 
             // 控制半径
-            if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+            if (Ref.wdl.getLocalData().containsKey(world.getName())) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).creatureSpawn;
                 if ((boolean) map.get(enable) && (boolean) map.get("monster")) {
-                    e.setCancelled(true);
-                    return;
+                    if (WorldUtil.inRadius(world, current)) {
+                        e.setCancelled(true);
+                        return;
+                    }
                 }
             }
         }
@@ -73,11 +77,13 @@ public class CreatureSpawn implements Listener {
                 }
             }
             // 控制半径
-            if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+            if (Ref.wdl.getLocalData().containsKey(world.getName())) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).creatureSpawn;
                 if ((boolean) map.get(enable) && (boolean) map.get("animals")) {
-                    e.setCancelled(true);
-                    return;
+                    if (WorldUtil.inRadius(world, current)) {
+                        e.setCancelled(true);
+                        return;
+                    }
                 }
             }
         }
@@ -92,10 +98,12 @@ public class CreatureSpawn implements Listener {
                 }
             }
             // 控制半径
-            if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+            if (Ref.wdl.getLocalData().containsKey(world.getName())) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).creatureSpawn;
                 if ((boolean) map.get(enable) && (boolean) map.get("ironGolem")) {
-                    e.setCancelled(true);
+                    if (WorldUtil.inRadius(world, current)) {
+                        e.setCancelled(true);
+                    }
                 }
             }
         }

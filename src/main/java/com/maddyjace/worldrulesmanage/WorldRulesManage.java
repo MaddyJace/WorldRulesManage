@@ -6,17 +6,10 @@ import com.maddyjace.worldrulesmanage.playerrules.*;
 import com.maddyjace.worldrulesmanage.util.*;
 import com.maddyjace.worldrulesmanage.worldrule.WorldDataLoad;
 import org.bukkit.event.HandlerList;
-import org.bukkit.scheduler.BukkitTask;
 
 
 public enum WorldRulesManage {
     INSTANCE; // 单例实例
-
-    private AutoReload globalRulesAutoReload;
-    private AutoReload localRulesAutoReload;
-    private AutoReload languageAutoReload;
-    private AutoReload configAutoReload;
-    private BukkitTask autoReloadTask;
 
     public void onEnable() {
         // 初始化 Config
@@ -26,29 +19,12 @@ public enum WorldRulesManage {
         // 初始化 WorldDataLoad
         WorldDataLoad.INSTANCE.onEnable();
         // 初始化 Message
-        Message.INSTANCE = new Message(c.infoPeriod);
+        Message.INSTANCE = new Message((c.infoPeriod * 20L));
         // 初始化 监听器
         registerListeners();
         // 初始化 语言
         Language.Get.onEnable();
-
-        if (c.autoReloadEnable) {
-            long second = c.autoReloadPeriod * 1000L;
-            globalRulesAutoReload = new AutoReload(WorldDataLoad.globalRulesFolder.getPath(),
-                    second, false, ".yml");
-            localRulesAutoReload  = new AutoReload(WorldDataLoad.localRulesFolder.getPath(),
-                    second, false, ".yml");
-            languageAutoReload = new AutoReload(Language.getLanguageFolder().getPath(),
-                    second, false, ".yml", ".yaml");
-            configAutoReload  = new AutoReload(Get.plugin().getDataFolder().getPath(),
-                    second, false, ".yml");
-            globalRulesAutoReload.start();
-            localRulesAutoReload.start();
-            languageAutoReload.start();
-            configAutoReload.start();
-        }
     }
-
 
     public void onDisable() {
         // 释放资源
@@ -57,30 +33,7 @@ public enum WorldRulesManage {
         Message.INSTANCE = null;
         unregisterListeners();
         Language.Get.onEnable();
-
-        if (autoReloadTask != null) {
-            autoReloadTask.cancel();
-            autoReloadTask = null;
-        }
-
-        if (globalRulesAutoReload != null) {
-            globalRulesAutoReload.stop();
-            globalRulesAutoReload = null;
-        }
-        if (localRulesAutoReload != null) {
-            localRulesAutoReload.stop();
-            localRulesAutoReload = null;
-        }
-        if (languageAutoReload != null) {
-            languageAutoReload.stop();
-            languageAutoReload = null;
-        }
-        if (configAutoReload != null) {
-            configAutoReload.stop();
-            configAutoReload = null;
-        }
     }
-
 
 
     // 注册的监听器字段

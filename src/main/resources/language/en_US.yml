@@ -6,11 +6,11 @@ reload: "{0}: &aReload completed!"
 commandCorrectUsage: "{0}: Correct command usage &c/wrl reload"
 
 # Auto Reload
-autoReloadError:   "{0}: &cAuto-reload could not be enabled!"
-autoReloadCreate:  "{0}: &aAuto-reloaded configuration {1}"
-autoReloadChange:  "{0}: &aAuto-reloaded configuration {1}"
-autoReloadDelete:  "{0}: &cConfiguration file {1} was automatically deleted"
-autoReloadRestart: "{0}: &e{1} changed and partial reload failed, but the plugin restarted successfully!"
+autoReloadError:   "&cAuto-reload could not be enabled!"
+autoReloadCreate:  "&aAuto-reloaded configuration {1}"
+autoReloadChange:  "&aAuto-reloaded configuration {1}"
+autoReloadDelete:  "&cConfiguration file {1} was automatically deleted"
+autoReloadRestart: "&e{1} changed and partial reload failed, but the plugin restarted successfully!"
 
 # Debug
 entityExplodeNameDebug:            "Entity explosion, entity {0}"

@@ -52,8 +52,8 @@ public class AlwaysSatiated implements Listener {
             String permission = Ref.wdl.getLocalData().get(world.getName()).permission;
             if (!(player.hasPermission(permission))) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).alwaysSatiated;
-                if (WorldUtil.inRadius(world, current)) {
-                    if (WorldUtil.conJud(map, enable)) {
+                if (WorldUtil.conJud(map, enable)) {
+                    if (WorldUtil.inRadius(world, current)) {
                         int foodLevel = (int) map.get("foodLevel");
                         Bukkit.getScheduler().runTaskLater(Get.plugin(), () -> {
                             player.setFoodLevel(foodLevel);
@@ -62,6 +62,7 @@ public class AlwaysSatiated implements Listener {
                         }, 10L);
                     }
                 }
+
             }
         }
 

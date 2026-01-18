@@ -48,8 +48,8 @@ public class UseItem implements Listener {
             String permission = Ref.wdl.getLocalData().get(world.getName()).permission;
             if (!(player.hasPermission(permission))) {
                 Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).useItem;
-                if (WorldUtil.inRadius(world, current)) {
-                    if (WorldUtil.conJud(map,enable, checkMode, itemList, itemName)) {
+                if (WorldUtil.conJud(map,enable, checkMode, itemList, itemName)) {
+                    if (WorldUtil.inRadius(world, current)) {
                         e.setCancelled(true);
                         String message = (String) map.get(Ref.message);
                         Message.INSTANCE.sendMessage(player.getUniqueId(), message);

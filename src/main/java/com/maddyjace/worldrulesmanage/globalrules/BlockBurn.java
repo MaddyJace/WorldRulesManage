@@ -31,10 +31,12 @@ public class BlockBurn implements Listener {
         }
 
         // 控制半径
-        if (Ref.wdl.getLocalData().containsKey(world.getName()) && WorldUtil.inRadius(world, current)) {
+        if (Ref.wdl.getLocalData().containsKey(world.getName())) {
             Map<String, Object> creatureSpawn = Ref.wdl.getLocalData().get(world.getName()).blockBurn;
             if (WorldUtil.conJud(creatureSpawn, enable, checkMode, blockList, blockName)) {
-                e.setCancelled(true);
+                if (WorldUtil.inRadius(world, current)) {
+                    e.setCancelled(true);
+                }
             }
         }
     }

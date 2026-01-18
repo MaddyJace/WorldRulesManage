@@ -137,14 +137,16 @@ public class WorldUtil {
 
     /** 判断玩家是否在半径内 */
     public static boolean inRadius(World world, Location current) {
+        if (world == null || current == null) return false;
         int model = Ref.wdl.getLocalData().get(world.getName()).model;
         int radius = Ref.wdl.getLocalData().get(world.getName()).radius;
         List<String> xyz = Ref.wdl.getLocalData().get(world.getName()).xyz;
         return WorldUtil.inRadius(world, current, model, radius, xyz);
     }
     private static boolean inRadius(World world, Location current, int model, int radius, List<String> list) {
-        for (String str : list) {
+        if (list == null || list.isEmpty()) return false;
 
+        for (String str : list) {
             // 将坐标位置按空格或连续空格拆分为数组(严格判断数组length)
             String[] parts = str.trim().split("\\s+");
             if (parts.length != 3) return false;

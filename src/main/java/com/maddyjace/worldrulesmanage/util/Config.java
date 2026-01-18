@@ -11,11 +11,11 @@ public enum Config {
     public String language = "en_US";
 
     // message
-    public int infoPeriod = 5;
+    public long infoPeriod = 5;
 
     // autoReload
     public boolean autoReloadEnable = true;
-    public int autoReloadPeriod = 5;
+    public long autoReloadPeriod = 5;
 
     // debug
     public boolean entityExplodeName = false;            // 实体爆炸
@@ -80,11 +80,11 @@ public enum Config {
         language = config.getString("language");
 
         // message
-        infoPeriod = config.getInt("infoPeriod", 5);
+        infoPeriod = config.getLong("infoPeriod", 5);
 
         // autoReload
         autoReloadEnable = config.getBoolean("autoReload.enable", true);
-        autoReloadPeriod = config.getInt("autoReload.period", 5);
+        autoReloadPeriod = config.getLong("autoReload.period", 5);
 
         // debug
         entityExplodeName = config.getBoolean("debug.entityExplodeName", false);
