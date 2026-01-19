@@ -98,7 +98,7 @@ public class AutoReload {
                 if (file.getParentFile().getName().equalsIgnoreCase("localRules")) {
                     String noFileExtension = WorldUtil.removeSuffix(file.getName());
                     YamlConfiguration YAML = YamlConfiguration.loadConfiguration(file);
-                    wdl.getLocalData().put(noFileExtension, wdl.parseYAMLData(noFileExtension, YAML, false));
+                    wdl.getLocalData().put(noFileExtension, wdl.parseYAMLData(noFileExtension, YAML, true));
                     Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                         String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
                         info(Language.Get.translate(Language.getServerLanguage(), "autoReloadCreate", pluginName, file.getName()));
@@ -107,12 +107,11 @@ public class AutoReload {
                 }
                 // 检查 file 父级是否为language文件夹中的文件
                 if (file.getParentFile().getName().equalsIgnoreCase("language")) {
-                    String noFileExtension = WorldUtil.removeSuffix(file.getName());
-                    Language.Get.languages.remove(noFileExtension);
-                    Language.Get.parseYAMLData(file.getName(), noFileExtension, YamlConfiguration.loadConfiguration(file));
+                    Language.Get.onDisable();
+                    Language.Get.onEnable();
                     Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                         String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
-                        info(Language.Get.translate(Language.getServerLanguage(), "reload", pluginName, file.getName()));
+                        info(Language.Get.translate(Language.getServerLanguage(), "autoReloadDelete", pluginName, file.getName()));
                     });
                     return;
                 }
@@ -124,7 +123,7 @@ public class AutoReload {
                         WorldRulesManage.INSTANCE.onEnable();
                         Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                             String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
-                            info(Language.Get.translate(Language.getServerLanguage(), "autoReloadRestart", pluginName, file.getName()));
+                            info(Language.Get.translate(Language.getServerLanguage(), "reload", pluginName, file.getName()));
                         });
                     }
                 }
@@ -148,7 +147,7 @@ public class AutoReload {
                 if (file.getParentFile().getName().equalsIgnoreCase("localRules")) {
                     String noFileExtension = WorldUtil.removeSuffix(file.getName());
                     YamlConfiguration YAML = YamlConfiguration.loadConfiguration(file);
-                    wdl.getLocalData().put(noFileExtension, wdl.parseYAMLData(noFileExtension, YAML, false));
+                    wdl.getLocalData().put(noFileExtension, wdl.parseYAMLData(noFileExtension, YAML, true));
                     Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                         String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
                         info(Language.Get.translate(Language.getServerLanguage(), "autoReloadChange", pluginName, file.getName()));
@@ -157,9 +156,8 @@ public class AutoReload {
                 }
                 // 检查 file 父级是否为language文件夹中的文件
                 if (file.getParentFile().getName().equalsIgnoreCase("language")) {
-                    String noFileExtension = WorldUtil.removeSuffix(file.getName());
-                    Language.Get.languages.remove(noFileExtension);
-                    Language.Get.parseYAMLData(file.getName(), noFileExtension, YamlConfiguration.loadConfiguration(file));
+                    Language.Get.onDisable();
+                    Language.Get.onEnable();
                     Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                         String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
                         info(Language.Get.translate(Language.getServerLanguage(), "autoReloadChange", pluginName, file.getName()));
@@ -174,7 +172,7 @@ public class AutoReload {
                         WorldRulesManage.INSTANCE.onEnable();
                         Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                             String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
-                            info(Language.Get.translate(Language.getServerLanguage(), "autoReloadRestart", pluginName, file.getName()));
+                            info(Language.Get.translate(Language.getServerLanguage(), "reload", pluginName, file.getName()));
                         });
                     }
                 }
@@ -205,8 +203,8 @@ public class AutoReload {
                 }
                 // 检查 file 父级是否为language文件夹中的文件
                 if (file.getParentFile().getName().equalsIgnoreCase("language")) {
-                    String noFileExtension = WorldUtil.removeSuffix(file.getName().toLowerCase());
-                    Language.Get.languages.remove(noFileExtension);
+                    Language.Get.onDisable();
+                    Language.Get.onEnable();
                     Bukkit.getScheduler().runTask(Get.plugin(), () -> {
                         String pluginName = Language.Get.translate(Language.getServerLanguage(), "pluginName");
                         info(Language.Get.translate(Language.getServerLanguage(), "autoReloadDelete", pluginName, file.getName()));
@@ -245,7 +243,7 @@ public class AutoReload {
 
     /** 向控制台发送 "创建", "修改", "删除" 文件的信息*/
     private static void info(String fileName) {
-        Get.plugin().getLogger().info(fileName);
-        // Bukkit.getConsoleSender().sendMessage(fileName);
+        // Get.plugin().getLogger().info(fileName);
+        Bukkit.getConsoleSender().sendMessage(fileName);
     }
 }

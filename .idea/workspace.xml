@@ -9,53 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2026/01/16/08:21:55&#10;Optimization and addition of new features!">
+    <list default="true" id="528c6bbd-0b7a-466e-b163-065cbb23e6c9" name="更改" comment="2026/01/18/10:14:17&#10;Fix and optimize!&#10;&#10;Fix - the issue with infoPeriod in config.yml not being calculated in seconds.&#10;Optimization - Windows 11's CMD line spacing issue.&#10;Optimization - The parameters autoReloadError, autoReloadCreate, autoReloadChange, and autoReloadDelete for the language module {0} are recommended to be removed. You can also directly delete the entire language folder to regenerate the configuration files.&#10;Optimization - Fixed the issue where deleting the globalRules and localRules folders during runtime would not dynamically generate configuration files.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/Plugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/Plugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/WorldRulesManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/BlockBurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/BlockBurn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/CreatureSpawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/CreatureSpawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/EntityChangeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/EntityChangeBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/EntityExplode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/EntityExplode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/FireSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/FireSpread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/GrassSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/GrassSpread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/IceMelts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/IceMelts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/IceSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/IceSpread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/LeavesDecay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/LeavesDecay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/LiquidFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/LiquidFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/MyceliumSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/MyceliumSpread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/WaterFreezes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/globalrules/WaterFreezes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/AlwaysSatiated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/AlwaysSatiated.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/BlockBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/BlockBreak.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/BlockPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/BlockPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/CustomInjured.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/CustomInjured.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/HungerFrozen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/HungerFrozen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/InteractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/commands/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/commands/Commands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemDrop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemDrop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemPickup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/ItemPickup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/KnockbackImmunity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/KnockbackImmunity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/LightTheBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/LightTheBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/Portal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/Portal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/TriggerBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/TriggerBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UseItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UsePail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/playerrules/UsePail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/AutoReload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/AutoReload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/WorldUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/WorldUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Get.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Get.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/util/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldDataLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/maddyjace/worldrulesmanage/worldrule/WorldDataLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config_zh_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config_zh_CN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language/en_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language/en_US.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language/zh_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language/zh_CN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/world.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/world_nether.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/world_nether.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/world_the_end.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/world_the_end.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_nether.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_nether.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_the_end.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/localRules/zh_CN/world_the_end.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +219,10 @@
       <workItem from="1768524514650" duration="3321000" />
       <workItem from="1768530791515" duration="6706000" />
       <workItem from="1768539057117" duration="4248000" />
-      <workItem from="1768700159671" duration="2265000" />
+      <workItem from="1768700159671" duration="2578000" />
+      <workItem from="1768703487472" duration="1790000" />
+      <workItem from="1768705435980" duration="2093000" />
+      <workItem from="1768708675935" duration="9987000" />
     </task>
     <task id="LOCAL-00001" summary="Fix the null pointer error occurring when the plugin starts!">
       <option name="closed" value="true" />
@@ -319,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768523108451</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2026/01/18/10:14:17&#10;Fix and optimize!&#10;&#10;Fix - the issue with infoPeriod in config.yml not being calculated in seconds.&#10;Optimization - Windows 11's CMD line spacing issue.&#10;Optimization - The parameters autoReloadError, autoReloadCreate, autoReloadChange, and autoReloadDelete for the language module {0} are recommended to be removed. You can also directly delete the entire language folder to regenerate the configuration files.&#10;Optimization - Fixed the issue where deleting the globalRules and localRules folders during runtime would not dynamically generate configuration files.">
+      <option name="closed" value="true" />
+      <created>1768702484312</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1768702484312</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,6 +334,7 @@
     <MESSAGE value="2025/08/24/05:02:35&#10;&#10;A new fatalInjury option has been added under playerDamage (default: disabled).&#10;It does not prevent fatal damage (e.g., falling from a great height, /kill, etc.).&#10;&#10;Note:&#10;If you do not need the fatalInjury feature, you can ignore this update or update without making any changes.&#10;If you are upgrading from v5.2 to v5.3, simply add fatalInjury: true under playerDamage. A configuration example has been provided below.&#10;&#10;翻译： 在 playerDamage 项中新增了 fatalInjury 开关(默认为关闭)，它不会阻止致命伤害(如: 高空坠落，使/kill，等)。 注意： 1. 如果您不需要使用 fatalInjury 功能您可以忽略本次更新或者更新什么也不做！ 2. 如果是从 v5.2 升级到 v5.3 版本的请在 playerDamage 中添加 fatalInjur: true 即可，相应设立以放在底下。" />
     <MESSAGE value="2026/01/15/18:01:59&#10;Optimization and addition of new features!" />
     <MESSAGE value="2026/01/16/08:21:55&#10;Optimization and addition of new features!" />
-    <option name="LAST_COMMIT_MESSAGE" value="2026/01/16/08:21:55&#10;Optimization and addition of new features!" />
+    <MESSAGE value="2026/01/18/10:14:17&#10;Fix and optimize!&#10;&#10;Fix - the issue with infoPeriod in config.yml not being calculated in seconds.&#10;Optimization - Windows 11's CMD line spacing issue.&#10;Optimization - The parameters autoReloadError, autoReloadCreate, autoReloadChange, and autoReloadDelete for the language module {0} are recommended to be removed. You can also directly delete the entire language folder to regenerate the configuration files.&#10;Optimization - Fixed the issue where deleting the globalRules and localRules folders during runtime would not dynamically generate configuration files." />
+    <option name="LAST_COMMIT_MESSAGE" value="2026/01/18/10:14:17&#10;Fix and optimize!&#10;&#10;Fix - the issue with infoPeriod in config.yml not being calculated in seconds.&#10;Optimization - Windows 11's CMD line spacing issue.&#10;Optimization - The parameters autoReloadError, autoReloadCreate, autoReloadChange, and autoReloadDelete for the language module {0} are recommended to be removed. You can also directly delete the entire language folder to regenerate the configuration files.&#10;Optimization - Fixed the issue where deleting the globalRules and localRules folders during runtime would not dynamically generate configuration files." />
   </component>
 </project>

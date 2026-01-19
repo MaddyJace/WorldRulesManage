@@ -29,7 +29,7 @@ public class ItemDrop implements Listener {
             String permission = Ref.wdl.getGlobalData().get(world.getName()).permission;
             // 当没有权限时
             if (!(player.hasPermission(permission))) {
-                Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).itemPickup;
+                Map<String, Object> map = Ref.wdl.getGlobalData().get(world.getName()).itemDrop;
                 if (WorldUtil.conJud(map, enable, checkMode, itemList, itemName)) {
                     e.setCancelled(true);
                     String message = (String) map.get(Ref.message);
@@ -43,7 +43,7 @@ public class ItemDrop implements Listener {
         if (Ref.wdl.getLocalData().containsKey(world.getName())) {
             String permission = Ref.wdl.getLocalData().get(world.getName()).permission;
             if (!(player.hasPermission(permission))) {
-                Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).itemPickup;
+                Map<String, Object> map = Ref.wdl.getLocalData().get(world.getName()).itemDrop;
                 if (WorldUtil.conJud(map, enable, checkMode, itemList, itemName)) {
                     if (WorldUtil.inRadius(world, current)) {
                         e.setCancelled(true);

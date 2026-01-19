@@ -11,10 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public enum WorldDataLoad {
     INSTANCE;
 
-    public File globalRulesFolder = WorldUtil.getWorldFolder("globalRules");
+    private static File globalRulesFolder = WorldUtil.getWorldFolder("globalRules");
     private final Map<String, WorldRuleField> globalData = new ConcurrentHashMap<>();
 
-    public File localRulesFolder = WorldUtil.getWorldFolder("localRules");
+    private static File localRulesFolder = WorldUtil.getWorldFolder("localRules");
     private final Map<String, WorldRuleField> localData = new ConcurrentHashMap<>();
 
     /** 启动时逻辑 */
@@ -40,8 +40,12 @@ public enum WorldDataLoad {
     public void onDisable() {
         globalData.clear();
         localData.clear();
-        globalRulesFolder = null;
-        localRulesFolder = null;
+        if (globalRulesFolder != null) {
+            globalRulesFolder = WorldUtil.getWorldFolder("globalRules");
+        }
+        if (localRulesFolder != null) {
+            localRulesFolder = WorldUtil.getWorldFolder("localRules");
+        }
     }
 
     /** 获取 {@code globalData} 对象 */
@@ -60,6 +64,7 @@ public enum WorldDataLoad {
 
         String gr;
         String pr;
+
         // radius
         if (isLocal) {
             gr = "localRules.";

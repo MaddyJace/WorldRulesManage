@@ -12,27 +12,20 @@ public enum WorldRulesManage {
     INSTANCE; // 单例实例
 
     public void onEnable() {
-        // 初始化 Config
-        Config.INSTANCE.onEnable();
-        Config c = Config.INSTANCE;
-
-        // 初始化 WorldDataLoad
-        WorldDataLoad.INSTANCE.onEnable();
-        // 初始化 Message
-        Message.INSTANCE = new Message((c.infoPeriod * 20L));
-        // 初始化 监听器
-        registerListeners();
-        // 初始化 语言
-        Language.Get.onEnable();
+        Config.INSTANCE.onEnable();                                         // 初始化 Config
+        registerListeners();                                                // 初始化 监听器
+        Language.Get.onEnable();                                            // 初始化 语言
+        WorldDataLoad.INSTANCE.onEnable();                                  // 初始化 WorldDataLoad
+        Message.INSTANCE = new Message((Config.INSTANCE.infoPeriod * 20L)); // 初始化 Message
     }
 
     public void onDisable() {
-        // 释放资源
-        Config.INSTANCE.onDisable();
-        WorldDataLoad.INSTANCE.onDisable();
-        Message.INSTANCE = null;
-        unregisterListeners();
-        Language.Get.onEnable();
+        unregisterListeners();              // 释放事件监听对象
+        WorldDataLoad.INSTANCE.onDisable(); // 释放核心功能模块
+        if (Message.INSTANCE != null) {     // 释放信息模块对象(实际是重新初始化)
+            Message.INSTANCE = new Message(( Config.INSTANCE.infoPeriod * 20L));
+        }
+        Language.Get.onDisable();           // 释放语言模块对象
     }
 
 

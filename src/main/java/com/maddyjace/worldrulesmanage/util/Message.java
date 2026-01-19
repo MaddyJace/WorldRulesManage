@@ -1,5 +1,6 @@
 package com.maddyjace.worldrulesmanage.util;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -27,60 +28,28 @@ public class Message {
 
     // 发送信息
     public void sendMessage(UUID uuid, String message) {
-        if (!cooldownPlayers.add(uuid)) return;
-        if (message == null || message.isEmpty()) return;
+        if (message.isEmpty()) return;
+        message = message.replace("&", "§");
 
         // 异步冷却队列
-        Bukkit.getScheduler().runTaskLaterAsynchronously(
-                Get.plugin(), () -> cooldownPlayers.remove(uuid), cooldownTicks);
+        if (!cooldownPlayers.add(uuid)) return;
+        Bukkit.getScheduler().runTaskLaterAsynchronously(Get.plugin(), () -> cooldownPlayers.remove(uuid), cooldownTicks);
 
         Player player = Bukkit.getPlayer(uuid);
-        String str = message.trim().toLowerCase();
-        String trim = str.substring(str.indexOf(':') + 1).trim();
 
-        // 向玩家发送 title
-        if (str.startsWith("title")) {
-            handleTitle(player, trim.replace("&", "§"));
+        String[] result = parsePrefix(message);
+        if (result == null || result.length != 2) {
+            // 默认发送类型 actionbar
+            sendActionBar(player, message);
             return;
         }
-        // 向玩家发送 actionbar
-        if (str.startsWith("actionbar")) {
-            sendActionBar(player, trim.replace("&", "§"));
-            return;
-        }
-        // 向玩家发送 tell
-        if (str.startsWith("tell")) {
-            sendChat(player, trim.replace("&", "§"));
-            return;
+        switch (result[0].toUpperCase()) {
+            case "TELL"      : sendChat      (player, parse(player, result[1])); return;
+            case "TITLE"     : sendTitle     (player, parse(player, result[1])); return;
+            case "ACTIONBAR" : sendActionBar (player, parse(player, result[1])); return;
+            default          : sendActionBar(player, message);
         }
 
-        // 默认发送类型 actionbar
-        sendActionBar(player, message.replace("&", "§"));
-
-    }
-    /** 处理 title 信息的专用方法 */
-    private void handleTitle(Player player, String message) {
-        String str = message.substring(message.indexOf(':') + 1).trim();
-        Matcher matcher = Pattern.compile("`([^`]*)`").matcher(str);
-
-        String title = "";
-        if (matcher.find()) { title = matcher.group(1); }
-        String subtitle = "";
-        if (matcher.find()) { subtitle = matcher.group(1); }
-
-        int fadeIn = 10, stay = 100, fadeOut = 10;
-        String numbersPart = str.replaceAll("`[^`]*`", "").trim();
-        if (!numbersPart.isEmpty()) {
-            String[] nums = numbersPart.split("\\s+");
-            try {
-                if (nums.length >= 3) {
-                    fadeIn = Integer.parseInt(nums[0]);
-                    stay = Integer.parseInt(nums[1]);
-                    fadeOut = Integer.parseInt(nums[2]);
-                }
-            } catch (NumberFormatException ignored) {}
-        }
-        sendTitle(player, title, subtitle, fadeIn, stay, fadeOut);
     }
 
     public boolean isInCooldown(UUID uuid) {
@@ -95,18 +64,33 @@ public class Message {
         cooldownPlayers.clear();
     }
 
-    /**
-     * 发送主标题和副标题
-     *
-     * @param player 目标玩家
-     * @param title 主标题
-     * @param subtitle 副标题，可为空
-     * @param fadeIn 淡入时间（tick）
-     * @param stay 停留时间（tick）
-     * @param fadeOut 淡出时间（tick）
-     */
-    private void sendTitle(Player player, String title, String subtitle, int fadeIn, int stay, int fadeOut) {
-        player.sendTitle(title == null ? "" : title, subtitle == null ? "" : subtitle, fadeIn, stay, fadeOut);
+
+    /** 发送主标题和副标题 */
+    private static void sendTitle(Player player, String input) {
+        if (player == null || input == null || input.trim().isEmpty()) return;
+
+        String title, subTitle = "";
+        int fadeIn = 10, stay = 100, fadeOut = 10;
+
+        Pattern pattern = Pattern.compile(
+                "`([^`]*)`" +                         // title
+                "(?:\\s+`([^`]*)`)?" +                // optional subtitle
+                "(?:\\s+(\\d+)\\s+(\\d+)\\s+(\\d+))?" // optional numbers
+        );
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            title = matcher.group(1);
+            if (matcher.group(2) != null) {
+                subTitle = matcher.group(2);
+            }
+            if (matcher.group(3) != null) {
+                try { fadeIn = Integer.parseInt(matcher.group(3)); } catch (Exception ignored) {}
+                try { stay   = Integer.parseInt(matcher.group(4)); } catch (Exception ignored) {}
+                try { fadeOut= Integer.parseInt(matcher.group(5)); } catch (Exception ignored) {}
+            }
+            player.sendTitle(title, subTitle, fadeIn, stay, fadeOut);
+        }
     }
 
     /**
@@ -128,6 +112,40 @@ public class Message {
      */
     private static void sendChat(Player player, String message) {
         player.sendMessage(message);
+    }
+
+
+    // ----------------------------------- //
+
+    /**
+     * 拆分输入的字符串前缀是否命中(tell、title、actionbar)命中解析为数组并转小写，<p>
+     * 第0个元素是前缀，第1个元素是后缀。
+     *
+     * @param input 要解析的字符串，例如：tell: Hello
+     * @return 长度为 2 的数组，index 0 为前缀，index 1 为后缀
+     */
+    private static String[] parsePrefix(String input) {
+        if (input == null) return null;
+
+        Pattern pattern = Pattern.compile("^(tell|title|actionbar):\\s*(.+)$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.matches()) {
+            String prefix = matcher.group(1).toLowerCase(); // 前缀统一小写
+            String content = matcher.group(2);             // 命令内容
+            return new String[]{prefix, content};
+        }
+
+        return null; // 不符合格式
+    }
+
+    /** 通过 PlaceholderAPI 解析字符串占位符  */
+    private static String parse(Player player, String srt) {
+        try {
+            return PlaceholderAPI.setPlaceholders(player, srt);
+        } catch (Exception e) {
+            return srt;
+        }
     }
 
 }

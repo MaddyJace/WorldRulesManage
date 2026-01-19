@@ -19,14 +19,8 @@ public final class Plugin extends JavaPlugin {
         this.getCommand("worldrulesmanage").setExecutor(commandHandler);     // 命令
         this.getCommand("worldrulesmanage").setTabCompleter(commandHandler); // Tab
         WorldRulesManage.INSTANCE.onEnable();
-
-        Config c = Config.INSTANCE;
-        if (c.autoReloadEnable) {
-            long second = c.autoReloadPeriod * 1000L;
-            autoReload = new AutoReload(getDataFolder().getPath(), second, true,".yml", ".yaml");
-            autoReload.start();
-        }
-
+        autoReloadStop();
+        autoReloadStart();
         // 颜色
         final String RESET = "\u001B[0m";
         final String BLUE = "\u001B[34m";
@@ -50,12 +44,21 @@ public final class Plugin extends JavaPlugin {
     @Override
     public void onDisable() {
         WorldRulesManage.INSTANCE.onDisable();
+        autoReloadStop();
+    }
 
+    public static void autoReloadStart() {
+        if (Config.INSTANCE.autoReloadEnable) {
+            long second = Config.INSTANCE.autoReloadPeriod * 1000L;
+            autoReload = new AutoReload(Get.plugin().getDataFolder().getPath(), second, true,".yml", ".yaml");
+            autoReload.start();
+        }
+    }
+
+    public static void autoReloadStop() {
         if (autoReload != null) {
             autoReload.stop();
             autoReload = null;
         }
-
     }
-
 }

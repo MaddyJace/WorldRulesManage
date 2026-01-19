@@ -1,5 +1,6 @@
 package com.maddyjace.worldrulesmanage.commands;
 
+import com.maddyjace.worldrulesmanage.Plugin;
 import com.maddyjace.worldrulesmanage.WorldRulesManage;
 import com.maddyjace.worldrulesmanage.util.Language;
 import org.bukkit.command.Command;
@@ -27,6 +28,8 @@ public class Commands implements CommandExecutor, TabCompleter {
             case "reload":
                 WorldRulesManage.INSTANCE.onDisable();
                 WorldRulesManage.INSTANCE.onEnable();
+                Plugin.autoReloadStop();
+                Plugin.autoReloadStart();
                 sender.sendMessage(Language.Get.translate(Language.getServerLanguage(), "reload", pluginName));
                 return true;
             default:
